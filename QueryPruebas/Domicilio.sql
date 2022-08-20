@@ -1,0 +1,2 @@
+SELECT dom.nom_calle, dom.alt_calle, barr.nom_barrio, loc.nom_localidad, pro.nom_prov
+        FROM domicilio as dom, barrio as barr, localidad as loc, provincia as pro WHERE barr.idBarrio=dom.idBarrio and loc.idLocalidad=barr.idLocalidad and pro.idProvincia=loc.idProvincia;

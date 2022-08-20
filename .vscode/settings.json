@@ -1,0 +1,30 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "bd",
+            "database": "saber_bd",
+            "username": "root",
+            "password": "Root@1234"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Mysql_saber_bd",
+            "username": "root@localhost",
+            "database": "saber_bd",
+            "password": "Root@1234"
+        }
+    ]
+}

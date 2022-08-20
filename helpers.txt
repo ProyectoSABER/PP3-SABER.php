@@ -1,0 +1,6 @@
+HandlerLogin
+definido<=>Usando
+
+$_SESSION['USUARIO_ID']<=
+$_SESSION['USUARIO_EMAIL']<=
+$_SESSION['USUARIO_NOMTIPOUSUARIO'] <=

@@ -1,0 +1,14 @@
+.app-sidebar__user {
+    display: flex ;
+    flex-wrap: wrap ;
+    justify-content: center ;
+}
+.btn-xs {
+    padding: 1px 5px !important;
+    font-size: 12px!important;
+    line-height: 1.5!important;
+    border-radius: 3px!important;
+}
+html{
+    font-size: 1rem !important ;
+}
