@@ -409,8 +409,8 @@ CREATE TABLE IF NOT EXISTS `ejemplarlibro` (
   `id_EjemplarLibro` int NOT NULL AUTO_INCREMENT,
   `estadoRegistro_Ejemplar` bit(1) NOT NULL DEFAULT b'1',
   `id_EstadoLibro` int NOT NULL,
-  `Id_InstitucionalLibro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `id_Libro` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Id_InstitucionalLibro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `id_Libro` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_EjemplarLibro`),
   KEY `idEstadoLibro_EjeplarLibro_idx` (`id_EstadoLibro`),
   KEY `IdLibro_Libro_idx` (`id_Libro`)
@@ -439,7 +439,7 @@ INSERT INTO `ejemplarlibro` (`id_EjemplarLibro`, `estadoRegistro_Ejemplar`, `id_
 DROP TABLE IF EXISTS `estadolibro`;
 CREATE TABLE IF NOT EXISTS `estadolibro` (
   `id_EstadoLibro` int NOT NULL,
-  `nom_EstadoLibro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_EstadoLibro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_EstadoLibro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -461,7 +461,7 @@ INSERT INTO `estadolibro` (`id_EstadoLibro`, `nom_EstadoLibro`) VALUES
 DROP TABLE IF EXISTS `estadoprestamo`;
 CREATE TABLE IF NOT EXISTS `estadoprestamo` (
   `id_EstadoPrestamo` int NOT NULL AUTO_INCREMENT,
-  `nom_EstadoPrestamo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_EstadoPrestamo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_EstadoPrestamo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -482,7 +482,7 @@ INSERT INTO `estadoprestamo` (`id_EstadoPrestamo`, `nom_EstadoPrestamo`) VALUES
 DROP TABLE IF EXISTS `estadoreserva`;
 CREATE TABLE IF NOT EXISTS `estadoreserva` (
   `id_EstadoReserva` int NOT NULL AUTO_INCREMENT,
-  `nom_EstRes` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_EstRes` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_EstadoReserva`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -495,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `estadoreserva` (
 DROP TABLE IF EXISTS `estadosocio`;
 CREATE TABLE IF NOT EXISTS `estadosocio` (
   `id_EstadoSocio` int NOT NULL AUTO_INCREMENT,
-  `nom_EstadoSocio` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_EstadoSocio` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_EstadoSocio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -518,7 +518,7 @@ INSERT INTO `estadosocio` (`id_EstadoSocio`, `nom_EstadoSocio`) VALUES
 DROP TABLE IF EXISTS `idioma`;
 CREATE TABLE IF NOT EXISTS `idioma` (
   `id_idioma` int NOT NULL AUTO_INCREMENT,
-  `nom_idioma` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_idioma` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id_idioma`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -540,9 +540,9 @@ INSERT INTO `idioma` (`id_idioma`, `nom_idioma`) VALUES
 
 DROP TABLE IF EXISTS `libro`;
 CREATE TABLE IF NOT EXISTS `libro` (
-  `id_Isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `titulo_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `subtitulo_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `id_Isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `titulo_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `subtitulo_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `id_idioma` int DEFAULT NULL,
   `numEdicion_libro` int DEFAULT NULL,
   `edit_libro` int NOT NULL,
@@ -551,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `libro` (
   `cantidadStock_libro` int DEFAULT NULL,
   `fechaIng_libro` datetime DEFAULT CURRENT_TIMESTAMP,
   `prove_libro` int DEFAULT NULL,
-  `ubiEstanteria_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `ubiEstanteria_libro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `responsableCarga_libro` int DEFAULT NULL,
   PRIMARY KEY (`id_Isbn`),
   KEY `idPorveedor_Libro_idx` (`prove_libro`),
@@ -584,7 +584,7 @@ INSERT INTO `libro` (`id_Isbn`, `titulo_libro`, `subtitulo_libro`, `id_idioma`, 
 
 DROP TABLE IF EXISTS `libro_autor`;
 CREATE TABLE IF NOT EXISTS `libro_autor` (
-  `id_Isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `id_Isbn` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_autor` int NOT NULL,
   KEY `idLibro_Autor_idx` (`id_Isbn`),
   KEY `idAutor_Libro_idx` (`id_autor`)
@@ -599,7 +599,7 @@ CREATE TABLE IF NOT EXISTS `libro_autor` (
 DROP TABLE IF EXISTS `localidad`;
 CREATE TABLE IF NOT EXISTS `localidad` (
   `idLocalidad` int NOT NULL AUTO_INCREMENT,
-  `nom_localidad` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_localidad` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `idProvincia` int NOT NULL,
   PRIMARY KEY (`idLocalidad`),
   KEY `_idx` (`idProvincia`)
@@ -631,12 +631,12 @@ DROP TABLE IF EXISTS `persona`;
 CREATE TABLE IF NOT EXISTS `persona` (
   `dni_Persona` int NOT NULL,
   `tipoDNI_persona` int NOT NULL,
-  `nombre_Persona` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `apellido_persona` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nombre_Persona` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `apellido_persona` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `id_domicilio` int DEFAULT NULL,
   `id_usuario` int DEFAULT NULL,
   `fechaAlta_Persona` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `foto_socio` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Profile_avatar.png',
+  `foto_socio` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Profile_avatar.png',
   PRIMARY KEY (`dni_Persona`),
   UNIQUE KEY `id_usuario_UNIQUE` (`id_usuario`),
   KEY `idDomicilio_Persona_idx` (`id_domicilio`),
@@ -688,7 +688,7 @@ INSERT INTO `prestamolibro` (`idPrestamoLibro`, `id_socio`) VALUES
 DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE IF NOT EXISTS `proveedor` (
   `cuitProveedor` int NOT NULL AUTO_INCREMENT,
-  `nom_prove` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_prove` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `idDomicilio` int NOT NULL,
   `idBibliotecario` int NOT NULL,
   `idCategoria_Provee` int NOT NULL,
@@ -715,7 +715,7 @@ INSERT INTO `proveedor` (`cuitProveedor`, `nom_prove`, `idDomicilio`, `idBibliot
 DROP TABLE IF EXISTS `provincia`;
 CREATE TABLE IF NOT EXISTS `provincia` (
   `idProvincia` int NOT NULL AUTO_INCREMENT,
-  `nom_prov` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_prov` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idProvincia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -758,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `reserva` (
 DROP TABLE IF EXISTS `sesion`;
 CREATE TABLE IF NOT EXISTS `sesion` (
   `id_Sesion` int NOT NULL AUTO_INCREMENT,
-  `evento_Sesion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `evento_Sesion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `fechaHora_Sesion` datetime DEFAULT NULL,
   `id_Usuario` int DEFAULT NULL,
   PRIMARY KEY (`id_Sesion`),
@@ -802,7 +802,7 @@ INSERT INTO `socio` (`dni_Socio`, `idcategoria_Socio`, `id_socio`, `id_EstadoSoc
 DROP TABLE IF EXISTS `tipodocumento`;
 CREATE TABLE IF NOT EXISTS `tipodocumento` (
   `id_TipoDocumento` int NOT NULL,
-  `nom_TipoDocumento` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `nom_TipoDocumento` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_TipoDocumento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -823,7 +823,7 @@ INSERT INTO `tipodocumento` (`id_TipoDocumento`, `nom_TipoDocumento`) VALUES
 DROP TABLE IF EXISTS `tipoprestamo`;
 CREATE TABLE IF NOT EXISTS `tipoprestamo` (
   `id_TPrestamo` int NOT NULL AUTO_INCREMENT,
-  `nom_TipoPrestamo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_TipoPrestamo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `cantEjemplares_TipoPrestamo` int NOT NULL,
   PRIMARY KEY (`id_TPrestamo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -848,7 +848,7 @@ INSERT INTO `tipoprestamo` (`id_TPrestamo`, `nom_TipoPrestamo`, `cantEjemplares_
 DROP TABLE IF EXISTS `tipo_contacto`;
 CREATE TABLE IF NOT EXISTS `tipo_contacto` (
   `idTipo_Contacto` int NOT NULL AUTO_INCREMENT,
-  `tipo_Contacto` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `tipo_Contacto` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idTipo_Contacto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -868,7 +868,7 @@ INSERT INTO `tipo_contacto` (`idTipo_Contacto`, `tipo_Contacto`) VALUES
 DROP TABLE IF EXISTS `tipo_usuario`;
 CREATE TABLE IF NOT EXISTS `tipo_usuario` (
   `idTipo_Usuario` int NOT NULL,
-  `nom_TipoUsuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `nom_TipoUsuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idTipo_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -891,10 +891,10 @@ INSERT INTO `tipo_usuario` (`idTipo_Usuario`, `nom_TipoUsuario`) VALUES
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id_Usuario` int NOT NULL AUTO_INCREMENT,
-  `mail_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `clave_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `mail_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `clave_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `idTipo_Usuario` int DEFAULT NULL,
-  `metodoCifrado_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `metodoCifrado_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `activo_Usuario` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_Usuario`),
   UNIQUE KEY `mail_Usuario` (`mail_Usuario`),
