@@ -4,7 +4,7 @@ require_once('./Inc/session.inc.php');
 
 require_once 'funciones/conexion.php';
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 $MensajeError = "";
 $MensajeExito = "";

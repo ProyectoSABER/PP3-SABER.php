@@ -7,7 +7,7 @@ require_once 'funciones/conexion.php';
 require_once('./funciones/convertirFecha.php');
 require_once('./funciones/Libros.php');
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 $libros=array();
 $libros=conocerTodosLibros($MiConexion);

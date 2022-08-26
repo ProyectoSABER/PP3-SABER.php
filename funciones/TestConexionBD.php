@@ -16,5 +16,5 @@ function ConexionBD(
     else
         die('No se pudo establecer la conexión.');
 }
-echo ConexionBD();
+echo $ConexionBD;
 ?>

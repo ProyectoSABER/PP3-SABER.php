@@ -4,7 +4,7 @@ require_once('./Inc/session.inc.php');
 require_once 'funciones/conexion.php';
 require_once 'funciones/convertirFecha.php';
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 $Incidencia=array();
 require_once 'funciones/select_incidencias.php';

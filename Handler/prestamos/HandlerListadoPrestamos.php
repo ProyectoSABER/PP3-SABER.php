@@ -7,7 +7,7 @@ require_once 'funciones/conexion.php';
 
 require_once('./funciones/prestamos.php');
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 $Prestamos=array();
 $Prestamos=conocertodosPrestamosActivos($MiConexion);

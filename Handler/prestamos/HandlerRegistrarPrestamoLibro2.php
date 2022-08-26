@@ -5,7 +5,7 @@ require_once './funciones/registrarPrestamo.php';
 
 require_once('./Inc/menus/head.inc.php');
 require_once 'funciones/conexion.php';
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 $ISBNlibro = $_SESSION['RegistrarPrestamo']['ISBN'];
 $IDSocio = $_SESSION['RegistrarPrestamo']['IDSocio'];
 

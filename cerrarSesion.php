@@ -2,7 +2,7 @@
 session_start();
 
 require_once 'funciones/conexion.php';
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 require_once 'funciones/login.php';
 $FechaHoraHoy = date('Y-m-d H:i:s');
 RegistrarLogout($_SESSION['USUARIO_ID'],$FechaHoraHoy, $MiConexion);

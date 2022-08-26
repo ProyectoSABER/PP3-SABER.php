@@ -4,7 +4,7 @@
 require_once('./Inc/session.inc.php');
 
 require_once 'funciones/conexion.php';
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 require_once('./funciones/registrarDevolucion.php');
 require_once('./funciones/conocerUsuario.php');
 

@@ -2,7 +2,7 @@
 
 
 require_once 'funciones/conexion.php';
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 require_once 'funciones/login.php';
 $noValidateEmailnewUSer=false;
 

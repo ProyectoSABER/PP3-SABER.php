@@ -7,7 +7,7 @@ require_once 'funciones/conexion.php';
 require_once 'funciones/Persona.php';
 require_once 'funciones/TipoDni.php';
 require_once 'funciones/Domicilio.php';
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 $TipoDNI=array();
 $TipoDNI=conocerTodosTipoDni($MiConexion);

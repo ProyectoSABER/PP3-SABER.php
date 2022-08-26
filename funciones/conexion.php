@@ -1,20 +1,11 @@
 <?php
-
-
-function ConexionBD(
-    $Host = 'localhost',
-    $User = 'root',
-    $Password = 'Root@1234',
-    $BaseDeDatos = 'saber_bd'
-) {
-
-    $LinkConexion = mysqli_connect($Host, $User, $Password, $BaseDeDatos);
-    $ok='<h3>Acceso al Mysql del Localhost: La conexion es correcta!</h3>';
-
-    if ($LinkConexion != false)
-        return $LinkConexion;
-    else
-        die('No se pudo establecer la conexión.');
-}
-
-?>
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+    // Variables de la conexion a la DB
+    $mysqli = new mysqli("localhost","root","","saber_bd");
+    $ConexionBD =$mysqli;
+    // Comprobamos la conexion
+    if($mysqli->connect_errno) {
+        die("Fallo la conexion");
+    } 
+    
+    ?>

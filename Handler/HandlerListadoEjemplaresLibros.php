@@ -7,7 +7,7 @@ require_once 'funciones/conexion.php';
 
 require_once('./funciones/EjemplaresLibros.php');
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 if(empty($_GET['Registrar'])){
     header('Location:ListadoLibros.php');

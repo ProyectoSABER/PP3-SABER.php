@@ -7,7 +7,7 @@ require_once 'funciones/conexion.php';
 require_once('./funciones/convertirFecha.php');
 require_once('./funciones/Socio.php');
 
-$MiConexion = ConexionBD();
+$MiConexion = $ConexionBD;
 
 
 $Socio=array();
