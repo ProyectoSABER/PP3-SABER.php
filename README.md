@@ -14,6 +14,7 @@ La carpeta Saber_BD tiene el schema para importa la Base de Datos en mySql. Cual
 
 3. **Antes** de Hacer un **Commit** hacer un **stash** para almacenar localmente, **Cumplir punto 2** luego hacer haceer un **pull origin main**, !!pararse en la rama que estas trabajando ejemplo **"git branch Adrian-HU10 "** !! y hacer **"git merge main"** de esta forma se actualiza nuestra rama con gitHub y ahi podemos hacer **" git stash pop"** para traer devuelta nuestro trabajo guardado y ahora si está listo para hacer un commit **git commit -m "[Descripción]"** 
 
+4. Resolver las incidencias por un merge.
 
 
 
