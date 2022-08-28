@@ -266,6 +266,13 @@ No tiene solución en git:
 
 No se puede deshacer, porque se pierde la referencia totalmente, si haces eso sin haber guardado un commit, perderás todos los cambios que hayas hecho.
 
+**AYUDAS VISUALES** :
+
+![RESUMEN Comandos 1](./Temporal/images/'Comados Basico git 1.jpg' "Resumen de comandos 1")
+
+![RESUMEN Comandos 2]("./Temporal/images/Comados Basico git 2.jpg" "Resumen de comandos 2")
+
+
 
 **Fuentes**:
 
