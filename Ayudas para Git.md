@@ -268,9 +268,9 @@ No se puede deshacer, porque se pierde la referencia totalmente, si haces eso si
 
 **AYUDAS VISUALES** :
 
-![RESUMEN Comandos 1](./Temporal/images/'Comados Basico git 1.jpg' "Resumen de comandos 1")
+![RESUMEN Comandos 1](./Temporal/images/ComadoBasicoGit1.jpg "Resumen de comandos 1")
 
-![RESUMEN Comandos 2]("./Temporal/images/Comados Basico git 2.jpg" "Resumen de comandos 2")
+![RESUMEN Comandos 2](./Temporal/images/ComadoBasicoGit2.jpg "Resumen de comandos 2")
 
 
 
