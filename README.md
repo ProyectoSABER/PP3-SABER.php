@@ -7,3 +7,10 @@ https://drive.google.com/drive/folders/1n8yu2AlC9_6pum4ScSHpUf3peWHMwr1d?usp=sha
 
 Clonar el repositorio en la siguiente Ruta C:\wamp64\www\Proyectos\S.A.B.E.R
 La carpeta Saber_BD tiene el schema para importa la Base de Datos en mySql. Cualquier cambio en la base de datos por favor editar el archivo con la exportacion de la misma. Culquier duda Comuniquense conmigo 
+
+**Para Gestionar Git en Equipo Seguir los Siguientes Pasos**:
+
+
+
+**Para Ayudas de Git leer el siguiente Archivo**
+![Ayudas de comandos de git](./Ayudas%20para%20Git.md "Ayudas de comandos de git")
