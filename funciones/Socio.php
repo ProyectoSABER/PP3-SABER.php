@@ -26,6 +26,7 @@ function MostrarUnoSocioID($IdSocio, $PConeccionBD)
         $Lista['SOCIO_ESTADOSOCIO'] = $data['EstadoSocio'];
         $Lista['SOCIO_FECHAALTA'] = $data['FechaAlta'];
         
+        
     }
 
     

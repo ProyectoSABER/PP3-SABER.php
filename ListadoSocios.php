@@ -62,10 +62,10 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                     <td><?php echo $Socio[$i]['SOCIO_CUOTA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ESTADOSOCIO'] ?></td>
                     <td><?php echo convertir_fecha( $Socio[$i]['SOCIO_FECHAALTA']) ?></td>
-                    <td><a href="#">Ver detalles...</a></td>
+                    <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Ver detalles...</a></td>
                   </tr>
                 <?php } ?>
-
+                  <!-- Idea! Obtner todos los datos de la fila que se presiono Ver Detalles para pasarselo al modal -->
 
 
               </tbody>
@@ -74,6 +74,7 @@ require_once './Handler/socios/HandlerListadoSocios.php'
         </div>
       </div>
       <div class="clearfix"></div>
+      <!-- <?php require_once("./page/modals/ListadoLibros/ModalDetalleLibros.php")?> -->
 
     </div>
   </main>

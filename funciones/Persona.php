@@ -27,6 +27,7 @@ function MostrarUnaPersona($DNIPersona, $PConeccionBD)
         $Usuario['BARRIO'] = $data['nom_barrio'];
         $Usuario['LOCALIDAD'] = $data['nom_localidad'];
         $Usuario['PROVINCIA'] = $data['nom_prov'];
+        $Usuario['USUARIO'] = $data['mail_Usuario'];
         return $Usuario;
     }
 
@@ -39,17 +40,17 @@ function mostrarTodoPersona($PConeccionBD)
 {
     $Usuario = array();
     $data = array();
-
-
-
-
+    
+    
+    
+    
     $SQL = "SELECT per.dni_persona, tipDNI.nom_TipoDocumento, per.nombre_Persona, per.apellido_Persona, per.foto_socio, dom.nom_calle, dom.alt_calle, barr.nom_barrio, loc.nom_localidad, pro.nom_prov, Us.mail_Usuario,per.fechaAlta_Persona
         FROM persona as per , domicilio as dom, barrio as barr, localidad as loc, provincia as pro ,tipodocumento as tipDNI, usuario as Us WHERE tipDNI.id_TipoDocumento=per.tipoDNI_persona and dom.idDomicilio=id_domicilio and barr.idBarrio=dom.idBarrio and loc.idLocalidad=barr.idLocalidad and pro.idProvincia=loc.idProvincia and Us.id_Usuario=per.id_usuario";
 
     $rs = mysqli_query($PConeccionBD, $SQL);
     $i = 0;
     while ($data = mysqli_fetch_array($rs)) {
-
+        
         $Usuario[$i]['DNI'] = $data['dni_persona'];
         $Usuario[$i]['TIPODNI'] = $data['nom_TipoDocumento'];
         $Usuario[$i]['NOMBRE'] = $data['nombre_Persona'];
@@ -64,7 +65,7 @@ function mostrarTodoPersona($PConeccionBD)
         $Usuario[$i]['FECALTA'] = $data['fechaAlta_Persona'];
         $i++;
     }
-
+    
     return $Usuario;
 }
 
@@ -72,18 +73,18 @@ function mostrarTodoPersonaNoSocio($PConeccionBD)
 {
     $Usuario = array();
     $data = array();
-
-
-
-
+    
+    
+    
+    
     $SQL = "SELECT per.dni_persona as DNI, tipDNI.nom_TipoDocumento as TipoDni, per.nombre_Persona as Nombre, per.apellido_Persona as Apellido, per.foto_socio as Foto, dom.nom_calle AS Calle, dom.alt_calle AS AlturaCalle, barr.nom_barrio As Barrio, loc.nom_localidad AS Localidad, pro.nom_prov AS Provincia, Us.mail_Usuario as Mail ,per.fechaAlta_Persona as FechaAlta
 
             FROM persona as per , domicilio as dom, barrio as barr, localidad as loc, provincia as pro ,tipodocumento as tipDNI, usuario as Us 
             WHERE tipDNI.id_TipoDocumento=per.tipoDNI_persona and dom.idDomicilio=id_domicilio and barr.idBarrio=dom.idBarrio and loc.idLocalidad=barr.idLocalidad and pro.idProvincia=loc.idProvincia and Us.id_Usuario=per.id_usuario AND dni_Persona NOT IN (SELECT dni_Socio FROM socio)";
 
-    $rs = mysqli_query($PConeccionBD, $SQL);
-    $i = 0;
-    while ($data = mysqli_fetch_array($rs)) {
+$rs = mysqli_query($PConeccionBD, $SQL);
+$i = 0;
+while ($data = mysqli_fetch_array($rs)) {
 
         $Usuario[$i]['DNI'] = $data['DNI'];
         $Usuario[$i]['TIPODNI'] = $data['TipoDni'];
@@ -100,8 +101,8 @@ function mostrarTodoPersonaNoSocio($PConeccionBD)
         $i++;
     }
     
-
-
+    
+    
     return $Usuario;
 }
 
@@ -110,16 +111,16 @@ function mostrarTodoPersonaNoSocio($PConeccionBD)
 function insertarUnaPersona($DNIPersona, $TipoDNI, $Nombre, $Apellido, $IdDomicilio, $IdUsuario, $FotoSocio, $PConeccionBD)
 {
 
-
-
-
-
+    
+    
+    
+    
     $SQL = "INSERT INTO `persona`(`dni_Persona`, `tipoDNI_persona`, `nombre_Persona`, `apellido_persona`, `id_domicilio`, `id_usuario`, `foto_socio`) VALUES ('$DNIPersona','$TipoDNI','$Nombre','$Apellido','$IdDomicilio','$IdUsuario','$FotoSocio')";
-
-
-
+    
+    
+    
     $consulta = mysqli_query($PConeccionBD, $SQL);
-
+    
     return $consulta;
 }
 
@@ -132,18 +133,18 @@ function insertarUnaPersonaArray($Persona, $PConeccionBD)
     $IdDomicilio= !empty($Persona['IdDomicilio'])?$Persona['IdDomicilio'] : '1' ;
     $IdUsuario=$_SESSION['USUARIO_ID'];
     $FotoSocio= !empty($Persona['FotoSocio'])?$Persona['FotoSocio'] : 'null' ;
+    
 
 
-
-
+    
     $SQL = "INSERT INTO `persona`(`dni_Persona`, `tipoDNI_persona`, `nombre_Persona`, `apellido_persona`, `id_domicilio`, `id_usuario`, `foto_socio`) VALUES ('$DNIPersona','$TipoDNI','$Nombre','$Apellido',$IdDomicilio,'$IdUsuario','$FotoSocio')";
-
-
-
+    
+    
+    
     $consulta = mysqli_query($PConeccionBD, $SQL);
-
+    
     return $consulta;
-
+    
     
 }
 function eliminarUnaPersona($Persona, $PConeccionBD)
@@ -151,11 +152,45 @@ function eliminarUnaPersona($Persona, $PConeccionBD)
     $DNIPersona=$Persona['DNIPersona'];
     
     $SQL = "DELETE FROM `persona` WHERE `dni_Persona`=$DNIPersona'";
-
+    
     $consulta = mysqli_query($PConeccionBD, $SQL);
-
+    
     return $consulta;
-
+    
     
 }
 
+
+
+function MostrarContactoUnaPersona($DNIPersona, $PConeccionBD)
+{
+    $Usuario = array();
+    $data = array();
+
+
+
+
+    $SQL = "SELECT per.dni_persona, 
+        FROM persona as per , domicilio as dom, barrio as barr, localidad as loc, provincia as pro ,tipodocumento as tipDNI, usuario as Us WHERE per.dni_persona='$DNIPersona' and tipDNI.id_TipoDocumento=per.tipoDNI_persona and dom.idDomicilio=id_domicilio and barr.idBarrio=dom.idBarrio and loc.idLocalidad=barr.idLocalidad and pro.idProvincia=loc.idProvincia and Us.id_Usuario=per.id_usuario";
+
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    $data = mysqli_fetch_array($rs);
+
+    if (!empty($data)) {
+
+        $Usuario['DNI'] = $data['dni_persona'];
+        $Usuario['TIPODNI'] = $data['nom_TipoDocumento'];
+        $Usuario['NOMBRE'] = $data['nombre_Persona'];
+        $Usuario['APELLIDO'] = $data['apellido_Persona'];
+        $Usuario['Foto'] = $data['foto_socio'];
+        $Usuario['CALLE'] = $data['nom_calle'];
+        $Usuario['ALTURACALLE'] = $data['alt_calle'];
+        $Usuario['BARRIO'] = $data['nom_barrio'];
+        $Usuario['LOCALIDAD'] = $data['nom_localidad'];
+        $Usuario['PROVINCIA'] = $data['nom_prov'];
+        return $Usuario;
+    }
+
+
+    return $data;
+}
