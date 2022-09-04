@@ -62,7 +62,9 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                     <td><?php echo $Socio[$i]['SOCIO_CUOTA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ESTADOSOCIO'] ?></td>
                     <td><?php echo convertir_fecha( $Socio[$i]['SOCIO_FECHAALTA']) ?></td>
-                    <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Ver detalles...</a></td>
+                    <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Detalle</a>
+                    <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Editar</a>
+                    <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Eliminar</i></a></td>
                   </tr>
                 <?php } ?>
                   <!-- Idea! Obtner todos los datos de la fila que se presiono Ver Detalles para pasarselo al modal -->

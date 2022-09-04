@@ -21,6 +21,7 @@ function conocerTodosTipoContacto($PConeccionBD)
 
     return !empty($Lista) ?  $Lista : '';
 }
+
 function insertarUnContactoArray($Contacto, $PConeccionBD)
 {
 
@@ -74,4 +75,23 @@ function insertarUnContactoArray($Contacto, $PConeccionBD)
 
 
     return $consulta;
+}
+function ConocerContactoDNI ($DNI, $PConeccionBD){
+    
+    
+    $sql = "SELECT C.contact as Contacto, TC.tipo_Contacto as TipoContacto FROM contacto_persona as CP , contacto as C, tipo_contacto as TC WHERE CP.dni_persona= '$DNI' and CP.idContacto=C.idContacto and C.id_tipoContacto= TC.idTipo_Contacto ";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+
+
+    $i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $Contacto[$i]['CONTACTO'] = $data['Contacto'];
+        $Contacto[$i]['TIPOCONTACTO'] = $data['TipoContacto'];
+        $i++;
+    }
+
+    return !empty($Contacto) ?  $Contacto : '';
+
+
 }

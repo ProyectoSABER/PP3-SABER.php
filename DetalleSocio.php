@@ -121,22 +121,19 @@ require_once './Handler/socios/HandlerDetalleSocio.php'
               <thead>
                 <tr>
 
-                  <th>Calle</th>
-                  <th>Altura Calle</th>
-                  <th>Barrio</th>
-                  <th>Localidad</th>
-                  <th>Provincia</th>
+                  <th>#</th>
+                  <th>Tipo Contacto</th>
+                  <th>Contacto</th>
+                  
                 </tr>
               </thead>
               <tbody>
                 <tr>
-
-                  <td><?php echo $PERSONA['CALLE'] ?></td>
-                  <td><?php echo $PERSONA['ALTURACALLE'] ?></td>
-                  <td><?php echo $PERSONA['BARRIO'] ?></td>
-                  <td><?php echo $PERSONA['LOCALIDAD'] ?></td>
-                  <td><?php echo $PERSONA['PROVINCIA'] ?></td>
-
+                  <?php for($i = 0; $i < $CantContacto; $i++) { ?>
+                  <td><?php echo $i+1?></td>
+                  <td><?php echo $Contacto[$i]['TIPOCONTACTO'] ?></td>
+                  <td><?php echo $Contacto[$i]['CONTACTO'] ?></td>
+                  <?php }?>               
                 </tr>
 
               </tbody>
