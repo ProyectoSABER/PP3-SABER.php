@@ -7,7 +7,9 @@
 <?php if(!empty($_SESSION['USUARIO_DNI'])){?>
 <script src="js/plugins/pace.min.js"></script>
 <?php } ?>
+
 <!-- Page specific javascripts-->
+
 
 
 

@@ -13,8 +13,8 @@ require_once './Handler/socios/HandlerListadoSocios.php'
   <main class="app-content">
     <div class="app-title">
       <div>
-      <h1><i class="fa fa-th-list"></i> Listados</h1>
-       
+        <h1><i class="fa fa-th-list"></i> Listados</h1>
+
         <p>Listado de Socios</p>
 
       </div>
@@ -28,9 +28,9 @@ require_once './Handler/socios/HandlerListadoSocios.php'
 
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Total de SOCIOS <?php echo $CantSocio?> </h3>
+          <h3 class="tile-title">Total de SOCIOS <?php echo $CantSocio ?> </h3>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="tabla-Socios">
               <thead>
                 <tr>
                   <th>#</th>
@@ -43,17 +43,17 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                   <th>EstadoSocio</th>
                   <th>Fecha Alta</th>
                   <th>OPCIONES</th>
-                  
+
 
                 </tr>
               </thead>
               <tbody>
                 <?php for ($i = 0; $i < $CantSocio; $i++) { ?>
 
-                    
-                
-                  <tr class=<?php echo ($i%2==0)?  'table-info' : '';?>>
-                    <td><?php echo $i ?></td>
+
+
+                  <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
+                    <td><?php echo $i+1 ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_DNI'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ID'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_NOMBRE'] ?></td>
@@ -61,13 +61,14 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                     <td><?php echo $Socio[$i]['SOCIO_CATEGORIA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_CUOTA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ESTADOSOCIO'] ?></td>
-                    <td><?php echo convertir_fecha( $Socio[$i]['SOCIO_FECHAALTA']) ?></td>
+                    <td><?php echo convertir_fecha($Socio[$i]['SOCIO_FECHAALTA']) ?></td>
                     <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Detalle</a>
-                    <a href="./EditarSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Editar</a>
-                    <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Eliminar</i></a></td>
+                      <a href="./EditarSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Editar</a>
+                      <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Eliminar</i></a>
+                    </td>
                   </tr>
                 <?php } ?>
-                  <!-- Idea! Obtner todos los datos de la fila que se presiono Ver Detalles para pasarselo al modal -->
+                <!-- Idea! Obtner todos los datos de la fila que se presiono Ver Detalles para pasarselo al modal -->
 
 
               </tbody>
@@ -76,12 +77,28 @@ require_once './Handler/socios/HandlerListadoSocios.php'
         </div>
       </div>
       <div class="clearfix"></div>
-      <!-- <?php require_once("./page/modals/ListadoLibros/ModalDetalleLibros.php")?> -->
+      <!-- <?php require_once("./page/modals/ListadoLibros/ModalDetalleLibros.php") ?> -->
 
     </div>
+
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <!-- DataTable -->
+  <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
+  <script>
+    init();
+
+    function init() {
+      getData();
+    }
+
+    function getData() {
+      $('#tabla-Socios').DataTable({
+    scrollY: 250
+});
+    }
+  </script>
 
 </body>
 

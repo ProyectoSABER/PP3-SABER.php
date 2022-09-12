@@ -129,11 +129,11 @@ require_once './Handler/socios/HandlerDetalleSocio.php'
               </thead>
               <tbody>
                 <tr>
-                  <?php for($i = 0; $i < $CantContacto; $i++) { ?>
+                  <?php if (isset($CantContacto)) { for($i = 0; $i < $CantContacto; $i++) { ?>
                   <td><?php echo $i+1?></td>
                   <td><?php echo $Contacto[$i]['TIPOCONTACTO'] ?></td>
                   <td><?php echo $Contacto[$i]['CONTACTO'] ?></td>
-                  <?php }?>               
+                  <?php } }?>               
                 </tr>
 
               </tbody>

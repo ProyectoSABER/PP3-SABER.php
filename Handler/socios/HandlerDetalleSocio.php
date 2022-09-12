@@ -31,8 +31,9 @@ $PERSONA=MostrarUnaPersona($dni,$MiConexion);
 
 $Contacto=ConocerContactoDNI($dni, $MiConexion);
 
+if ($Contacto){
 $CantContacto=count($Contacto);
-
+}
 
 
 

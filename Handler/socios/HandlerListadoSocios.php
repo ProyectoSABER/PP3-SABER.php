@@ -14,7 +14,9 @@ $Socio=array();
 $Socio=mostrarTodoSocio($MiConexion);
 $CantSocio=count($Socio);
 
-
+/* if($_REQUEST["op"]){
+    
+} */
 
 
 
