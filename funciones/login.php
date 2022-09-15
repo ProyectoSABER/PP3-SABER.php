@@ -33,7 +33,7 @@ return $Usuario;
 function RegistrarUltimoAcceso($PidUsuario,$Pdate,$PConeccionBD){ 
     
 
-    $sql = "UPDATE usuarios SET ultAcceso_Usuario = '$Pdate' WHERE id_Usuario = '$PidUsuario'";
+    $sql = "UPDATE usuario SET ultAcceso_Usuario = '$Pdate' WHERE id_Usuario = '$PidUsuario'";
    $estadoRegistro=mysqli_query($PConeccionBD,$sql);
 
 return $estadoRegistro;
@@ -44,7 +44,9 @@ return $estadoRegistro;
 function RegistrarLogin($PidUsuario,$Pdate,$PConeccionBD){ 
     
         $EstadoSesion="login";
-        $sql ="INSERT INTO `sesion` (`id_Sesion`, `evento_Sesion`, `fechaHora_Sesion`, `id_Usuario`) VALUES (auto, '$EstadoSesion', $Pdate, $PidUsuario)";
+        $sql ="INSERT INTO sesion 
+( `evento_Sesion`, `fechaHora_Sesion`, `id_Usuario`) 
+VALUES ('$EstadoSesion', '$Pdate', '$PidUsuario')";
         
         $estadoRegistro=mysqli_query($PConeccionBD,$sql);
    
@@ -54,7 +56,9 @@ function RegistrarLogin($PidUsuario,$Pdate,$PConeccionBD){
 function RegistrarLogout($PidUsuario,$Pdate,$PConeccionBD){ 
     
         $EstadoSesion="logout";
-        $sql ="INSERT INTO `sesion` (`id_Sesion`, `evento_Sesion`, `fechaHora_Sesion`, `id_Usuario`) VALUES (auto, '$EstadoSesion', $Pdate, $PidUsuario)";
+        $sql ="INSERT INTO sesion 
+        ( `evento_Sesion`, `fechaHora_Sesion`, `id_Usuario`) 
+        VALUES ('$EstadoSesion', '$Pdate', '$PidUsuario')";
         
         $estadoRegistro=mysqli_query($PConeccionBD,$sql);
    

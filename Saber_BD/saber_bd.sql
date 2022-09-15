@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-09-2022 a las 15:03:30
+-- Tiempo de generación: 15-09-2022 a las 00:42:21
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.26
 
@@ -726,9 +726,8 @@ CREATE TABLE IF NOT EXISTS `sesion` (
   `id_Usuario` int DEFAULT NULL,
   PRIMARY KEY (`id_Sesion`),
   KEY `idUsuario_Sesion_idx` (`id_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `socio`
@@ -853,6 +852,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `idTipo_Usuario` int DEFAULT NULL,
   `metodoCifrado_Usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `activo_Usuario` tinyint NOT NULL DEFAULT '1',
+  `ultAcceso_Usuario` datetime NOT NULL,
   PRIMARY KEY (`id_Usuario`),
   UNIQUE KEY `mail_Usuario` (`mail_Usuario`),
   KEY `idTipoUsuario_Usuario_idx` (`idTipo_Usuario`)
@@ -862,14 +862,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_Usuario`, `mail_Usuario`, `clave_Usuario`, `idTipo_Usuario`, `metodoCifrado_Usuario`, `activo_Usuario`) VALUES
-(1, 'finochio.adrian@outlook.com', 'd22a1ee1583f0ac6233c886dca8445b2', 1, 'md5', 1),
-(2, 'Biblioteca@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 2, 'md5', 1),
-(3, 'docente@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1),
-(12, 'alumno@gmail.com', '25d55ad283aa400af464c76d713c07ad', 4, 'md5', 1),
-(16, 'AlumnoNuevo@gmail.com', '25d55ad283aa400af464c76d713c07ad', 4, 'md5', 1),
-(17, 'alumno3@outlook.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1),
-(18, 'jorgito@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1);
+INSERT INTO `usuario` (`id_Usuario`, `mail_Usuario`, `clave_Usuario`, `idTipo_Usuario`, `metodoCifrado_Usuario`, `activo_Usuario`, `ultAcceso_Usuario`) VALUES
+(1, 'finochio.adrian@outlook.com', 'd22a1ee1583f0ac6233c886dca8445b2', 1, 'md5', 1, '0000-00-00 00:00:00'),
+(2, 'Biblioteca@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 2, 'md5', 1, '2022-09-15 00:40:18'),
+(3, 'docente@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1, '0000-00-00 00:00:00'),
+(12, 'alumno@gmail.com', '25d55ad283aa400af464c76d713c07ad', 4, 'md5', 1, '0000-00-00 00:00:00'),
+(16, 'AlumnoNuevo@gmail.com', '25d55ad283aa400af464c76d713c07ad', 4, 'md5', 1, '0000-00-00 00:00:00'),
+(17, 'alumno3@outlook.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1, '0000-00-00 00:00:00'),
+(18, 'jorgito@gmail.com', 'd22a1ee1583f0ac6233c886dca8445b2', 4, 'md5', 1, '0000-00-00 00:00:00');
 
 --
 -- Restricciones para tablas volcadas
