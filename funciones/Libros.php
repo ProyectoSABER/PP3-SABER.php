@@ -43,7 +43,62 @@ function conocerTodosLibros($PConeccionBD)
 }
 
 
+function conocerTodosLibrosDisponibles($PConeccionBD)
+{
+    $Lista = array();
+    $data = array();
 
+    $sql = "SELECT lib.id_Isbn,
+                   lib.titulo_libro,
+                   lib.subtitulo_libro,
+                   idi.nom_idioma,
+                   lib.numEdicion_libro,
+                   edi.nom_editorial,
+                   cat.categoria_cateLibro,
+                   lib.fecPublicacion_libro,
+                   lib.cantidadStock_libro,
+                   lib.fechaIng_libro,
+                   pro.nom_prove,
+                   lib.ubiEstanteria_libro,
+                   per.nombre_Persona,
+                   per.apellido_persona
+            FROM libro lib
+              INNER JOIN idioma idi ON idi.id_idioma = lib.id_idioma
+              INNER JOIN editorial edi ON edi.id_Editorial = lib.edit_libro
+              INNER JOIN categorialibro cat ON cat.id_CateLibro = lib.categoria_libro
+              INNER JOIN proveedor pro ON pro.cuitProveedor = lib.prove_libro
+              INNER JOIN bibliotecario bib ON bib.id_bibliotecario = lib.responsableCarga_libro
+              INNER JOIN persona per ON per.dni_Persona = bib.dni_Bibliotecario
+              INNER JOIN ejemplarlibro eje ON eje.id_Libro = lib.id_Isbn
+              INNER JOIN estadolibro est ON est.id_EstadoLibro = eje.id_EstadoLibro
+            WHERE est.id_EstadoLibro = 1 AND eje.estadoRegistro_Ejemplar=true";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+    if (!$rs) {
+        return false;
+    }
+
+    $i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+
+        $Lista[$i]['Libro_ISBN'] = $data['id_Isbn'];
+        $Lista[$i]['Libro_Titulo'] = $data['titulo_libro'];
+        $Lista[$i]['Libro_Subtitulo'] = $data['subtitulo_libro'];
+        $Lista[$i]['Libro_Idioma'] = $data['nom_idioma'];
+        $Lista[$i]['Libro_NEdicion'] = $data['numEdicion_libro'];
+        $Lista[$i]['Libro_Editorial'] = $data['nom_editorial'];
+        $Lista[$i]['Libro_CategoriaLibro'] = $data['categoria_cateLibro'];
+        $Lista[$i]['Libro_FechaPublicacion'] = $data['fecPublicacion_libro'];
+        $Lista[$i]['Libro_Stock'] = $data['cantidadStock_libro'];
+        $Lista[$i]['Libro_FechaIngreso'] = $data['fechaIng_libro'];
+        $Lista[$i]['Libro_Proveedor'] = $data['nom_prove'];
+        $Lista[$i]['Libro_UbicacionEstanteria'] = $data['ubiEstanteria_libro'];
+        $Lista[$i]['Libro_ResponsableCarga'] = $data['nombre_Persona'] . ' ' . $data['apellido_persona'];
+        $i++;
+    }
+
+    return $Lista;
+}
 
 
 
