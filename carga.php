@@ -9,6 +9,8 @@ $MiConexion = ConexionBD();
 $MensajeError = "";
 $MensajeExito = "";
 
+
+
 if (!empty($_POST['Registrar'])) {
 
   if (!empty($_POST['Titulo'])) {
