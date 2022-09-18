@@ -4,7 +4,8 @@
 
 <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Mis prestamos Activos <?php echo $CantPrestamosActivos?></h3>
+          <h3 class="tile-title">Mis prestamos</h3><br>
+          <h5 class="tile-subtitle">Activos:<?php echo $CantPrestamosActivos?></h5>
           <div class="table-responsive">
             <table class="table">
               <thead>
