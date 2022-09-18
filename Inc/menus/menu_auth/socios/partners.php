@@ -12,11 +12,11 @@
                   <th>#</th>
                   <th>ISBN</th>
                   <th>ID Institucional</th>
-                  <th>Título</th>
-                  <th>Estado</th>                  
+                  <th>Título</th>                                  
                   <th>Fecha de Retiro</th>
                   <th>Fecha A devolver</th>
                   <th>Tipo Prestamo</th>
+                  <th>Estado Prestamo</th>
                   
 
                 </tr>
@@ -32,11 +32,10 @@
                     <td><?php echo $PrestamosActivos[$i]['ID_LIBRO'] ?></td>
                     <td><?php echo $PrestamosActivos[$i]['ID_INST_EJEMPLAR'] ?></td>
                     <td><?php echo $PrestamosActivos[$i]['TITULO'] ?></td>
-                    <td><?php echo $PrestamosActivos[$i]['ESTADO'] ?></td>
-                    
                     <td><?php echo $PrestamosActivos[$i]['FECHA_PRESTAMO'] ?></td>
                     <td><?php echo $PrestamosActivos[$i]['FECHA_ADEVOLVER'] ?></td>
                     <td><?php echo $PrestamosActivos[$i]['TIPOPRESTAMO'] ?></td>
+                    <td><?php echo $PrestamosActivos[$i]['ESTADO'] ?></td>
                     
                   </tr>
                 <?php } ?>
