@@ -13,7 +13,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibroSocio.php'
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-edit"></i> Registrar Prestamo de Libros</h1>
+        <h1><i class="fa fa-edit"></i> Registrar Prestamo de Libros CC</h1>
       </div>
     </div>
     <div class="row">
