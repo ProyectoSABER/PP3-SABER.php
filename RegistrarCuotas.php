@@ -86,7 +86,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                           <div class="col-md-3">
                             <label for="Socio<?php echo $Valor["CATEGORIA"] ?>"><?php echo $Valor["CATEGORIA"] ?></label>
                             <input class="checkSocio <?php echo $Valor["CATEGORIA"] ?>" type="checkbox" name="Socio<?php /* echo $Valor["CATEGORIA"]  */?>" value="<?php echo $Valor["CATEGORIA"] ?>">
-                            <div class="input_valorCuota input-group ">
+                            <div class="input_valorCuota input-group flex-column">
                               <div class="row">
                                 <label for="ValorCuota-<?php echo $Valor["CATEGORIA"] ?>">Ingrese el Valor $ de la cuota</label>
                               </div>
