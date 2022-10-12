@@ -26,7 +26,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
           <h3 class="tile-title">Ingresa los datos solicitados</h3>
           <?php /* echo '<p>'.print_r($IngresoRegistro) .'<p>' */ ?>
 
-
+          <!-- Mensaje de error -->
           <?php if (!empty($MensajeError)) { ?>
             <div class="bs-component">
               <div class="alert alert-dismissible alert-danger">
@@ -36,19 +36,20 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
           <?php } else if (!empty($MensajeExito)) { ?>
 
 
-
+            <!-- Mensaje de Exito -->
             <div class="bs-component">
               <div class="alert alert-dismissible alert-success">
                 <strong><?php echo $MensajeExito ?></strong>
               </div>
             </div>
           <?php } ?>
-
+          <!-- Mensaje de campo obligatorios -->
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
               <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
+          <!-- Body -->
           <div class="tile-body">
 
             <!-- Formulario -->
@@ -56,15 +57,16 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
 
               <div class="row justify-content-space-around">
                 <div class="col-md-5">
-                  <!-- Mes -->
+
+                  <!--Input Mes -->
 
                   <div class="form-group">
                     <label class="control-label">Seleccione un Mes para la cuota</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                    <input id="InputMes" class="form-control" type="month" name="Mes" min="<?php echo $año = date("Y-m"); ?>" require>
+                    <input id="InputMes" class="form-control " type="month" name="Mes" min="<?php echo $año = date("Y-m"); ?>" required>
                   </div>
                 </div>
                 <div class="col-md-5">
-                  <!-- Fecha de Vencimiento -->
+                  <!-- Input Fecha de Vencimiento -->
 
                   <div class="form-group FVencimiento">
                     <label class="control-label">Seleccione la fecha de vencimiento </label> <i class="fa fa-asterisk" aria-hidden="true"></i>
@@ -84,8 +86,11 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                       <div>
                         <?php foreach ($catSocios as $Valor) { ?>
                           <div class="col-md-3">
+                            <!-- Input Check Socios -->
                             <label for="Socio<?php echo $Valor["CATEGORIA"] ?>"><?php echo $Valor["CATEGORIA"] ?></label>
-                            <input class="checkSocio <?php echo $Valor["CATEGORIA"] ?>" type="checkbox" name="Socio<?php /* echo $Valor["CATEGORIA"]  */?>" value="<?php echo $Valor["CATEGORIA"] ?>">
+
+                            <!-- Label Check Socios -->
+                            <input class="form-checks checkSocio <?php echo $Valor["CATEGORIA"] ?> " type="checkbox" id="Socio<?php echo $Valor["CATEGORIA"] ?>" name="Socio<?php /* echo $Valor["CATEGORIA"]  */ ?>" value="<?php echo $Valor["CATEGORIA"] ?>">
                             <div class="input_valorCuota input-group flex-column">
                               <div class="row">
                                 <label for="ValorCuota-<?php echo $Valor["CATEGORIA"] ?>">Ingrese el Valor $ de la cuota</label>
@@ -94,7 +99,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">$</span>
                                 </div>
-                                <input class="inputVcuota" type="number" name="VCuota-<?php echo $Valor["CATEGORIA"] ?>">
+                                <input class="inputVcuota form-control" type="number" name="VCuota-<?php echo $Valor["CATEGORIA"] ?>">
                               </div>
                             </div>
 
@@ -111,23 +116,25 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
 
               <div class="tile-footer row justify-content-center">
                 <!--Botones-->
-                <button id="btn_registrar" class="btn btn-primary" type="submit" name="Registrar" value="Registrar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
+               
+                <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar" data-toggle="modal" data-target="#modal_AñadirCuotas"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
 
 
 
                 <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
               </div>
 
-          </div>
 
+
+
+
+            </form>
+          </div>
         </div>
 
-        </form>
       </div>
-    </div>
-
-    </div>
-
+      <!-- Modal -->
+      <?php require_once("./page/modals/RegistrarCuotas/ModalRegistrarCuota.php") ?>
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>

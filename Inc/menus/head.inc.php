@@ -20,10 +20,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- MetisMenu CSS -->
-  <link href="css/metisMenu.min.css" rel="stylesheet">
+  <!-- <link href="css/metisMenu.min.css" rel="stylesheet"> -->
   
   <!-- Main CSS-->
   <link rel="stylesheet" type="text/css" href="css/main.css">
