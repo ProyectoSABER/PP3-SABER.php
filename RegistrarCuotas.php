@@ -83,14 +83,14 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                     <div class="form-group ">
                       <label class="control-label">Seleccione las categorias de Socios a insertar</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
 
-                      <div>
+                      <div class="row">
                         <?php foreach ($catSocios as $Valor) { ?>
                           <div class="col-md-3">
                             <!-- Input Check Socios -->
                             <label for="Socio<?php echo $Valor["CATEGORIA"] ?>"><?php echo $Valor["CATEGORIA"] ?></label>
 
                             <!-- Label Check Socios -->
-                            <input class="form-checks checkSocio <?php echo $Valor["CATEGORIA"] ?> " type="checkbox" id="Socio<?php echo $Valor["CATEGORIA"] ?>" name="Socio<?php /* echo $Valor["CATEGORIA"]  */ ?>" value="<?php echo $Valor["CATEGORIA"] ?>">
+                            <input class="form-checks checkSocio <?php echo $Valor["CATEGORIA"] ?> " type="checkbox" id="Socio<?php echo $Valor["CATEGORIA"] ?>" name="Socio-<?php echo $Valor["CATEGORIA"]  ?>" value="<?php echo $Valor["CATEGORIA"] ?>">
                             <div class="input_valorCuota input-group flex-column">
                               <div class="row">
                                 <label for="ValorCuota-<?php echo $Valor["CATEGORIA"] ?>">Ingrese el Valor $ de la cuota</label>
@@ -99,7 +99,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">$</span>
                                 </div>
-                                <input class="inputVcuota form-control" type="number" name="VCuota-<?php echo $Valor["CATEGORIA"] ?>">
+                                <input class="inputVcuota form-control" type="number" min=1 name="VCuota-<?php echo $Valor["CATEGORIA"] ?>">
                               </div>
                             </div>
 
@@ -117,8 +117,8 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
               <div class="tile-footer row justify-content-center">
                 <!--Botones-->
                
-                <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar" data-toggle="modal" data-target="#modal_AñadirCuotas"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
-
+                <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
+                
 
 
                 <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>

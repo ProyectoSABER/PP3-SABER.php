@@ -1,5 +1,9 @@
+//iniciamos jquery cuando se carga el DOM
 $(document).ready(function () {
+  
+  //Ocultamos los elementos en el incio
   ocultarInputInicio();
+
   //Evento en Input Mes
   $("#InputMes").change(function () {
     //obtenemos año y mes seleccionado del input
@@ -90,6 +94,18 @@ $(document).ready(function () {
     e.preventDefault();
     iniciar_modalRegistrarCuota();
   });
+
+  //Evento registrar contenido.
+  $("#modal_reg").click(function (e) {  
+    e.preventDefault();
+    
+    enviarDatos();
+  });
+  
+  //evento limpiar modal
+  $(".modal").on("hidden.bs.modal", function () {
+    $(this).find("tbody").children("tr").remove(); //para borrar todos los datos que tega la tabla.
+  });
 });
 
 function ocultarInputInicio() {
@@ -99,7 +115,7 @@ function ocultarInputInicio() {
   $(".input_valorCuota").hide();
   $(".input_valorCuota input").attr("disabled", true);
 }
-
+//validamos campos, cargamos modal y mostramos por pantalla.
 function iniciar_modalRegistrarCuota() {
   if (
     validarInput("#InputMes") &&
@@ -107,15 +123,52 @@ function iniciar_modalRegistrarCuota() {
     validarCheck(".checkSocio") &&
     validarInputClass(".inputVcuota")
   ) {
-    let datos = $("#formAñadirCuota").serialize();
+  datos = $("#formAñadirCuota").serialize();
     let datos2 = $("#formAñadirCuota").serializeArray();
     console.log(datos);
-    console.log(datos2);
+
+    cargarModal( "#modal_AñadirCuotas", datos2);
+    $("#modal_AñadirCuotas").modal("show"); //Con esto se llama al modal desde jquery
+    
     
 
+  } else {
+    console.log("Faltan válidar campos");
   }
 }
 
+//cargamos las filas de la tabal en el modal
+function cargarModal(idModal, array) {
+  if (array != null) {
+
+    [{ ...mes }, { ...FechaVencimiento }, ...socios] = array; //Extraemos los objetos mes y fecha de vencimiento
+    
+    
+    
+    //modificamos el array >obj en un array manejable.
+    let socio_cuota = [];
+
+    socios.forEach((element) => {
+      socio_cuota.push(element.value);
+    });
+
+    
+  let row=[];
+  let x=(socio_cuota.length/2) //como extraremos 2 elementos consecutivos del array, sacamos el cociente entre 2 para realizar la iteraccion, coomo el array se muta por cada vuelta, convienen extraer el largo del array antes de iniciar el bucle.
+    for (let i = 0; i < x ; i++) {
+      let tipoSocio=socio_cuota.shift();
+      let valorCuota=socio_cuota.shift();
+
+      row.push($(`<tr><td>${mes.value}</td><td>${FechaVencimiento.value}</td><td>${tipoSocio}</td><td>$${valorCuota}</td></tr>`))
+      
+      
+      
+    }
+    
+    $(idModal).find("tbody").append(row);
+   
+  }
+}
 function resetCheckbox() {
   $(".checkSocio").prop("checked", false);
 }
@@ -178,4 +231,42 @@ function validarCheck(input) {
   }
 
   return estado;
+}
+
+function enviarDatos () { 
+  datos = $("#formAñadirCuota").serialize();
+  console.log(datos);
+
+  if(datos){
+    if (confirm("Deseas guardar las cuotas?")){
+      agregar_datos(datos)
+      }
+      else{
+        return
+      }
+      
+  } 
+ 
+  
+}
+
+function agregar_datos(datos){
+  $.ajax({
+      method:"POST",
+      url:"Handler/cuotas/HandlerRegistrarCuota.php?guardar=true",
+      data: datos,
+      success: function(e){
+          
+          console.log(e)
+          if (e==1) {
+              alert("Registro Exitoso");
+              
+          }else{
+              alert("Error de Registro");
+          }
+
+      }
+  });
+  
+  return false;
 }

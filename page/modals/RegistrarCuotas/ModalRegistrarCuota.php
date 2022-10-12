@@ -14,7 +14,7 @@
                     <table class="table table-striped" id="tabla_InsertarCuotas">
                         <thead>
                             <tr>
-                                <th>Mes-Año</th>
+                                <th>Año-Mes</th>
                                 <th>Fecha Vencimiento</th>
                                 <th>Categoria Socio</th>
                                 <th>Valor de Cuota</th>
@@ -22,17 +22,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                
-                            </tr>
+                            
                         </tbody>
                     </table>
+                    <button id="modal_reg" class="btn btn-primary btn-success" type="button" name="modal_reg" value="modal_reg"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
 
-                    <button type="submit" name="abtn_Actualizar" id="btn_Actualizar" class="btn btn-sm btn-success  ">Registrar</button>
+
+                    
                 </div>
 
 
