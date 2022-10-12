@@ -1,0 +1,14 @@
+Extesiones Utiles para Visual Estudio Code
+Sass
+Angular Snippet
+Atom Material Theme 
+Auto Rename Tag 
+Better Comments 
+Bookmars
+Bracket Pair Colorizer 
+CSS Peek 
+git lens 
+IntelliSenses for CSS class names in HTML 
+javascript (ES6)
+Todo tree 
+ 

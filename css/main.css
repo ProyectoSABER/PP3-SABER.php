@@ -15939,6 +15939,7 @@ be a descendant of the grid when it is being dragged.
   .sidebar-mini.sidenav-toggled .treeview-indicator {
     display: flex !important;
     flex-wrap: wrap !important;
+    font-size: 7px;
   }
   .sidebar-mini.sidenav-toggled .app-sidebar__user-avatar {
     width: 30px;

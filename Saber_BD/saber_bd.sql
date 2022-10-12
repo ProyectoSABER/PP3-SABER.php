@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-09-2022 a las 00:42:21
+-- Tiempo de generación: 15-09-2022 a las 01:53:10
 -- Versión del servidor: 8.0.29
 -- Versión de PHP: 7.4.26
 
@@ -178,6 +178,20 @@ CREATE TABLE IF NOT EXISTS `cobrocuota` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `configuracionsistema`
+--
+
+CREATE TABLE IF NOT EXISTS `configuracionsistema` (
+  `id_Configuracion` int NOT NULL AUTO_INCREMENT,
+  `fechaGeneracionCuota` date NOT NULL,
+  `fechaGeneracionVencCuota` date NOT NULL,
+  `autogenerada` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_Configuracion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `contacto`
 --
 
@@ -247,7 +261,9 @@ CREATE TABLE IF NOT EXISTS `contacto_proveedor` (
 CREATE TABLE IF NOT EXISTS `cuota` (
   `id_MesAnio_Cuota` datetime NOT NULL,
   `fechaVenc_Cuota` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_MesAnio_Cuota`)
+  `id_Configuracion` int NOT NULL,
+  PRIMARY KEY (`id_MesAnio_Cuota`),
+  KEY `idConfiguración_Configuracion` (`id_Configuracion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -726,8 +742,17 @@ CREATE TABLE IF NOT EXISTS `sesion` (
   `id_Usuario` int DEFAULT NULL,
   PRIMARY KEY (`id_Sesion`),
   KEY `idUsuario_Sesion_idx` (`id_Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `sesion`
+--
+
+INSERT INTO `sesion` (`id_Sesion`, `evento_Sesion`, `fechaHora_Sesion`, `id_Usuario`) VALUES
+(1, 'login', '2022-09-15 00:40:18', 2),
+(2, 'logout', '2022-09-15 00:40:28', 2);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `socio`
@@ -913,6 +938,12 @@ ALTER TABLE `contacto_persona`
 ALTER TABLE `contacto_proveedor`
   ADD CONSTRAINT `id_Proveedor` FOREIGN KEY (`id_Propietario`) REFERENCES `proveedor` (`cuitProveedor`),
   ADD CONSTRAINT `IdContacto_ContactoProveedor` FOREIGN KEY (`idContacto`) REFERENCES `contacto` (`idContacto`);
+
+--
+-- Filtros para la tabla `cuota`
+--
+ALTER TABLE `cuota`
+  ADD CONSTRAINT `idConfiguración_Configuracion` FOREIGN KEY (`id_Configuracion`) REFERENCES `configuracionsistema` (`id_Configuracion`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `detallecobro`

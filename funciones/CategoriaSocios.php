@@ -25,6 +25,23 @@ function conocerTodasCatSocio($PConeccionBD)
     return !empty($Lista) ?  $Lista : '';
 }
 
+function conocerIdCategoriaSocio($TipoSocio, $PConeccionBD){
+    $Lista=array();
+    $SQL = "SELECT id_CategoriaSocio as IDCategoria FROM categoriasocio WHERE nom_CategoriaSocio = '$TipoSocio' ";
+
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    $data = mysqli_fetch_array($rs);
+
+    if (!empty($data)) {
+
+        $Lista['ID_CATEGORIASOCIO'] = $data['IDCategoria'];
+        
+        
+    }
+    return  !empty($Lista) ?  $Lista : $data;
+
+}
+
 
 
 

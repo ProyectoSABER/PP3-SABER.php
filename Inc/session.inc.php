@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 session_start();
 if (empty($_SESSION['USUARIO_EMAIL'])) {
 

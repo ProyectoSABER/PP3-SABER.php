@@ -17,7 +17,7 @@
       <!-- <li><a class="app-menu__item" href="RegistrarPrestamo1.php"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Registrar Prestamo</span></a></li> -->
 
       <!-- Prestamos -->
-      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book-reader"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
 
           <li><a class="treeview-item" href="RegistrarPrestamo1.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Prestamo</a></li>
@@ -27,7 +27,7 @@
       </li>
       <!-- /Prestamos -->
       <!-- LIBROS -->
-      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Libros</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book "></i><span class="app-menu__label">Libros</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
 
           <li><a class="treeview-item" href="RegistrarLibros.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Libros</a></li>
@@ -38,7 +38,7 @@
       <!-- /LIBROS -->
       <!-- SOCIOS -->
 
-      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Socios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-card"></i><span class="app-menu__label">Socios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
 
           <li><a class="treeview-item" href="RegistrarPersona.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Persona</a></li>
@@ -48,6 +48,15 @@
         </ul>
       </li>
       <!-- /SOCIOS -->
+      <!-- Cuotas -->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-dollar-sign"></i><span class="app-menu__label">Cuotas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+        
+
+          <li><a class="treeview-item" href="RegistrarCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Cuotas</a></li>
+        </ul>
+      </li>
+      <!-- /Cuotas -->
 
       <!--       <li><a class="app-menu__item" href="BLANK.php"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">BLANKModal</span></a></li>
  -->
