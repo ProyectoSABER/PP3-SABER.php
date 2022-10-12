@@ -1,9 +1,12 @@
 <?php
-require_once('./Inc/session.inc.php');
-require_once('./Inc/menus/head.inc.php');
-require_once 'funciones/conexion.php';
+require_once './funciones/Bibliotecario.php';
 
-$MiConexion = ConexionBD();
+
+function calcularFechaDevolucion($fechaActual){
+    
+    $fechaFechaDevolucion=date("y-m-d",strtotime($fechaActual."+ 7 days"));
+return $fechaFechaDevolucion;
+}
 
 $MensajeError = "";
 $MensajeExito = "";
@@ -31,7 +34,21 @@ $CantSocios = count($Socios);
 $BtnDisabled = true;
 $PanelLibroHidden = true;
 $PanelSocioHidden = true;
+if (!empty($_GET['RegistrarPrestamoUsuario'])) {
 
+                $idLibro = $_GET['ID_ISBN'];
+                $idTipo = $_GET['ID_TIPO'];
+                $idUser = $_GET['ID_USER'];
+                $estadoPedido = 4;
+                if(registrarPrestamoSocio($idLibro,$idTipo,$idUser,$estadoPedido)){
+                    echo '<script>alert("ESTA OK");</script>';
+                } else{
+                    echo '<script>alert("NO ESTA OK");</script>';
+                }
+
+           
+
+}
 
 if (!empty($_GET['RegistrarForm1'])) {
     if (!empty($_GET['ISBN'])) {

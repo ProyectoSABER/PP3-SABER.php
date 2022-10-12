@@ -181,3 +181,6 @@ and `PL`.`idPrestamoLibro`= `DP`.`id_PrestamoLibro` and `PL`.`id_socio` = `S`.`i
 
     return $Lista;
 }
+
+
+
