@@ -30,7 +30,7 @@ require_once './Handler/HandlerIndex.php'
 
       require_once('./Inc/menus/menu_auth/admin/admin.php');
 
-      }else if($Bibliotecario){
+      } else if($Bibliotecario){
         require_once('./Inc/menus/menu_auth/librarian/librarian.php');
         
        }else{ require_once('./Inc/menus/menu_auth/socios/partners.php');}?>

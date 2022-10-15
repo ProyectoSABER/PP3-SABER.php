@@ -1,29 +1,71 @@
 <?php
-require_once('../../Inc/session.inc.php');
-require_once('../../Inc/menus/head.inc.php');
-require_once '../../funciones/conexion.php';
+if (is_file('../../Inc/session.inc.php'))
+{
+    require_once('../../Inc/session.inc.php');
+}else{
+    require_once('./Inc/session.inc.php'); 
+}
+if (is_file('../../Inc/menus/head.inc.php'))
+{
+    require_once('../../Inc/menus/head.inc.php');
+}else{
+    require_once('./Inc/menus/head.inc.php'); 
+}
+if (is_file('../../funciones/conexion.php'))
+{
+    require_once('../../funciones/conexion.php');
+}else{
+    require_once('./funciones/conexion.php'); 
+}
+if (is_file('../../funciones/Editorial.php'))
+{
+    require_once('../../funciones/Editorial.php');
+}else{
+    require_once('./funciones/Editorial.php'); 
+}
+if (is_file('../../funciones/Libros.php'))
+{
+    require_once('../../funciones/Libros.php');
+}else{
+    require_once('./funciones/Libros.php'); 
+}
+if (is_file('../../funciones/Socio.php'))
+{
+    require_once('../../funciones/Socio.php');
+}else{
+    require_once('./funciones/Socio.php'); 
+}
+if (is_file('../../funciones/EjemplaresLibros.php'))
+{
+    require_once('../../funciones/EjemplaresLibros.php');
+}else{
+    require_once('./funciones/EjemplaresLibros.php'); 
+}
+if (is_file('../../funciones/Socio.php'))
+{
+    require_once('../../funciones/Socio.php');
+}else{
+    require_once('./funciones/Socio.php'); 
+}
 
 $MiConexion = ConexionBD();
 
 $MensajeError = "";
 $MensajeExito = "";
 
-require_once '../../funciones/Editorial.php';
 $Editorial = array();
 
-require_once '../../funciones/Libros.php';
 $Libros = array();
 $Libros = conocerTodosLibros($MiConexion);
 $CantLibros = count($Libros);
 
-require_once('../../funciones/Socio.php');
 $Socios = array();
 $Socios = mostrarTodoSocio($MiConexion);
 $CantSocios = count($Socios);
 
-require_once '../../funciones/EjemplaresLibros.php';
+
 $EjemplaresDispo = array();
-require_once('../../funciones/Socio.php');
+
 $Socios = array();
 $Socios = mostrarTodoSocio($MiConexion);
 $CantSocios = count($Socios);
@@ -31,21 +73,25 @@ $CantSocios = count($Socios);
 $BtnDisabled = true;
 $PanelLibroHidden = true;
 $PanelSocioHidden = true;
-
-$registrarPrestamoUsuario = $_GET['RegistrarPrestamoUsuario'];
-if(!empty($registrarPrestamoUsuario)){
+$registrarPrestamoSocio ='';
+$registrarPrestamoSocio = $_POST['registrarPrestamoSocio'];
+if(!empty($registrarPrestamoSocio)){
     require_once '../../funciones/registrarPrestamo.php';
+    
 
-    $tipoPrestamo = $_GET['ID_TIPO'];
-    $idISBN = $_GET['ID_ISBN'];
+    $tipoPrestamo = $_POST['idTipoPrestamo'];
+    $idISBN = $_POST['idISBN'];
     $datosSocio = buscarSocioPorIdUsuario($_SESSION['USUARIO_ID'],$MiConexion);
     if(count($datosSocio) > 0){
-        $idSocio = $datosSocio['socio_id'];
+       $idSocio = $datosSocio['socio_id'];
     }
-    echo $idISBN;
-    echo $tipoPrestamo;
-    echo $idSocio;
-
+    $datos['IDSocio'] = $idSocio;
+    $datos['IDEJEMPLAR'] = $idISBN;
+    $datos['IDTIPOPRESTAMO'] = $tipoPrestamo;
+    registrarPrestamoSocio($datos,$MiConexion);
+   
+    header('Location:../../index.php');
+    exit;
 
 }
 
@@ -105,5 +151,10 @@ if (!empty($_POST['RegistrarPrestamo'])) {
     }; */
 
 
+    if (is_file('../../Inc/menus/head.inc.php'))
+    {
+        require_once('../../Inc/menus/head.inc.php');
+    }else{
+        require_once('./Inc/menus/head.inc.php'); 
+    }
 
-require_once('../../Inc/menus/head.inc.php');

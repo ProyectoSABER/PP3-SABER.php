@@ -1,5 +1,5 @@
 <?php
-require_once './funciones/Bibliotecario.php';
+require_once 'Bibliotecario.php';
 
 
 function calcularFechaDevolucion($fechaActual){
@@ -63,15 +63,13 @@ function registrarPrestamo($datos,$ConexionBD,$IdEstadoPrestamo=1){
 
 
 }
-function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=1){
+function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=4){
     
     $IDSocio=$datos['IDSocio'];
     $IDEJEMPLAR=$datos['IDEJEMPLAR'];
     $IDTIPOPRESTAMO=$datos['IDTIPOPRESTAMO'];
 
-    $Bibliotecario = array();
-    $Bibliotecario = conocerBibliotecario($_SESSION['USUARIO_DNI'], $ConexionBD);
-    $IDBibliotecario=$Bibliotecario['Bibliotecario_ID'];
+    
     $fechaActual=date("y-m-d");
     
 
@@ -89,8 +87,8 @@ function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=1){
 
         if($data){
             $IdPrestamo=$data['idPrestamoLibro'];
-            $sql="INSERT INTO `detalleprestamolibro`(`id_bibliotecario`, `id_tipoPrestamo`,  `fechaPrestamo`, `id_PrestamoLibro`, `id_EjemplarLibro_Libro`, `Id_estado_PrestamoLibro`) 
-            VALUES ('$IDBibliotecario','$IDTIPOPRESTAMO','$fechaActual','$IdPrestamo','$IDEJEMPLAR','$IdEstadoPrestamo')";
+            $sql="INSERT INTO `detalleprestamolibro`(`id_tipoPrestamo`,  `fechaPrestamo`, `id_PrestamoLibro`, `id_EjemplarLibro_Libro`, `Id_estado_PrestamoLibro`) 
+            VALUES ('$IDTIPOPRESTAMO','$fechaActual','$IdPrestamo','$IDEJEMPLAR','$IdEstadoPrestamo')";
             $consulta = mysqli_query($ConexionBD, $sql);
             if($consulta){
 
