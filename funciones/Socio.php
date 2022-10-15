@@ -114,3 +114,25 @@ function insertarUnoSocio($DNIPersona, $IDCategoriaSocio, $IDEstadoSocio,  $PCon
 
     return $consulta;
 }
+function buscarSocioPorIdUsuario($idUser,  $PConeccionBD)
+{
+  $data = array();
+  $query = mysqli_query($PConeccionBD, "SELECT soc.* from usuario usu 
+                                        INNER JOIN Persona per ON per.id_usuario = usu.id_Usuario 
+                                        INNER JOIN socio soc ON soc.dni_Socio = per.dni_Persona 
+                                         WHERE usu.id_Usuario = '$idUser';");
+  
+  while($row = mysqli_fetch_array($query)){
+  		    $data[] = array(
+  			$data['socio_id'] = $row['2'],
+  			
+  		
+  		);	
+
+     }
+
+      
+
+    return $data;
+}
+

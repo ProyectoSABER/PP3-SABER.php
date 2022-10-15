@@ -1,29 +1,29 @@
 <?php
-require_once('./Inc/session.inc.php');
-require_once('./Inc/menus/head.inc.php');
-require_once 'funciones/conexion.php';
+require_once('../../Inc/session.inc.php');
+require_once('../../Inc/menus/head.inc.php');
+require_once '../../funciones/conexion.php';
 
 $MiConexion = ConexionBD();
 
 $MensajeError = "";
 $MensajeExito = "";
 
-require_once './funciones/Editorial.php';
+require_once '../../funciones/Editorial.php';
 $Editorial = array();
 
-require_once './funciones/Libros.php';
+require_once '../../funciones/Libros.php';
 $Libros = array();
 $Libros = conocerTodosLibros($MiConexion);
 $CantLibros = count($Libros);
 
-require_once('./funciones/Socio.php');
+require_once('../../funciones/Socio.php');
 $Socios = array();
 $Socios = mostrarTodoSocio($MiConexion);
 $CantSocios = count($Socios);
 
-require_once './funciones/EjemplaresLibros.php';
+require_once '../../funciones/EjemplaresLibros.php';
 $EjemplaresDispo = array();
-require_once('./funciones/Socio.php');
+require_once('../../funciones/Socio.php');
 $Socios = array();
 $Socios = mostrarTodoSocio($MiConexion);
 $CantSocios = count($Socios);
@@ -32,6 +32,22 @@ $BtnDisabled = true;
 $PanelLibroHidden = true;
 $PanelSocioHidden = true;
 
+$registrarPrestamoUsuario = $_GET['RegistrarPrestamoUsuario'];
+if(!empty($registrarPrestamoUsuario)){
+    require_once '../../funciones/registrarPrestamo.php';
+
+    $tipoPrestamo = $_GET['ID_TIPO'];
+    $idISBN = $_GET['ID_ISBN'];
+    $datosSocio = buscarSocioPorIdUsuario($_SESSION['USUARIO_ID'],$MiConexion);
+    if(count($datosSocio) > 0){
+        $idSocio = $datosSocio['socio_id'];
+    }
+    echo $idISBN;
+    echo $tipoPrestamo;
+    echo $idSocio;
+
+
+}
 
 if (!empty($_GET['RegistrarForm1'])) {
     if (!empty($_GET['ISBN'])) {
@@ -90,4 +106,4 @@ if (!empty($_POST['RegistrarPrestamo'])) {
 
 
 
-require_once('./Inc/menus/head.inc.php');
+require_once('../../Inc/menus/head.inc.php');
