@@ -10,6 +10,7 @@
             <table class="table">
               <thead>
               <tr>
+          
                   <th>#</th>
                   <th>ISBN</th>
                   <th>ID Institucional</th>

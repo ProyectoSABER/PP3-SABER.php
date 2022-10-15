@@ -61,7 +61,8 @@ function conocerTodosLibrosDisponibles($PConeccionBD)
                    pro.nom_prove,
                    lib.ubiEstanteria_libro,
                    per.nombre_Persona,
-                   per.apellido_persona
+                   per.apellido_persona,
+                   eje.id_EjemplarLibro
             FROM libro lib
               INNER JOIN idioma idi ON idi.id_idioma = lib.id_idioma
               INNER JOIN editorial edi ON edi.id_Editorial = lib.edit_libro
@@ -94,6 +95,7 @@ function conocerTodosLibrosDisponibles($PConeccionBD)
         $Lista[$i]['Libro_Proveedor'] = $data['nom_prove'];
         $Lista[$i]['Libro_UbicacionEstanteria'] = $data['ubiEstanteria_libro'];
         $Lista[$i]['Libro_ResponsableCarga'] = $data['nombre_Persona'] . ' ' . $data['apellido_persona'];
+        $Lista[$i]['Libro_IdEjemplar'] = $data['id_EjemplarLibro'];
         $i++;
     }
 

@@ -78,7 +78,7 @@ $registrarPrestamoSocio = $_POST['registrarPrestamoSocio'];
 if(!empty($registrarPrestamoSocio)){
     require_once '../../funciones/registrarPrestamo.php';
     
-
+    $idEjemplar = $_POST['idEJEM'];
     $tipoPrestamo = $_POST['idTipoPrestamo'];
     $idISBN = $_POST['idISBN'];
     $datosSocio = buscarSocioPorIdUsuario($_SESSION['USUARIO_ID'],$MiConexion);
@@ -86,8 +86,10 @@ if(!empty($registrarPrestamoSocio)){
        $idSocio = $datosSocio['socio_id'];
     }
     $datos['IDSocio'] = $idSocio;
-    $datos['IDEJEMPLAR'] = $idISBN;
+    $datos['IDISBN'] = $idISBN;
     $datos['IDTIPOPRESTAMO'] = $tipoPrestamo;
+    $datos['IDEJEMPLAR'] =  $idEjemplar;
+    
     registrarPrestamoSocio($datos,$MiConexion);
    
     header('Location:../../index.php');

@@ -66,6 +66,7 @@ function registrarPrestamo($datos,$ConexionBD,$IdEstadoPrestamo=1){
 function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=4){
     
     $IDSocio=$datos['IDSocio'];
+    $IDISBN = $datos['IDISBN'];
     $IDEJEMPLAR=$datos['IDEJEMPLAR'];
     $IDTIPOPRESTAMO=$datos['IDTIPOPRESTAMO'];
 
