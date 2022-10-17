@@ -1,21 +1,39 @@
 <?php
 
-function crearDetalleCuota($IdMesAnio,$IdCatSocio,$ValorCuota,$PConeccionBD){
+function crearDetalleCuota($Idcuota,$IdCatSocio,$ValorCuota, $FechaVenc ,$PConeccionBD){
 
-    $sql= "INSERT INTO `detallecuota`(`id_Cuota`, `id_CatSocio`, `valorCuota`) VALUES ('$IdMesAnio','$IdCatSocio','$ValorCuota')";
+    $sql= "INSERT INTO `detallecuota`(`id_Cuota`,`id_CatSocio`,`valorCuota`,`fechaVencimiento`) VALUES ('$Idcuota','$IdCatSocio','$ValorCuota','$FechaVenc' )";
 
     $consulta = mysqli_query($PConeccionBD, $sql);
+    
 
     return $consulta;
+
+
 };
 
-function mostrarDetalleCuotaIDMesTipoSocio($IdMesAÑoCuota,$IdTipoSocio,$PConeccionBD){
+function mostrarDetalleCuotaIDCuotaTipoSocio($Id,$IdTipoSocio,$PConeccionBD){
+    $consulta=array();
     
-    $sql= "SELECT `id_detalleCuota`, `id_Cuota`, `id_CatSocio`, `valorCuota` FROM `detallecuota` WHERE id_Cuota='$IdMesAÑoCuota' AND `id_CatSocio`='$IdTipoSocio';";
+    $sql= "SELECT `id_detalleCuota`, `id_Cuota`, `id_CatSocio`, `valorCuota`,`fechaVencimiento` FROM `detallecuota` WHERE `id_Cuota`='$Id' AND `id_CatSocio`='$IdTipoSocio'";
     
-    $consulta = mysqli_query($PConeccionBD, $sql);
     
-    return $consulta;
+    $rs = mysqli_query($PConeccionBD, $sql);
+
+    $data = mysqli_fetch_array($rs);
+
+    if (!empty($data)) {
+        $consulta["ID"]=$data["id_detalleCuota"];
+        $consulta["IDCUOTA"]=$data["id_Cuota"];
+        $consulta["IDCATSOCIO"]=$data["id_CatSocio"];
+        $consulta["VALCUOTA"]=$data["valorCuota"];
+        $consulta["FECHVENC"]=$data["fechaVencimiento"];
+        
+    }
+    return $consulta ;
+    
+    
+   
 };
 
 

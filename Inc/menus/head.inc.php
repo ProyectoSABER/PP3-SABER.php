@@ -31,8 +31,9 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- DataTable -->
-<link rel="stylesheet" type="text/css" href="../../assets/plugins/DataTables/datatables.min.css"/>
- 
+<link rel="stylesheet"  href="./assets/plugins/DataTables/datatables.min.css"/>
+<!-- Toastr -->
+<link rel="stylesheet" href="./assets/plugins/toastr/toastr.min.css">
 
 
 </head>

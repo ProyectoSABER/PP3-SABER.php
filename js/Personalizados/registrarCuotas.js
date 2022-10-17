@@ -1,6 +1,5 @@
 //iniciamos jquery cuando se carga el DOM
 $(document).ready(function () {
-  
   //Ocultamos los elementos en el incio
   ocultarInputInicio();
 
@@ -24,7 +23,8 @@ $(document).ready(function () {
     validarInput("#InputMes");
     //mostramos el input#FVencimiento
 
-    let date = new Date(añoSeleccionado, mesSeleccionado);
+    let date = new Date(añoSeleccionado, mesSeleccionado, 1);
+
     let primerDia = new Date(date.getFullYear(), date.getMonth() - 1, 1);
 
     let fechainicio = fechaInicio(primerDia);
@@ -96,14 +96,14 @@ $(document).ready(function () {
   });
 
   //Evento registrar contenido.
-  $("#modal_reg").click(function (e) {  
+  $("#modal_reg").click(function (e) {
     e.preventDefault();
-    
+
     enviarDatos();
   });
-  
+
   //evento limpiar modal
-  $(".modal").on("hidden.bs.modal", function () {
+  $("#modal_AñadirCuotas").on("hidden.bs.modal", function () {
     $(this).find("tbody").children("tr").remove(); //para borrar todos los datos que tega la tabla.
   });
 });
@@ -114,6 +114,7 @@ function ocultarInputInicio() {
   $(".Categoria_Socios").hide();
   $(".input_valorCuota").hide();
   $(".input_valorCuota input").attr("disabled", true);
+  $("input").removeClass("is-valid is-invalid")
 }
 //validamos campos, cargamos modal y mostramos por pantalla.
 function iniciar_modalRegistrarCuota() {
@@ -123,15 +124,12 @@ function iniciar_modalRegistrarCuota() {
     validarCheck(".checkSocio") &&
     validarInputClass(".inputVcuota")
   ) {
-  datos = $("#formAñadirCuota").serialize();
+    datos = $("#formAñadirCuota").serialize();
     let datos2 = $("#formAñadirCuota").serializeArray();
     console.log(datos);
 
-    cargarModal( "#modal_AñadirCuotas", datos2);
+    cargarModal("#modal_AñadirCuotas", datos2);
     $("#modal_AñadirCuotas").modal("show"); //Con esto se llama al modal desde jquery
-    
-    
-
   } else {
     console.log("Faltan válidar campos");
   }
@@ -140,11 +138,8 @@ function iniciar_modalRegistrarCuota() {
 //cargamos las filas de la tabal en el modal
 function cargarModal(idModal, array) {
   if (array != null) {
-
     [{ ...mes }, { ...FechaVencimiento }, ...socios] = array; //Extraemos los objetos mes y fecha de vencimiento
-    
-    
-    
+
     //modificamos el array >obj en un array manejable.
     let socio_cuota = [];
 
@@ -152,21 +147,20 @@ function cargarModal(idModal, array) {
       socio_cuota.push(element.value);
     });
 
-    
-  let row=[];
-  let x=(socio_cuota.length/2) //como extraremos 2 elementos consecutivos del array, sacamos el cociente entre 2 para realizar la iteraccion, coomo el array se muta por cada vuelta, convienen extraer el largo del array antes de iniciar el bucle.
-    for (let i = 0; i < x ; i++) {
-      let tipoSocio=socio_cuota.shift();
-      let valorCuota=socio_cuota.shift();
+    let row = [];
+    let x = socio_cuota.length / 2; //como extraremos 2 elementos consecutivos del array, sacamos el cociente entre 2 para realizar la iteraccion, coomo el array se muta por cada vuelta, convienen extraer el largo del array antes de iniciar el bucle.
+    for (let i = 0; i < x; i++) {
+      let tipoSocio = socio_cuota.shift();
+      let valorCuota = socio_cuota.shift();
 
-      row.push($(`<tr><td>${mes.value}</td><td>${FechaVencimiento.value}</td><td>${tipoSocio}</td><td>$${valorCuota}</td></tr>`))
-      
-      
-      
+      row.push(
+        $(
+          `<tr><td>${mes.value}</td><td>${FechaVencimiento.value}</td><td>${tipoSocio}</td><td>$${valorCuota}</td></tr>`
+        )
+      );
     }
-    
+
     $(idModal).find("tbody").append(row);
-   
   }
 }
 function resetCheckbox() {
@@ -233,40 +227,118 @@ function validarCheck(input) {
   return estado;
 }
 
-function enviarDatos () { 
+function enviarDatos() {
   datos = $("#formAñadirCuota").serialize();
-  console.log(datos);
 
-  if(datos){
-    if (confirm("Deseas guardar las cuotas?")){
-      agregar_datos(datos)
-      }
-      else{
-        return
-      }
-      
-  } 
- 
-  
+  if (datos) {
+    if (confirm("Deseas guardar las cuotas?")) {
+      agregar_datos(datos);
+    } else {
+      return;
+    }
+  }
 }
 
-function agregar_datos(datos){
+function agregar_datos(datos) {
   $.ajax({
-      method:"POST",
-      url:"Handler/cuotas/HandlerRegistrarCuota.php?guardar=true",
-      data: datos,
-      success: function(e){
-          
-          console.log(e)
-          if (e==1) {
-              alert("Registro Exitoso");
-              
-          }else{
-              alert("Error de Registro");
-          }
+    method: "POST",
+    url: "Handler/cuotas/HandlerRegistrarCuota.php?guardar=true",
+    data: datos,
+    success: function (response) {
+      console.log(response);
 
-      }
+      let res = JSON.parse(response);
+      cerrarModal("#modal_AñadirCuotas")
+      mostrarMsgAdvertencia(res[0].MensajeAdvertencia);
+      mostrarMsgExito(res[0].MensajeExito);
+      mostrarMsgError(res[0].MensajeError);
+      resetForm("#formAñadirCuota");
+      
+
+    },
   });
-  
+
   return false;
+}
+function cerrarModal(idModal) {
+  $(idModal).modal("hide");
+}
+function mostrarModal(idModal) {
+  $(idModal).modal("show");
+}
+function mostrarMsgAdvertencia(array) {
+  array.forEach((msg) => {
+    toastr["warning"](`${msg}`, "Atención!!");
+  });
+
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "5000",
+    timeOut: 5000,
+    extendedTimeOut: 3000,
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+    tapToDismiss: false,
+  };
+}
+function mostrarMsgExito(array) {
+  array.forEach((msg) => {
+    toastr["success"](`${msg}`, "Atención!!");
+  });
+
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "3000",
+    timeOut: 3000,
+    extendedTimeOut: 1000,
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+    tapToDismiss: false,
+  };
+}
+function mostrarMsgError(array) {
+  array.forEach((msg) => {
+    toastr["error"](`${msg}`, "Atención!!");
+  });
+
+  toastr.options = {
+    closeButton: true,
+    debug: false,
+    newestOnTop: false,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    preventDuplicates: false,
+    onclick: null,
+    showDuration: "300",
+    hideDuration: "0",
+    timeOut: 10000,
+    extendedTimeOut: 3000,
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut",
+    tapToDismiss: false,
+  };
+}
+function resetForm(idForm){
+  $(idForm).trigger("reset");
+  ocultarInputInicio();
 }

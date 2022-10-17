@@ -56,10 +56,19 @@
           <li><a class="treeview-item" href="RegistrarCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Cuotas</a></li>
         </ul>
       </li>
-      <!-- /Cuotas -->
 
-      <!--       <li><a class="app-menu__item" href="BLANK.php"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">BLANKModal</span></a></li>
- -->
+      
+      <!-- /Cuotas -->
+      <!-- Black -->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-dollar-sign"></i><span class="app-menu__label">Black</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        
+        
+        <li><a class="treeview-item" href="Black.php"><i class="app-menu__icon fa fa-edit"></i>Black</a></li>
+      </ul>
+    </li>
+    
+    <!-- /Black -->
 
     <?php } ?>
 
