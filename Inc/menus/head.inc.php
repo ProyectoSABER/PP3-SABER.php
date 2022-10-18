@@ -20,10 +20,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap Core CSS -->
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <!-- <link href="css/metisMenu.min.css" rel="stylesheet"> -->
+  <link href="css/metisMenu.min.css" rel="stylesheet">
   
   <!-- Main CSS-->
   <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -32,9 +33,9 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- DataTable -->
 <link rel="stylesheet" type="text/css" href="./assets/plugins/DataTables/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="./assets/plugins/DataTables/datatables.css"/>
  
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+ 
 
 
 
