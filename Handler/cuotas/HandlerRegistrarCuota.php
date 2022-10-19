@@ -4,6 +4,7 @@ $MensajeExito = array();
 $MensajeAdvertencia = array();
 $Exito;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require_once('../../Inc/session.inc.php');
 
 
     require_once('../../funciones/conexion.php');

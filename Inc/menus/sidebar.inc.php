@@ -54,6 +54,7 @@
         
 
           <li><a class="treeview-item" href="RegistrarCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Cuotas</a></li>
+          <li><a class="treeview-item" href="ListadoCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Listado Cuotas</a></li>
         </ul>
       </li>
 

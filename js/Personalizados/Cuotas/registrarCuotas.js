@@ -126,7 +126,7 @@ function iniciar_modalRegistrarCuota() {
   ) {
     datos = $("#formAñadirCuota").serialize();
     let datos2 = $("#formAñadirCuota").serializeArray();
-    console.log(datos);
+    
 
     cargarModal("#modal_AñadirCuotas", datos2);
     $("#modal_AñadirCuotas").modal("show"); //Con esto se llama al modal desde jquery
