@@ -54,12 +54,34 @@
         
 
           <li><a class="treeview-item" href="RegistrarCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Cuotas</a></li>
+          <li><a class="treeview-item" href="ListadoCuotas.php"><i class="app-menu__icon fa fa-edit"></i>Listado Cuotas</a></li>
         </ul>
       </li>
-      <!-- /Cuotas -->
 
-      <!--       <li><a class="app-menu__item" href="BLANK.php"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">BLANKModal</span></a></li>
- -->
+      
+      <!-- /Cuotas -->
+       <!-- Cobro de Cuotas -->
+       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-cash-register"></i><span class="app-menu__label">Pagos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+
+       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><span class="app-menu__label"></span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        
+        
+        <li><a class="treeview-item" href="RegistrarCobro.php"><i class="app-menu__icon fa fa-edit"></i>Black</a></li>
+      </ul>
+    </li>
+    
+    <!-- /Black -->
+      <!-- Black -->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-dollar-sign"></i><span class="app-menu__label">Black</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <ul class="treeview-menu">
+        
+        
+        <li><a class="treeview-item" href="Black.php"><i class="app-menu__icon fa fa-edit"></i>Black</a></li>
+      </ul>
+    </li>
+    
+    <!-- /Black -->
 
     <?php } else {?>
 

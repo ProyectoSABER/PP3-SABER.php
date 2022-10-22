@@ -138,7 +138,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
-  <script type="text/javascript" src="./js/Personalizados/registrarCuotas.js">
+  <script type="text/javascript" src="./js/Personalizados/Cuotas/registrarCuotas.js">
 
   </script>
 

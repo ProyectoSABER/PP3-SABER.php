@@ -1,8 +1,8 @@
-<div class="modal fade" id="modal_AñadirCuotas" aria-modal="true" role="dialog">
+<div class="modal fade" id="md_EditarCuotas" aria-modal="true" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Registrar Cuotas</h4>
+                <h4 class="modal-title">Editar Cuota</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
