@@ -25,8 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             );
         } else {
             $json = array(
-                'status' => 400,
-                'results' => "Error al cargar las cuotas: "
+                'status' => 404,
+                'results' => "Sin Cuotas: "
             );
         }
 

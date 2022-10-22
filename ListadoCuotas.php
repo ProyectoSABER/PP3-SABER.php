@@ -46,7 +46,7 @@ require_once './Handler/cuotas/HandlerListadoCuotas.php';
               </thead>
               <tbody>
 
-
+                
               </tbody>
             </table>
           </div>

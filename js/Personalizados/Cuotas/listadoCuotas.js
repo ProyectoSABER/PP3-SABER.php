@@ -1,25 +1,8 @@
-$(document).ready(function () {
+$(document).ready(async function () {
   cargarTabla();
-  $(".cuota-delete").click(function (e) {
+  await $(".cuota-delete").click(function (e) {
     e.preventDefault();
-
-    console.log("presione el boton");
-    let IdDetCuota = $(this).attr("data-iddetcuota");
-    console.log("id", IdDetCuota);
-
-    cargarModal("#md_EliminarCuotas", IdDetCuota);
-
-    $("#modal_delete").click(function (e) {
-      e.preventDefault();
-      let id = $(this).parent().find("tbody>tr").attr("id");
-      console.log(id);
-      if (
-        confirm("¿Deseas Eliminar la cuota? Está acción no se podra deshacer")
-      ) {
-        ajaxEliminarCuota(id);
-        cerrarModal("#md_EliminarCuotas");
-      }
-    });
+    console.log("En el blanco", e.target);
   });
 });
 
@@ -73,33 +56,52 @@ function ajaxEliminarCuota(data) {
     url: `./Handler/cuotas/HandlerListadoCuotas.php?EliminarId=${data}`,
 
     success: function (response) {
-      console.log(response);
+      cargarTabla();
+      cerrarModal("#md_EliminarCuotas");
     },
   });
 }
 function cargarTabla() {
+  $("#tabla-Socios").find("tbody").html("")
   $.ajax({
     type: "POST",
     url: "./Handler/cuotas/HandlerListadoCuotas.php?cargarTabla=true",
 
     success: function (response) {
-      console.log(response);
       let res = JSON.parse(response);
-      const { results } = res;
-      let row;
-      results.forEach((obj, index) => {
-        let mesAnio = invertirDate(obj.MesCuota);
 
-        let fVenc = invertirDate(obj.FVENC, "l");
-        row += `<tr><td>${index + 1}</td><td>${
-          obj.IdCuota
-        }</td><td>${mesAnio}</td><td>${obj.CatSocio}</td><td>${
-          obj.VCUOTA
-        }</td><td>${fVenc}</td><td><button class="btn btn-danger cuota-delete" data-iddetcuota="${
-          obj.IdDetCuota
-        }">Eliminar</button></td></tr>`;
-      });
-      $("#tabla-Socios").find("tbody").html(row);
+      if (res.status >= 200 && res.status <= 300) {
+        const { results } = res;
+        let row;
+        results.forEach((obj, index) => {
+          let mesAnio = invertirDate(obj.MesCuota);
+
+          let fVenc = invertirDate(obj.FVENC, "l");
+          row += `<tr><td>${index + 1}</td><td>${
+            obj.IdCuota
+          }</td><td>${mesAnio}</td><td>${obj.CatSocio}</td><td>${
+            obj.VCUOTA
+          }</td><td>${fVenc}</td><td><button class="btn btn-danger cuota-delete" onclick="eliminarCuota(${
+            obj.IdDetCuota
+          })" >Eliminar</button></td></tr>`;
+        });
+        $("#tabla-Socios").find("tbody").html(row);
+      }
     },
+  });
+}
+
+function eliminarCuota(IdDetCuota) {
+  console.log("id", IdDetCuota);
+
+  cargarModal("#md_EliminarCuotas", IdDetCuota);
+
+  $("#modal_delete").click(function (e) {
+    e.preventDefault();
+
+    let id = $(this).parent().find("tbody>tr").attr("id");
+
+    ajaxEliminarCuota(id);
+    
   });
 }
