@@ -1,6 +1,6 @@
 <?php
 require_once './Handler/prestamos/HandlerRegistrarPrestamoLibroSocio.php';
-require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php'; 
+/* require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php'; */ 
 
 if(!empty($_GET['ID_ISBN'])){
   $idISBN = $_GET['ID_ISBN'];
