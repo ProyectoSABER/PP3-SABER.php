@@ -6,7 +6,7 @@
 <script src="js/main.js"></script>
 <script src="./assets/plugins/DataTables/jquery.dataTables.js"></script>
 <script src="./assets/plugins/DataTables/jquery.dataTables.min.js"></script>
-
+<!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/521855df57.js" crossorigin="anonymous"></script>
 <!-- Toastr -->
 <script src="./assets/plugins/toastr/toastr.min.js"></script>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	(function () {
+	function mainInit() {
 		"use strict";
 	
 		var treeviewMenu = $('.app-menu');
@@ -26,6 +26,7 @@ $(document).ready(function () {
 		$("[data-toggle='tooltip']").tooltip();
 		
 	
-	})();
+	}
+	mainInit();
 	
 });
