@@ -20,7 +20,7 @@ validationPass.addEventListener("input", (e)=>{
 
 });
 
-form.addEventListener('submit', (e)=>{
+/* form.addEventListener('submit', (e)=>{
     
 
-})
+}) */
