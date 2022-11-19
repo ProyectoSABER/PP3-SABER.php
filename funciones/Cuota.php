@@ -1,7 +1,9 @@
 <?php
-function crearCuota($IdMesAnio,$FechaVenc,$PConeccionBD){
 
-    $sql= "INSERT INTO `cuota`(`id_MesAnio_Cuota`, `fechaVenc_Cuota`) VALUES ('$IdMesAnio','$FechaVenc') ";
+
+function crearCuota($MesAnio,$PConeccionBD){
+
+    $sql= "INSERT INTO `cuota`(`MesAnio_Cuota`) VALUES ('$MesAnio')";
 
     $consulta = mysqli_query($PConeccionBD, $sql);
 
@@ -12,7 +14,7 @@ function mostrarTodasCuotas($PConeccionBD){
     
     $cuota=array();
 
-    $sql= "SELECT `id_MesAnio_Cuota` as idCuota, `fechaVenc_Cuota` as FechaVencimiento FROM `cuota`";
+    $sql= "SELECT `id_MesAnio_Cuota` as idCuota,`MesAnio_Cuota` as Mes FROM `cuota`";
     
     $consulta = mysqli_query($PConeccionBD, $sql);
 
@@ -24,30 +26,52 @@ function mostrarTodasCuotas($PConeccionBD){
     $i = 0;
     while ($data = mysqli_fetch_array($consulta)) {
         $cuota[$i]["ID_CUOTA"]=$data["idCuota"];
-        $cuota[$i]["FEC_VENC"]=$data["FechaVencimiento"];
+        $cuota[$i]["MES"]=$data["Mes"];
     }
     return $cuota;
 };
 
 
 
-function mostrarCuota($IdCuota,$PConeccionBD){
+function mostrarCuotaID($IdCuota,$PConeccionBD){
+    $consulta=array();
+    $sql= "SELECT `id` as idCuota,`MesAnio_Cuota` as Mes FROM `cuota` WHERE id` = '$IdCuota' ";
     
-    $sql= "SELECT `id_MesAnio_Cuota` as idCuota, `fechaVenc_Cuota` as FechaVencimiento  FROM `cuota` WHERE id_MesAnio_Cuota` = '$IdCuota' ";
+    $rs = mysqli_query($PConeccionBD, $sql);
+    if (!$rs) {
+        return false;
+    }
+
+    $data = mysqli_fetch_array($rs);
+
+    if (!empty($data)) {
+        $consulta["ID"]=$data["idCuota"];
+        $consulta["MES"]=$data["Mes"];
+        return $consulta;
+    }
     
-    $consulta = mysqli_query($PConeccionBD, $sql);
+};
+
+function mostrarCuotaxMes($mes,$PConeccionBD){
     
-    return $consulta;
+    $sql= "SELECT `id` as idCuota,`MesAnio_Cuota` as Mes FROM `cuota` WHERE `MesAnio_Cuota` = '$mes' ";
+    $consulta=array();
+    $rs = mysqli_query($PConeccionBD, $sql);
+    if (!$rs) {
+        return false;
+    }
+
+    $data = mysqli_fetch_array($rs);
+
+    if (!empty($data)) {
+        $consulta["ID"]=$data["idCuota"];
+        $consulta["MES"]=$data["Mes"];
+        return $consulta;
+    }
+    
 };
 
 
-function modificarFechaVencCuota($IdCuota,$FechaVenc,$PConeccionBD){
-    $sql= "UPDATE `cuota` SET `fechaVenc_Cuota`='$FechaVenc' WHERE id_MesAnio_Cuota` = '$IdCuota' ";
-    
-    $consulta = mysqli_query($PConeccionBD, $sql);
-    
-    return $consulta;
-};
 //Falta Terminar
 function eliminarCuota($IdCuota){};
 

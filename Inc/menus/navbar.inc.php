@@ -8,7 +8,7 @@
         <button class="app-search__button"><i class="fa fa-search"></i></button>
       </li>
       <!--Notification Menu-->
-      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+      <li class="dropdown"><a class="app-nav__item" href="#"  data-bs-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
         <ul class="app-notification dropdown-menu dropdown-menu-right">
           <li class="app-notification__title">You have 4 new notifications.</li>
           <div class="app-notification__content">
@@ -54,8 +54,8 @@
           <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
         </ul>
       </li>
-      <!-- User Menu-->
-      <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+      <!-- User Menu-->  <!-- data-toggle="dropdown" dropdown-toggle -->
+      <li class="dropdown"><a class="app-nav__item " href="#" data-bs-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
         <ul class="dropdown-menu settings-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
           <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>

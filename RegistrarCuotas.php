@@ -95,7 +95,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                               <div class="row">
                                 <label for="ValorCuota-<?php echo $Valor["CATEGORIA"] ?>">Ingrese el Valor $ de la cuota</label>
                               </div>
-                              <div class="row flex-nowrap">
+                              <div class="d-flex flex-nowrap">
                                 <div class="input-group-prepend">
                                   <span class="input-group-text">$</span>
                                 </div>
@@ -114,7 +114,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
 
 
 
-              <div class="tile-footer row justify-content-center">
+              <div class="tile-footer d-flex justify-content-center">
                 <!--Botones-->
                
                 <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
@@ -138,7 +138,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
-  <script type="text/javascript" src="./js/Personalizados/registrarCuotas.js">
+  <script type="text/javascript" src="./js/Personalizados/Cuotas/registrarCuotas.js">
 
   </script>
 

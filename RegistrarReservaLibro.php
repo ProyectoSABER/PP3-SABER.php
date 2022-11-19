@@ -1,6 +1,6 @@
 <?php
 require_once './Handler/prestamos/HandlerRegistrarPrestamoLibroSocio.php';
-require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php'; 
+/* require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php'; */ 
 
 if(!empty($_GET['ID_ISBN'])){
   $idISBN = $_GET['ID_ISBN'];
@@ -125,10 +125,10 @@ if(!empty($_GET['ID_ISBN'])){
 
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> -->
+<!--   <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"/> -->
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script> -->
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 
 <script>
 
