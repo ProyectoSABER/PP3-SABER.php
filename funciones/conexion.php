@@ -4,7 +4,7 @@
 function ConexionBD(
     $Host = 'localhost:33065',
     $User = 'root',
-    $Password = 'Root@1234',
+    $Password = '',
     $BaseDeDatos = 'saber_bd'
 ) {
 

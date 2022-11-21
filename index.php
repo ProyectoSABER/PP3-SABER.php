@@ -16,8 +16,8 @@ require_once './Handler/HandlerIndex.php'
   <main class="app-content">
     <div class="app-title">
       <div>
-        <h1><i class="fa fa-dashboard"></i> Bienvenidos</h1>
-        <p>Este es nuestro panel de administración. Por favor selecciona alguna opción del menú lateral izquierdo</p>
+        <h1><i class="fa fa-dashboard"></i> Bienvenido <?php echo $_SESSION['USUARIO_NOMBRE'] ?> </h1>
+        <p>Es un placer verte de nuevo, renovamos nuestro sitio para mejorar tu experiencia.</p>
       </div>
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

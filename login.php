@@ -2,7 +2,6 @@
 // Inicializar la sesion al principio
 session_start();
 require_once './Handler/HandlerLogin.php';
-
 ?>
 
 
@@ -17,17 +16,20 @@ require_once './Handler/HandlerLogin.php';
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Login - Vali Admin</title>
+  <link rel="stylesheet" href="css/login.css">
+
+  <title>S.A.B.E.R Sistema de Gestion bibliotecario</title>
 </head>
 
 <body>
+  
   <section class="material-half-bg">
     <div class="cover"></div>
   </section>
   <section class="login-content">
     <div class="logo">
     <h1>S.A.B.E.R</h1>
-    <h2>Sistema Administracion Bibliotecas Escolares</h2>
+    <h2>Sistema Administracion de Bibliotecas Escolares</h2>
     </div>
     <div class="login-box <?php echo ($noValidateEmailnewUSer)? 'NewUser': ''; ?> ">
       <form class="login-form" role="form" method="POST">
@@ -63,7 +65,7 @@ require_once './Handler/HandlerLogin.php';
             <div class="form-group">
               <!-- Email-->
               <label class="control-label">USUARIO</label>
-              <input class="form-control" placeholder="Email" type="email" required name="email" autofocus value="<?php echo !empty($_POST['email']) ? $_POST['email'] : '' ?>">
+              <input class="form-control" placeholder="Ingrese direccion mail registrada" type="email" required name="email" autofocus value="<?php echo !empty($_POST['email']) ? $_POST['email'] : '' ?>">
             </div>
             <div class="form-group">
               <!-- Password-->
