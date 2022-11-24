@@ -118,7 +118,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                   <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
-                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Reset Button</button></div>
+                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Limpiar Campos</button></div>
               </div>
           </div>
 
