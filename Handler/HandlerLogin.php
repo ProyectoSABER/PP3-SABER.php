@@ -11,7 +11,8 @@ if (!empty($_POST['Ingresar'])) {
   
     $MensajeError = '';
     if (strlen($_POST['email']) < 5) {
-      $MensajeError = "Debe de ingresar un usuario de 5 caracteres o más. <br / >";
+      
+     $MensajeError = "Debe de ingresar un usuario de 5 caracteres o más. <br / >";
     } else if (empty($_POST['clave']) || strlen($_POST['clave']) < 7) {
       $MensajeError = "Debe de ingresar una clave de 7 caracteres o más <br / >";
     } else {

@@ -17382,3 +17382,46 @@ be a descendant of the grid when it is being dragged.
   color: #666;
 }
 /*** 2021  ****/
+
+
+.tooltip {
+	font-weight: normal;
+	color: #3c48e5;
+	text-decoration: none;
+	position: relative;
+}
+
+.tooltip:hover {
+	text-decoration: underline;
+}
+
+.tooltip:hover .tooltip-box {
+	display: inline-block;
+}
+
+.tooltip-box {
+	display: none;
+	position: absolute;
+	background: #000;
+	line-height: 20px;
+	z-index: 500;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	left: 0;
+	right: 0;
+	bottom: 30px;
+}
+
+.tooltip-box::after {
+	content: "";
+	display: block;
+	border-top: 7px solid #000;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	position: absolute;
+	bottom: -7px;
+	left: calc(50% - 7px);
+}

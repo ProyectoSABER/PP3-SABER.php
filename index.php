@@ -42,5 +42,7 @@ require_once './Handler/HandlerIndex.php'
   <?php require_once('./Inc/js/js.inc.php'); ?>
 
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/sweetAlert.js"></script>
 
 </html>

@@ -17,6 +17,11 @@ require_once './Handler/HandlerLogin.php';
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/login.css">
+   <!-- Estilos Sweet Alert-->
+  <link rel="stylesheet" href="assets/plugins/dist/sweetalert2.min.css">
+
+
+
 
   <title>S.A.B.E.R Sistema de Gestion bibliotecario</title>
 </head>
@@ -111,5 +116,7 @@ require_once './Handler/HandlerLogin.php';
     });
   </script>
 </body>
+
+<script src="assets/plugins/dist/sweetalert2.all.min.js"></script>
 
 </html>

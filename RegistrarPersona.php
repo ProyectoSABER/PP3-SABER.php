@@ -58,9 +58,10 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
               <div class="col-md-6">
                 <!-- DNI -->
 
-                <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <input class="form-control" placeholder="DNI" name="DNI" type="number">
+                
+                <div class="form-group">  
+                <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <input class="form-control" placeholder="El DNI A INGRESAR DEBE CONTENER 8 CARACTERES COMO MINIMO" name="DNI" type="number">   
                 </div>
                 <!-- TIPO DNI -->
                 <div class="form-group">
@@ -112,7 +113,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <div class="form-group">
                   <label class="control-label">Puedes subir una captura de pantalla</label>
-                  <input class="form-control" type="file" disabled>
+                  <input class="form-control" type="file" enabled>
                 </div>
 
                 <div class="tile-footer">
@@ -123,7 +124,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                   <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
-                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Reset Button</button></div>
+                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Reset Button</button></div>-->
               </div>
 
           </div>
