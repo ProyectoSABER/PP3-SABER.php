@@ -64,17 +64,17 @@ require_once './Handler/cuotas/HandlerListadoCuotas.php';
   <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
   <script src="js/Personalizados/Cuotas/listadoCuotas.js"></script>
   <script>
-    init();
-
+    
     function init() {
-      getData();
-    }
+  getData();
+}
 
-    function getData() {
-      $('#tabla-Socios').DataTable({
-        scrollY: 400
-      });
-    }
+function getData() {
+  $('#tabla-Socios').DataTable({
+    scrollY: 400
+  });
+}
+    
   </script>
 
 </body>

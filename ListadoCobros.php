@@ -29,7 +29,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
       <!-- Mensaje de campo obligatorios -->
       <div class="bs-component">
         <div class="alert alert-dismissible alert-info">
-          <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+          <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
         </div>
       </div>
       <!-- Body -->
@@ -53,7 +53,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                     <!-- Elements in Body Acordion -->
                     <div class="container d-flex">
                       <div class="col-md-4">
-                        <label class="control-label h5">Buscar Socio por </label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                        <label class="control-label h5">Buscar Socio por </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                       </div>
                       <!-- RadiosCheckBox -->
@@ -78,7 +78,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                     </div>
                     <!-- //hidden=true -->
                     <div class="container-md-12" id="Resultados">
-                      <p class="h5 d-flex justify-content-center mt-3">Seleccione un resultado <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <p class="h5 d-flex justify-content-center mt-3">Seleccione un resultado <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                       </p>
                       <p class="h6 d-flex justify-content-center mt-2">(DobleClick sobre el resultado para Confirmar)</p>
