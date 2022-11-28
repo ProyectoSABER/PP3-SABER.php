@@ -131,7 +131,7 @@ function insertarUnaPersonaArray($Persona, $PConeccionBD)
     $Nombre=$Persona['Nombre'];
     $Apellido=$Persona['Apellido'];
     $IdDomicilio= !empty($Persona['IdDomicilio'])?$Persona['IdDomicilio'] : '1' ;
-    $IdUsuario=$_SESSION['USUARIO_ID'];
+    $IdUsuario=!empty($Persona['USUARIO_ID'])?$Persona['USUARIO_ID'] : $_SESSION['USUARIO_ID'];
     $FotoSocio= !empty($Persona['FotoSocio'])?$Persona['FotoSocio'] : 'null' ;
     
 
@@ -193,4 +193,21 @@ function MostrarContactoUnaPersona($DNIPersona, $PConeccionBD)
 
 
     return $data;
+}
+
+function buscarUsuarioSinpersonas($PConeccionBD){
+    $Usuario=array();
+    $SQL = "SELECT `id_Usuario`, `mail_Usuario` FROM `usuario` WHERE `id_Usuario` NOT IN (SELECT `id_usuario` FROM `persona`)";
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    
+$i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+    $Usuario[$i]['IDUSUARIO'] = $data['id_Usuario'];
+    $Usuario[$i]['MAILUSUARIO'] = $data['mail_Usuario'];
+    $i++;
+
+}
+
+return $Usuario;
+
 }

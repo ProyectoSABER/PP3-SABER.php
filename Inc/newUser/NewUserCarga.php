@@ -26,7 +26,7 @@
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -38,12 +38,12 @@
                 <!-- DNI -->
 
                 <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="DNI" name="DNI" type="number" minlength="8" required>
                 </div>
                 <!-- TIPO DNI -->
                 <div class="form-group">
-                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="TipoDni" required>
                     <?php for ($i = 0; $i < $CantipoDni; $i++) { ?>
                       <option value="<?php echo  $tipoDni[$i]['ID'] ?>"><?php echo $tipoDni[$i]['TIPO'] ?></option>
@@ -54,14 +54,14 @@
 
                 <!-- NOMBRE -->
                 <div class="form-group">
-                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="NOMBRE" name="NOMBRE" required>
                 </div>
 
 
                 <!-- Apellido -->
                 <div class="form-group">
-                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="Apellido" name="Apellido" required>
                 </div>
               </div>
@@ -69,7 +69,7 @@
 
                 <!-- TIPO Contacto -->
                 <div class="form-group">
-                  <label class="control-label">Tipo Contacto</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Tipo Contacto</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="TipoContacto" required>
 
                     <?php for ($i = 0; $i < $CantipoContacto; $i++) { ?>
@@ -81,10 +81,10 @@
                 <!-- Celular -->
 
                 <div class="form-group">
-                  <label class="control-label">Código área</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Código área</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" type="number" min=0 placeholder="Codigo area" name="CodigoArea" required>
 
-                  <label class="control-label">N° Celular</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">N° Celular</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" type="number" min=0 placeholder="Número de Celular" name="Ncelular" required>
                   </select>
                 </div>

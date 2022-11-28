@@ -50,7 +50,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
 
                   <div class="form-group">
 
-                    <label class="control-label">Título Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Título Libro</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                     <select class="form-control" name="ISBN">
                       <option disabled hidden <?php if (empty($_GET['ISBN'])) {
@@ -96,7 +96,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                 <!-- Nombre Socio -->
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="control-label">Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <select class="form-control" name="IDSocio">
 
 
@@ -149,7 +149,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- ISBN -->
 
                   <div class="form-group">
-                    <label class="control-label">ISBN</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">ISBN</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" name="ISBN" placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                             echo $LibroISBN['Libro_ISBN'];
                                                                           } else {
@@ -162,7 +162,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- Idioma -->
 
                   <div class="form-group">
-                    <label class="control-label">Idioma</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Idioma</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input id="Idioma" class="form-control " placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                             echo $LibroISBN['Libro_Idioma'];
                                                                           } else {
@@ -173,7 +173,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- N° Edicion -->
 
                   <div class="form-group">
-                    <label class="control-label">N° Edicion</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">N° Edicion</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                 echo $LibroISBN['Libro_NEdicion'];
                                                               } else {
@@ -191,7 +191,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- Categoria Libro -->
 
                   <div class="form-group">
-                    <label class="control-label">Categoria Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Categoria Libro</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input id="Categoria_Libro" class="form-control" placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                                     echo $LibroISBN['Libro_CategoriaLibro'];
                                                                                   } else {
@@ -203,7 +203,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- Cantidad de ejemplares -->
 
                   <div class="form-group">
-                    <label class="control-label">Cantidad de ejemplares Disponibles</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Cantidad de ejemplares Disponibles</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                 echo $CantEjemplaresDispo;
                                                               } else {
@@ -215,7 +215,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                   <!-- Ubicación -->
 
                   <div class="form-group">
-                    <label class="control-label">Ubicación en estanteria</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Ubicación en estanteria</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php if (!empty($_GET['ISBN'])) {
                                                                 echo $LibroISBN['Libro_UbicacionEstanteria'];
                                                               } else {
@@ -259,7 +259,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                 <!-- DNI -->
 
                 <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="<?php if (!empty($_GET['IDSocio'])) {
                                                               echo $SocioID['SOCIO_DNI'];
                                                             } else {
@@ -270,7 +270,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                 <!-- ID -->
 
                 <div class="form-group">
-                  <label class="control-label">ID</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">ID</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input id="Idioma" class="form-control " name="SOCIO_ID" placeholder="<?php if (!empty($_GET['IDSocio'])) {
                                                                                           echo $SocioID['SOCIO_ID'];
                                                                                         } else {
@@ -288,7 +288,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                 <!-- Categoria -->
 
                 <div class="form-group">
-                  <label class="control-label">Categoria Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Categoria Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="<?php if (!empty($_GET['IDSocio'])) {
                                                               echo $SocioID['SOCIO_CATEGORIA'];
                                                             } else {
@@ -302,7 +302,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
                 <!-- Estado Socio -->
 
                 <div class="form-group">
-                  <label class="control-label">Estado Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Estado Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input id="Categoria_Libro" class="form-control" placeholder="<?php if (!empty($_GET['IDSocio'])) {
                                                                                   echo $SocioID['SOCIO_ESTADOSOCIO'];
                                                                                 } else {

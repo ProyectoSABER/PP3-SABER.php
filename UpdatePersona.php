@@ -47,7 +47,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -59,12 +59,12 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- DNI -->
 
                 <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="DNI" name="DNI" type="number">
                 </div>
                 <!-- TIPO DNI -->
                 <div class="form-group">
-                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="Idioma">
                     <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
                       <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
@@ -75,14 +75,14 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- NOMBRE -->
                 <div class="form-group">
-                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="NOMBRE" name="NOMBRE">
                 </div>
               
 
                 <!-- Apellido -->
                 <div class="form-group">
-                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="Apellido" name="Apellido">
                 </div>
                 </div>
@@ -91,7 +91,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- Domicilio -->
 
                 <div class="form-group">
-                  <label class="control-label">Domicilio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Domicilio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="Domicilio" placeholder="Domicilio">
                     <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
                       <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
@@ -102,7 +102,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- Usuario -->
 
                 <div class="form-group">
-                  <label class="control-label">Usuario</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Usuario</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="Usuario" placeholder="Usuario">
                     <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
                       <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>

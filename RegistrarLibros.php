@@ -46,7 +46,7 @@ require_once './Handler/HandlerRegistrarLibro.php'
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -58,26 +58,26 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- ISBN -->
 
                 <div class="form-group">
-                  <label class="control-label">ISBN</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <input class="form-control" name="ISBN">
+                  <label class="control-label">ISBN</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
+                  <input class="form-control" name="ISBN" minlength="10" maxlength="13" required placeholder="Introduzca el ISBN sin Guiones Minimo 13 carácteres">
                 </div>
                 <!-- Titulo -->
 
                 <div class="form-group">
-                  <label class="control-label">Título Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <input class="form-control" placeholder="Titulo" name="Titulo">
+                  <label class="control-label">Título Libro</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
+                  <input class="form-control" placeholder="Titulo" name="Titulo" required>
                 </div>
 
                 <!-- SubTitulo -->
                 <div class="form-group">
                   <label class="control-label">SubTitulo</label> <i class="fa" aria-hidden="true"></i>
-                  <input class="form-control" name="SubTitulo">
+                  <input class="form-control" name="SubTitulo" placeholder="Subtitulo Opcional">
                 </div>
 
                 <!-- Idioma -->
 
                 <div class="form-group">
-                  <label class="control-label">Idioma</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Idioma</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <select class="form-control" name="Idioma">
                     <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
                       <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
@@ -88,7 +88,7 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- N° Edicion -->
 
                 <div class="form-group">
-                  <label class="control-label">N° Edicion</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">N° Edicion</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <input class="form-control" type="number" min="1" value="1" name="NEdicion">
                 </div>
 
@@ -98,7 +98,7 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- Editorial -->
 
                 <div class="form-group">
-                  <label class="control-label">Editorial</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Editorial</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <select class="form-control" name="Editorial">
                     <?php for ($i = 0; $i < $CantEditorial; $i++) { ?>
                       <option value="<?php echo  $Editorial[$i]['Editorial_ID'] ?>"><?php echo $Editorial[$i]['Editorial_Nombre'] ?></option>
@@ -110,7 +110,7 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- Categoria Libro -->
 
                 <div class="form-group">
-                  <label class="control-label">Categoria Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Categoria Libro</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <select class="form-control" name="CategoriaLibro">
                     <?php for ($i = 0; $i < $CantCatLi; $i++) { ?>
                       <option value="<?php echo  $CatLibros[$i]['CatLibro_ID'] ?>"><?php echo $CatLibros[$i]['CatLibro_Nombre'] ?></option>
@@ -120,20 +120,20 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- Fecha Publicacion -->
 
                 <div class="form-group">
-                  <label class="control-label">Fecha Publicacion</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Fecha Publicacion</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <input class="form-control" type="date" name="FechaPublicacion">
                 </div>
 
                 <!-- Cantidad de ejemplares -->
 
                 <div class="form-group">
-                  <label class="control-label">Cantidad de ejemplares</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Cantidad de ejemplares</label> <i class="fa fa-asterisk text-danger   " aria-hidden="true"></i>
                   <input class="form-control" type="number" min="1" value="1" name="CantEjemplar">
                 </div>
                 <!-- Proveedor -->
 
                 <div class="form-group">
-                  <label class="control-label">Proveedor de Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Proveedor de Libro</label> <i class="fa fa-asterisk text-danger  " aria-hidden="true"></i>
                   <select class="form-control" name="ProveedorLibro">
                     <?php for ($i = 0; $i < $CantProveedores; $i++) { ?>
                       <option value="<?php echo  $Proveedor[$i]['Proveedor_ID'] ?>"><?php echo $Proveedor[$i]['Proveedor_Nombre'] ?></option>
@@ -146,8 +146,8 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 <!-- Ubicación -->
 
                 <div class="form-group">
-                  <label class="control-label">Ubicación en estanteria</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <input class="form-control" name="UbicacionEstanteria">
+                  <label class="control-label">Ubicación en estanteria</label> <i class="fa fa-asterisk text-danger   bg-danger" aria-hidden="true"></i>
+                  <input class="form-control" name="UbicacionEstanteria" placeholder="Formato: N° Estanteria, N° Estante">
                 </div>
 
 

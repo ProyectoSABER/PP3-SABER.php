@@ -47,7 +47,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -62,7 +62,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- NOMBRE y Apellido-->
 
                 <div class="form-group">
-                  <label class="control-label">Seleccione un APELLIDO Y NOMBRE</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione un APELLIDO Y NOMBRE</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                   <select class="form-control NombreApellido" name="DNI">
                     <option selected disabled hidden>Seleccione un Apellido y Nombre</option>
@@ -80,7 +80,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- Categoria Socio -->
                 <div class="form-group">
-                  <label class="control-label">Seleccione una Categoria de Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione una Categoria de Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control CatSocio" name="IDCategoriaSocio">
                     <option selected disabled hidden>Seleccione una categoria de Socio</option>
                     <?php for ($i = 0; $i < $CantCatSocio; $i++) { ?>
@@ -91,7 +91,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- CUOTA-->
                 <div class="form-group">
-                  <label class="control-label">CUOTA</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">CUOTA</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control ValorCuota" placeholder="VALOR CUOTA" disabled>
                 </div>
               </div>
@@ -99,7 +99,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- Estado Socio -->
                 <div class="form-group">
-                  <label class="control-label">Seleccione un Estado Incial Para el socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione un Estado Incial Para el socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="IDEstadoSocio">
                     <?php for ($i = 0; $i < $CantEstadoSocio; $i++) { ?>
                       <option value="<?php echo  $EstadoSocio[$i]['IDESTADOSOCIO'] ?>"><?php echo $EstadoSocio[$i]['ESTADOSOCIO'] ?></option>

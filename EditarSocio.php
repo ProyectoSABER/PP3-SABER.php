@@ -33,58 +33,58 @@ require_once './Handler/socios/HandlerEditarSocio.php'
 
             <!-- DNI -->
             <div class="form-group">
-              <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_DNI'] ?>" name="DNI" type="number">
             </div>
             <!-- Nombre -->
             <div class="form-group">
-              <label class="control-label">Nombre</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Nombre</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_NOMBRE'] ?>" name="Nombre" type="txt">
             </div>
             <!-- Apellido -->
             <div class="form-group">
-              <label class="control-label">Apellido</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Apellido</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_APELLIDO'] ?>" name="Apellido" type="txt">
             </div>
             <!-- Categoria -->
             <div class="form-group">
-              <label class="control-label">Categoria</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Categoria</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_CATEGORIA'] ?>" name="Categoria" type="txt">
             </div>
             <!-- Calle -->
             <div class="form-group">
-              <label class="control-label">Calle</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Calle</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['CALLE'] ?>" name="Calle" type="txt">
             </div>
             <!-- AlturaCalle -->
             <div class="form-group">
-              <label class="control-label">AlturaCalle</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">AlturaCalle</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['ALTURACALLE'] ?>" name="AlturaCalle" type="txt">
             </div>
             <!-- Barrio -->
             <div class="form-group">
-              <label class="control-label">Barrio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Barrio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['BARRIO'] ?>" name="Barrio" type="txt">
             </div>
             <!-- Localidad -->
             <div class="form-group">
-              <label class="control-label">Localidad</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Localidad</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['LOCALIDAD'] ?>" name="Localidad" type="txt">
             </div>
             <!-- Provincia -->
             <div class="form-group">
-              <label class="control-label">Provincia</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Provincia</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['PROVINCIA'] ?>" name="Provincia" type="txt">
             </div>
             <?php for ($i = 0; $i < $CantContacto; $i++) { ?>
               <!-- TipoContacto -->
               <div class="form-group">
-                <label class="control-label">TipoContacto</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">TipoContacto</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <input class="form-control" placeholder="<?php echo $Contacto[$i]['TIPOCONTACTO'] ?>" name="TipoContacto" type="txt">
               </div>
               <!-- Contacto -->
               <div class="form-group">
-                <label class="control-label">Contacto</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">Contacto</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <input class="form-control" placeholder="<?php echo $Contacto[$i]['CONTACTO'] ?>" name="Contacto" type="txt">
               </div>
             <?php } ?>

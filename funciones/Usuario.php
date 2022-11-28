@@ -62,4 +62,3 @@ function RegistrarLogout($PidUsuario,$Pdate,$PConeccionBD){
 
 }
 
-?>

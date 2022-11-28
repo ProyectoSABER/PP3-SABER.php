@@ -51,7 +51,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
 
@@ -69,7 +69,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                   <!-- ISBN -->
 
                   <div class="form-group">
-                    <label class="control-label">ISBN</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">ISBN</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php
                                                               echo $ISBNlibro
                                                               ?>" disabled>
@@ -77,7 +77,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                   <!-- TITULO -->
 
                   <div class="form-group">
-                    <label class="control-label">TITULO</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">TITULO</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php
                                                               echo $Libro['Libro_Titulo']
                                                               ?>" disabled>
@@ -87,7 +87,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                   <!-- IDSOCIO -->
 
                   <div class="form-group">
-                    <label class="control-label">IDSOCIO</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">IDSOCIO</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php
                                                               echo $IDSocio
                                                               ?>" disabled>
@@ -95,7 +95,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                   <!-- Apellido y Nombre de Socio -->
 
                   <div class="form-group">
-                    <label class="control-label">Apellido y Nombre del Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Apellido y Nombre del Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input class="form-control" placeholder="<?php
                                                               echo $Socio['SOCIO_APELLIDO'] . ' ' . $Socio['SOCIO_NOMBRE'];
                                                               ?>" disabled>
@@ -105,7 +105,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                 <div class="col-md-12 tile-footer">
                   <div class="form-group">
 
-                    <label class="control-label">Selecciona un ID de Ejemplar Disponibles </label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Selecciona un ID de Ejemplar Disponibles </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <!-- revisar a futuro -->
                     <select class="form-control" name="IDEJEMPLARLIBRO">
                       <option disabled hidden selected>
@@ -130,7 +130,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
 
                     <!-- Radio Button Prioridades -->
                     <div class="form-group">
-                      <label class="control-label">Selecciona un Tipo de Prestamo </label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <label class="control-label">Selecciona un Tipo de Prestamo </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                       <?php for ($i = 0; $i < $CantTipoPrestamo; $i++) { ?>
                         <div class="form-check">

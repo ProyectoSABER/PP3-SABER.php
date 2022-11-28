@@ -60,7 +60,7 @@ require_once './Handler/HandlerBlack.php'
             <form id="form-Prueba" >
               
             <div class="form-group">
-                    <label class="control-label">Seleccione un Mes para la cuota</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Seleccione un Mes para la cuota</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input id="InputMes" class="form-control " type="month" name="Mes" min="<?php echo $año = date("Y-m"); ?>" required>
                   </div>
             </form>
