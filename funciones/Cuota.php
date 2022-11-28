@@ -33,6 +33,7 @@ function mostrarTodasCuotas($PConeccionBD){
 
 
 
+
 function mostrarCuotaID($IdCuota,$PConeccionBD){
     $consulta=array();
     $sql= "SELECT `id` as idCuota,`MesAnio_Cuota` as Mes FROM `cuota` WHERE id` = '$IdCuota' ";
