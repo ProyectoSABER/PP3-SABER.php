@@ -129,7 +129,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
 
 
                     <!-- Radio Button Prioridades -->
-                    <div class="form-group">
+                    <div class="form-group ml-4">
                       <label class="control-label">Selecciona un Tipo de Prestamo </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                       <?php for ($i = 0; $i < $CantTipoPrestamo; $i++) { ?>

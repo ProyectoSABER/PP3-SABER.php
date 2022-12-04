@@ -142,12 +142,12 @@ require_once './Handler/HandlerRegistrarLibro.php'
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <!-- Ubicación -->
 
                 <div class="form-group">
                   <label class="control-label">Ubicación en estanteria</label> <i class="fa fa-asterisk text-danger " aria-hidden="true"></i>
-                  <input class="form-control" name="UbicacionEstanteria" placeholder="Formato: N° Estanteria, N° Estante">
+                  <input class="form-control" name="UbicacionEstanteria" placeholder="N° Estanteria (1...n), N° Estante (1...n), Ejemplo: (X,Y)">
                 </div>
 
 

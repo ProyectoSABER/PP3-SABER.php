@@ -31,7 +31,7 @@ require_once './Handler/HandlerListadoLibros.php'
           <h3 class="tile-title">Total de Libros <?php echo $CantLibros?> </h3>
           <div class="table-responsive">
             <!-- Table -->
-            <table class="table">
+            <table class="table" id="Listado-Libros">
               <thead>
                 <tr>
                   <th>#</th>
@@ -74,7 +74,9 @@ require_once './Handler/HandlerListadoLibros.php'
                     <td><?php echo $libros[$i]['Libro_Proveedor'] ?></td>
                     <td><?php echo $libros[$i]['Libro_UbicacionEstanteria'] ?></td>
                     <td><?php echo $libros[$i]['Libro_ResponsableCarga'] ?></td>
-                    <td><button class="btn btn-primary" type="submit" name="Registrar" value="<?php echo $libros[$i]['Libro_ISBN'] ?>">Ver ejemplares</button>
+                    <td>
+                    <a class="btn btn-sm btn-info" href="./ListadoEjemplaresLibros.php?Registrar=<?php echo $libros[$i]['Libro_ISBN'] ?>"><i class="fa fa-search"></i> Ver ejemplares</a>&nbsp;&nbsp;
+                      
                     </td>
                   </tr>
                 <?php } ?>
@@ -95,6 +97,69 @@ require_once './Handler/HandlerListadoLibros.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
+  <script>
+    
+
+    $(function() {
+
+      $('#Listado-Libros').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+
+          "sProcessing": "Procesando...",
+
+          "sLengthMenu": "Mostrar _MENU_ registros",
+
+          "sZeroRecords": "No se encontraron resultados",
+
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+
+          "sInfoPostFix": "",
+
+          "sSearch": "Buscar:",
+
+          "sUrl": "",
+
+          "sInfoThousands": ",",
+
+          "sLoadingRecords": "Cargando...",
+
+          "oPaginate": {
+
+            "sFirst": "Primero",
+
+            "sLast": "Último",
+
+            "sNext": "Siguiente",
+
+            "sPrevious": "Anterior"
+
+          },
+
+          "oAria": {
+
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+
+          }
+        }
+      });
+    });
+  </script>
 
 </body>
 

@@ -64,7 +64,21 @@ require_once './Handler/socios/HandlerDetalleSocio.php'
                   <td><?php echo $Socio['SOCIO_ESTADOSOCIO'] ?></td>
                   <td><?php echo convertir_fecha($Socio['SOCIO_FECHAALTA']) ?></td>
                   <td><?php echo $PERSONA['USUARIO'] ?></td>
-                  <td><a href="#">Ver detalles...</a></td>
+                  <td><a class="btn btn-sm btn-success" href="./EditarSocio.php?SOCIO_ID=<?php echo $Socio['SOCIO_ID'] ?>"><i class="fa fa-edit"></i> Editar</a>&nbsp;&nbsp;
+                     
+                    
+                    
+                    
+                      <a class="btn btn-sm btn-danger" href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio['SOCIO_ID'] ?>" title="" style="padding: 2px 8px;font-size: 15px;" data-confirm="¿CONFIRMA DAR DE BAJA AL SOCIO?" data-method="post" data-toggle="tooltip" data-placement="top" data-original-title="Eliminar socio"><i class="fa fa-trash"></i> Eliminar</a>&nbsp;&nbsp; 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    </td>
                 </tr>
 
 

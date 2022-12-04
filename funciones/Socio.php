@@ -239,7 +239,7 @@ function insertarUnoSocio($DNIPersona, $IDCategoriaSocio, $IDEstadoSocio,  $PCon
 
     return $consulta;
 }
-function buscarSocioPorIdUsuario($idUser,  $PConeccionBD)
+function buscarSocioPorIdUsuario($idUser, $PConeccionBD)
 {
   $data = array();
   $query = mysqli_query($PConeccionBD, "SELECT soc.* from usuario usu 

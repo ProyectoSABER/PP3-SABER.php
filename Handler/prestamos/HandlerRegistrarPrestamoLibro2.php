@@ -31,7 +31,7 @@ $Socio = MostrarUnoSocioID($IDSocio, $MiConexion);
 
 require_once './funciones/TipoPrestamo.php';
 $TipoPrestamo = array();
-$TipoPrestamo = conocerTodoTipoPrestamos($MiConexion);
+$TipoPrestamo = conocerTodoTipoPrestamos($MiConexion);;
 $CantTipoPrestamo = count($TipoPrestamo);
 
 $IngresoRegistro = array();
@@ -52,6 +52,7 @@ if (!empty($_POST['RegistrarPrestamo'])) {
             $IngresoRegistro = $rp;
             $EjemplaresDispo = conocerEjemplaresDisponiblesUnLibro($ISBNlibro, $MiConexion);
             $CantEjemplaresDispo = count($EjemplaresDispo);
+            $MensajeExito = "Se registro el préstamo";
         } else {
             $MensajeError = ' Debe de seleccionar un tipo de prestamo';
         }

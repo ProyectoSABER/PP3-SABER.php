@@ -29,6 +29,21 @@ require_once './Handler/socios/HandlerEditarSocio.php'
       <div class="col-md-12">
         <div class="tile">
           <h3 class="tile-title"> ID Socio <?php echo $Socio["SOCIO_ID"] ?> </h3>
+          <!-- ************************************ -->
+            <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
+            <!-- ************************************ -->
+            
+            <?php  /* echo '<p>' . print_r($Socio) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($dni) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($PERSONA) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($Contacto) . '<p>' */  ?>
+          
+            <?php /* echo '<p>' . print_r($_POST['TipoDNI']) . '<p>'  */ ?>
+            
+            <?php /*  if(isset($idUsuario)){ echo '<p>'.print_r($idUsuario) .'<p>'; } else{ echo "nada aqui";} */ ?>
+            <!-- ************************************ -->
+            <!-- ************************************ -->
+
           <form action="" method="post">
 
             <!-- DNI -->
@@ -88,6 +103,8 @@ require_once './Handler/socios/HandlerEditarSocio.php'
                 <input class="form-control" placeholder="<?php echo $Contacto[$i]['CONTACTO'] ?>" name="Contacto" type="txt">
               </div>
             <?php } ?>
+            <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
+          </form>
         </div>
 
 

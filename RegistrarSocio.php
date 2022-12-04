@@ -51,10 +51,21 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
             </div>
           </div>
           <div class="tile-body">
+              <!-- ************************************ -->
+            <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
+            <!-- ************************************ -->
+            
+            <?php /*  echo '<p>' . print_r($datoUsuario) . '<p>'  */ ?>
+          
+            <?php /* echo '<p>' . print_r($_POST['TipoDNI']) . '<p>'  */ ?>
+            
+            <?php /*  if(isset($idUsuario)){ echo '<p>'.print_r($idUsuario) .'<p>'; } else{ echo "nada aqui";} */ ?>
+            <!-- ************************************ -->
+            <!-- ************************************ -->
 
             <!-- Formulario -->
-            <form method="POST" class="row ">
-
+            <form method="POST"  class="row ">
+            
               <div class="col-md-6">
 
 
@@ -67,7 +78,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                   <select class="form-control NombreApellido" name="DNI">
                     <option selected disabled hidden>Seleccione un Apellido y Nombre</option>
                     <?php for ($i = 0; $i < $CantNoSocio; $i++) { ?>
-                      <option value="<?php echo  $NoSocio[$i]['DNI'] ?>"><?php echo $NoSocio[$i]['APELLIDO'] . ' ' . $NoSocio[$i]['NOMBRE'] ?></option>
+                      <option class="option" value="<?php echo  $NoSocio[$i]['DNI'] ?>" data-mail=<?php echo  $NoSocio[$i]['MAIL'] ?>><?php echo $NoSocio[$i]['APELLIDO'] . ' ' . $NoSocio[$i]['NOMBRE'] ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -75,6 +86,12 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <div class="form-group">
                   <label class="control-label">DNI</label> <i class="fa " aria-hidden="true"></i>
                   <input class="form-control DNI" placeholder="DNI" disabled>
+
+                </div>
+                <!-- Mail -->
+                <div class="form-group">
+                  <label class="control-label">DNI</label> <i class="fa " aria-hidden="true"></i>
+                  <input class="form-control Mail" placeholder="Mail" disabled>
 
                 </div>
 

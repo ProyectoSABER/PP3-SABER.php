@@ -1,11 +1,12 @@
 <?php
 
-function calcularFechaDevolucion($fechaActual,$dias=7){
-    
-    
-    $fechaFechaDevolucion=date("d-m-y",strtotime($fechaActual."+ $dias days"));
-    
-return $fechaFechaDevolucion;
+function calcularFechaDevolucion($fechaActual, $dias = 7)
+{
+
+
+    $fechaFechaDevolucion = date("d-m-y", strtotime($fechaActual . "+ $dias days"));
+
+    return $fechaFechaDevolucion;
 }
 
 function conocertodosPrestamosActivos($PConeccionBD)
@@ -14,7 +15,7 @@ function conocertodosPrestamosActivos($PConeccionBD)
     $data = array();
 
 
-    $EstadoPrestamo=1;
+    $EstadoPrestamo = 1;
 
 
     $sql = "SELECT `DP`.`id_DetallePrestamoLibro`,   
@@ -68,8 +69,8 @@ function conocertodosPrestamosActivosInstitucionales($PConeccionBD)
     $data = array();
 
 
-    $EstadoPrestamo=1;
-    
+    $EstadoPrestamo = 1;
+
 
 
     $sql = "SELECT `DP`.`id_DetallePrestamoLibro`,   
@@ -112,7 +113,7 @@ and `PL`.`idPrestamoLibro`= `DP`.`id_PrestamoLibro` and `PL`.`id_socio` = `S`.`i
         $Lista[$i]['NOMBRE_SOCIO'] = $data['nombre_Persona'];
         $Lista[$i]['APELLIDO_SOCIO'] = $data['apellido_persona'];
         $Lista[$i]['FECHA_PRESTAMO'] = $data['fechaPrestamo'];
-        $Lista[$i]['FECHA_ADEVOLVER'] =calcularFechaDevolucion($data['fechaPrestamo'],1);
+        $Lista[$i]['FECHA_ADEVOLVER'] = calcularFechaDevolucion($data['fechaPrestamo'], 1);
         $Lista[$i]['FECHA_DEVOLUCION'] = $data['fechaDevolucion'];
         $Lista[$i]['ID_TIPOPRESTAMO'] = $data['id_tipoPrestamo'];
         $Lista[$i]['TIPOPRESTAMO'] = $data['nom_TipoPrestamo'];
@@ -126,11 +127,11 @@ function conocertodosPrestamosActivosPorSocio($PConeccionBD)
     $Lista = array();
     $data = array();
 
-    $DNI=$_SESSION['USUARIO_DNI'];
-    
+    $DNI = $_SESSION['USUARIO_DNI'];
 
-    $EstadoPrestamo=1;
-    
+
+    $EstadoPrestamo = 1;
+
 
 
     $sql = "SELECT `DP`.`id_DetallePrestamoLibro`,   
@@ -172,7 +173,7 @@ and `PL`.`idPrestamoLibro`= `DP`.`id_PrestamoLibro` and `PL`.`id_socio` = `S`.`i
         $Lista[$i]['NOMBRE_SOCIO'] = $data['nombre_Persona'];
         $Lista[$i]['APELLIDO_SOCIO'] = $data['apellido_persona'];
         $Lista[$i]['FECHA_PRESTAMO'] = $data['fechaPrestamo'];
-        $Lista[$i]['FECHA_ADEVOLVER'] =calcularFechaDevolucion($data['fechaPrestamo'],1);
+        $Lista[$i]['FECHA_ADEVOLVER'] = calcularFechaDevolucion($data['fechaPrestamo'], 1);
         $Lista[$i]['FECHA_DEVOLUCION'] = $data['fechaDevolucion'];
         $Lista[$i]['ID_TIPOPRESTAMO'] = $data['id_tipoPrestamo'];
         $Lista[$i]['TIPOPRESTAMO'] = $data['nom_TipoPrestamo'];
@@ -186,11 +187,11 @@ function conocertodosPrestamosSolicitadosPorSocio($PConeccionBD)
     $Lista = array();
     $data = array();
 
-    $DNI=$_SESSION['USUARIO_DNI'];
-    
+    $DNI = $_SESSION['USUARIO_DNI'];
 
-    $EstadoPrestamo=4;
-    
+
+    $EstadoPrestamo = 4;
+
 
 
     $sql = "SELECT `DP`.`id_DetallePrestamoLibro`,   
@@ -232,7 +233,7 @@ and `PL`.`idPrestamoLibro`= `DP`.`id_PrestamoLibro` and `PL`.`id_socio` = `S`.`i
         $Lista[$i]['NOMBRE_SOCIO'] = $data['nombre_Persona'];
         $Lista[$i]['APELLIDO_SOCIO'] = $data['apellido_persona'];
         $Lista[$i]['FECHA_PRESTAMO'] = $data['fechaPrestamo'];
-        $Lista[$i]['FECHA_ADEVOLVER'] =calcularFechaDevolucion($data['fechaPrestamo'],1);
+        $Lista[$i]['FECHA_ADEVOLVER'] = calcularFechaDevolucion($data['fechaPrestamo'], 1);
         $Lista[$i]['FECHA_DEVOLUCION'] = $data['fechaDevolucion'];
         $Lista[$i]['ID_TIPOPRESTAMO'] = $data['id_tipoPrestamo'];
         $Lista[$i]['TIPOPRESTAMO'] = $data['nom_TipoPrestamo'];
@@ -241,7 +242,3 @@ and `PL`.`idPrestamoLibro`= `DP`.`id_PrestamoLibro` and `PL`.`id_socio` = `S`.`i
 
     return $Lista;
 }
-
-
-
-

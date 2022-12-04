@@ -1,12 +1,22 @@
 <?php
-
-require_once('./funciones/prestamos.php');
 $PrestamosActivos=array();
-$PrestamosSolicitados=array();
+$ReservasSolicitadas=array();
+require_once('./funciones/prestamos.php');
 $PrestamosActivos=conocertodosPrestamosActivosPorSocio($MiConexion);
-$PrestamosSolicitados=conocertodosPrestamosSolicitadosPorSocio($MiConexion);
-$cantPrestamosSolicitados=count($PrestamosSolicitados);
 $CantPrestamosActivos=count($PrestamosActivos);
 
+require_once('./funciones/reserva.php');
+$ReservasSolicitadas=conocertodosReservasSolicitadasPorSocio($MiConexion);
+
+$cantReservaSolicitados=count($ReservasSolicitadas);
+
+if(isset($_GET['AnularReserva'])){
+
+    
+    $idDetReserva=$_GET['AnularReserva'];
+    anularReservaIdDetalleReserva($idDetReserva, $MiConexion);
+    Header('Location:index.php');
+        exit;
+}
 
 ?>

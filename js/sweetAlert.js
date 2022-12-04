@@ -14,4 +14,10 @@
 
    }*/
 
-   Swal.fire('Que Bueno Verte otra vez!!')
+   function Saludar(){
+
+	Swal.fire('Que Bueno Verte otra vez!!')
+
+
+   }
+   
