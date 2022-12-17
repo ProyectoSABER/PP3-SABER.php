@@ -9,6 +9,8 @@ $CantPDiarios=count($PDiarios);
 if(!empty($_POST['Devolucion'])){
 
 registrarDevolucion($_POST['Devolucion'],$MiConexion);
+header('Location:index.php');
+exit;
 
 }
 

@@ -27,7 +27,8 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
           <!-- ************************************ -->
           <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
           <!-- ************************************ -->
-          <?php /* echo '<p>' . print_r($IngresoRegistro) . '<p>' */ ?>
+          <?php /* echo '<p>' . print_r($TipoPrestamo) . '<p>'  */?>
+          <?php /* echo '<p>' . print_r($_SESSION['RegistrarPrestamo']) . '<p>' */ ?>
           <!-- ************************************ -->
           <!-- ************************************ -->
 
@@ -132,16 +133,38 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
                     <div class="form-group ml-4">
                       <label class="control-label">Selecciona un Tipo de Prestamo </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
-                      <?php for ($i = 0; $i < $CantTipoPrestamo; $i++) { ?>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="TPrestamo" <?php if ($TipoPrestamo[$i]['ID'] == 1) {
-                                                                                            echo 'checked';
-                                                                                          } ?> value=" <?php echo $TipoPrestamo[$i]['ID'] ?>">
-                            <?php echo $TipoPrestamo[$i]['TipoPrestamo'] ?>
-                          </label>
-                        </div>
-                      <?php } ?>
+                      <?php for ($i = 0; $i < $CantTipoPrestamo; $i++) {
+                        if ($TipoSocio == "Docente") {
+                          if ($TipoPrestamo[$i]['ID'] == 3 || $TipoPrestamo[$i]['ID'] == 5) {
+                            continue;
+                          }
+                          
+
+                      ?>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="radio" name="TPrestamo" <?php if ($TipoPrestamo[$i]['ID'] == 1) {
+                                                                                              echo 'checked';
+                                                                                            } ?> value=" <?php echo $TipoPrestamo[$i]['ID'] ?>">
+                              <?php echo $TipoPrestamo[$i]['TipoPrestamo'] ?>
+                            </label>
+                          </div>
+                        <?php } else {
+                          if ($TipoPrestamo[$i]['ID'] == 2 || $TipoPrestamo[$i]['ID'] == 4) {
+                            continue;
+                          } ?>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="radio" name="TPrestamo" <?php if ($TipoPrestamo[$i]['ID'] == 1) {
+                                                                                              echo 'checked';
+                                                                                            } ?> value=" <?php echo $TipoPrestamo[$i]['ID'] ?>">
+                              <?php echo $TipoPrestamo[$i]['TipoPrestamo'] ?>
+                            </label>
+                          </div>
+
+
+                      <?php }
+                      } ?>
 
 
                     </div>
@@ -169,7 +192,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
 
 
               <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>&nbsp;&nbsp;&nbsp;
-              <button type="reset" class="btn btn-secondary">Reset Button</button>
+              
             </div>
 
 

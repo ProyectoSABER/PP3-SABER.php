@@ -11,7 +11,7 @@ $IDSocio='';
 if(isset($_SESSION['RegistrarPrestamo']['ISBN'])){
 $ISBNlibro = $_SESSION['RegistrarPrestamo']['ISBN'];
 $IDSocio = $_SESSION['RegistrarPrestamo']['IDSocio'];
-
+$TipoSocio=$_SESSION['RegistrarPrestamo']['TipoSocio'];
 }
 $MensajeError = "";
 $MensajeExito = "";
@@ -60,6 +60,7 @@ if (!empty($_POST['RegistrarPrestamo'])) {
         $MensajeError = ' Debe de seleccionar un Ejemplar de libro';
     }
 }
+
 
 /* TPrestamo nombre radio 
 IDEJEMPLARLIBRO nombre ejemplar*/

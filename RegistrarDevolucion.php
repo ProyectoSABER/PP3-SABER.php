@@ -1,6 +1,6 @@
 <?php
 
-require_once './Handler/HandlerListadoLibros.php'
+require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
 
 ?>
 
@@ -28,52 +28,44 @@ require_once './Handler/HandlerListadoLibros.php'
 
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Total de Libros <?php echo $CantLibros ?> </h3>
+          <h3 class="tile-title">Total de Prestamos Activos <?php echo $CantPActivos ?> </h3>
           <div class="table-responsive">
             <table class="table" id="tabla-libros">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>ISBN</th>
+                  <th>ID Institucional</th>
                   <th>Título</th>
-                  <th>SubTitulo</th>
-                  <th>Idioma</th>
-                  <th>N° Edicion</th>
-                  <th>Editorial</th>
-                  <th>Categoria</th>
-                  <th>Fecha Publicacion</th>
-                  <th>Stock</th>
-                  <th>Fecha Ingreso</th>
-                  <th>Proveedor</th>
-                  <th>Ubicacion Estanteria</th>
-                  <th>Responsable carga</th>
+                  <th>Estado</th>
+                  <th>Socio</th>
+                  <th>DNI</th>
+                  <th>Fecha A devolver </th>
+                  <th>Tipo Prestamo</th>
                   <th>Opciones</th>
-
                 </tr>
               </thead>
               <tbody>
-                <?php for ($i = 0; $i < $CantLibros; $i++) { ?>
+
+                <form id="RegistrarDevolucion" method="POST">
+                  <?php for ($i = 0; $i < $CantPActivos; $i++) { ?>
 
 
 
-                  <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
-                    <td><?php echo $i ?></td>
-                    <td><?php echo $libros[$i]['Libro_ISBN'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Titulo'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Subtitulo'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Idioma'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_NEdicion'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Editorial'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_CategoriaLibro'] ?></td>
-                    <td><?php echo convertir_fecha($libros[$i]['Libro_FechaPublicacion']) ?></td>
-                    <td><?php echo $libros[$i]['Libro_Stock'] ?></td>
-                    <td><?php echo convertir_fecha($libros[$i]['Libro_FechaIngreso']) ?></td>
-                    <td><?php echo $libros[$i]['Libro_Proveedor'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_UbicacionEstanteria'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_ResponsableCarga'] ?></td>
-                    <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-search"></i> Detalle</a>&nbsp;&nbsp;</td>
-                  </tr>
-                <?php } ?>
+                    <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
+                      <td><?php echo $i ?></td>
+                      <td><?php echo $PActivos[$i]['ID_LIBRO'] ?></td>
+                      <td><?php echo $PActivos[$i]['ID_INST_EJEMPLAR'] ?></td>
+                      <td><?php echo $PActivos[$i]['TITULO'] ?></td>
+                      <td><?php echo $PActivos[$i]['ESTADO'] ?></td>
+                      <td><?php echo $PActivos[$i]['APELLIDO_SOCIO'] . ' ' . $PActivos[$i]['NOMBRE_SOCIO'] ?></td>
+                      <td><?php echo $PActivos[$i]['DNI'] ?></td>
+                      <td><?php echo $PActivos[$i]['FECHA_ADEVOLVER'] ?></td>
+                      <td><?php echo $PActivos[$i]['TIPOPRESTAMO'] ?></td>
+                      <td><button type="submit" name='Devolucion' value="<?php echo $PActivos[$i]['ID'] ?>" class="btn btn-warning btn-xs">DEVUELTO</button></td>
+                    </tr>
+                  <?php } ?>
+                </form>
 
 
 
@@ -91,8 +83,6 @@ require_once './Handler/HandlerListadoLibros.php'
   <!-- DataTable -->
   <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
   <script>
-    
-
     $(function() {
 
       $('#tabla-libros').DataTable({

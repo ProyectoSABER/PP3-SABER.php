@@ -37,10 +37,12 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
                   <th>ISBN</th>
                   <th>ID Institucional</th>
                   <th>Título</th>
-                  <th>Estado</th>
                   <th>Socio</th>
                   <th>DNI</th>
-                  <th>Fecha devolucion</th>
+                  <th>Estado</th>
+                  <th>Fecha de Prestamo</th>
+                  <th>Fecha A devolver Prestamo</th>                  
+                  <th>Fecha de devolucion</th>
                   <th>Tipo Prestamo</th>
                   <th>Opciones</th>
 
@@ -56,10 +58,13 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
                     <td><?php echo $Prestamos[$i]['ID_LIBRO'] ?></td>
                     <td><?php echo $Prestamos[$i]['ID_INST_EJEMPLAR'] ?></td>
                     <td><?php echo $Prestamos[$i]['TITULO'] ?></td>
-                    <td><?php echo $Prestamos[$i]['ESTADO'] ?></td>
                     <td><?php echo $Prestamos[$i]['APELLIDO_SOCIO'] . ' ' . $Prestamos[$i]['NOMBRE_SOCIO'] ?></td>
                     <td><?php echo $Prestamos[$i]['DNI'] ?></td>
-                    <td><?php echo $Prestamos[$i]['FECHA_DEVOLUCION'] ?></td>
+                    <td><?php echo $Prestamos[$i]['ESTADO'] ?></td>
+                    <td><?php echo $Prestamos[$i]['FECHA_PRESTAMO'] ?></td>
+                    
+                    <td><?php echo $Prestamos[$i]['FECHA_ADEVOLVER']   ?></td>
+                    <td><?php echo $Prestamos[$i]['FECHA_DEVOLUCION']  ?></td>
                     <td><?php echo $Prestamos[$i]['TIPOPRESTAMO'] ?></td>
                     <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-search"></i> Detalle</a>&nbsp;&nbsp;</td>
                   </tr>
