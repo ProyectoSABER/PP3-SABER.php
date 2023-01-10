@@ -102,7 +102,7 @@ require_once './Handler/HandlerLogin.php';
   
   <!-- The javascript plugin to display page loading on top-->
   <script src="js/plugins/pace.min.js"></script>
-  <script src="js/Personalizados/ValidatorNewUser.js"></script>
+  <script src="./js/Personalizados/ValidatorNewUser.js"></script>
   <script type="text/javascript">
     // Login Page Flipbox control
     $('.login-content [data-toggle="flip"]').click(function() {

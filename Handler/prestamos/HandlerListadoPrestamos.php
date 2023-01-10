@@ -10,7 +10,7 @@ require_once('./funciones/prestamos.php');
 $MiConexion = ConexionBD();
 
 $Prestamos=array();
-$Prestamos=conocertodosPrestamosActivos($MiConexion);
+$Prestamos=conocertodosPrestamos($MiConexion);
 $CantPrestamos=count($Prestamos);
 
 

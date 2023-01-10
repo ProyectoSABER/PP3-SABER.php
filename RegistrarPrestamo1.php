@@ -340,7 +340,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro.php'
 
 
           <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>&nbsp;&nbsp;&nbsp;
-          <button type="reset" class="btn btn-secondary">Limpiar Campos </button>
+          
         </div>
 
         </form>

@@ -19,8 +19,8 @@ validationPass.addEventListener("input", (e)=>{
 
 
 });
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-/* form.addEventListener('submit', (e)=>{
+
+form.addEventListener('submit', (e)=>{
     
 
-}) */
+})

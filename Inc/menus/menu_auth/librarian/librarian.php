@@ -38,7 +38,7 @@
                 <td><?php echo $PDiarios[$i]['DNI'] ?></td>
                 <td><?php echo $PDiarios[$i]['FECHA_ADEVOLVER'] ?></td>
                 <td><?php echo $PDiarios[$i]['TIPOPRESTAMO'] ?></td>
-                <td><button type="submit" onclick="location.href=`index.php)" name='Devolucion' value="<?php echo $PDiarios[$i]['ID'] ?>" class="btn btn-warning btn-xs">DEVUELTO</button></td>
+                <td><button type="submit" name='Devolucion' value="<?php echo $PDiarios[$i]['ID'] ?>" class="btn btn-warning btn-xs">DEVUELTO</button></td>
               </tr>
             <?php } ?>
           </form>
