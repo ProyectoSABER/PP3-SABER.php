@@ -70,6 +70,7 @@ $MensajeError = "";
 $MensajeExito = "";
 
 
+
 $NoSocio = array();
 $NoSocio = mostrarTodoPersonaNoSocio($MiConexion);
 $CantNoSocio = count($NoSocio);
@@ -96,9 +97,7 @@ if (!empty($_POST['Registrar'])) {
 
     if ((!empty($_POST['DNI']) && !(strlen($_POST['DNI']) < 8))) {
 
-            //vrificar que el socio no esté cargado
-
-
+            //verificar que el socio no esté cargado            
 
         if (!empty($_POST['IDCategoriaSocio'])) {
 
@@ -135,8 +134,23 @@ if (!empty($_POST['Registrar'])) {
                     }
 
 
+                    $IDSocioInsertado = MostrarUnoSocioDni($_POST['DNI'], $MiConexion);
+                    $MensajeExito = "Registro almacenado! Identificador Unico De SOCIO: " . $IDSocioInsertado['SOCIO_ID'];
+                    $idUsuario = mostrarUsuarioSegunDni($_POST['DNI'], $MiConexion);
+                    $datoUsuario = DatosUsuario($idUsuario["IDUSUARIO"], $MiConexion);
+                    if ($datoUsuario['USUARIO_IDTIPO'] > 3) {
+                        if ($_POST['IDCategoriaSocio'] == 1) {
+                            $tipoUsuario = 3;
+                        } else {
+                            $tipoUsuario = 4;
+                        }
+                        $estado=ActualizarNuevoSocio($idUsuario["IDUSUARIO"], $tipoUsuario, $MiConexion);
+                    }
+
+
                     $MensajeError = "";
                 } else {
+
 
                     $MensajeError = "El Registro no se almaceno!";
                 }

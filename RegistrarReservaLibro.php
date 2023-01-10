@@ -1,6 +1,6 @@
 <?php
-require_once './Handler/reserva/HandlerRegistrarReserva.php';
-
+require_once './Handler/prestamos/HandlerRegistrarPrestamoLibroSocio.php';
+require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
 
 
 if (!empty($_GET['ID_ISBN'])) {
@@ -88,7 +88,7 @@ if (!empty($_GET['ID_ISBN'])) {
             <div class="modal" id="myModal">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <form method="POST" name="finalizaModal" action="Handler/reserva/HandlerRegistrarReserva.php">
+                  <form method="POST" name="finalizaModal" action="Handler/Prestamos/HandlerRegistrarPrestamoLibroSocio.php">
                     <!-- Modal Header -->
                     <div class="modal-header">
                       <h4 class="modal-title">Seleccione el tipo de Prestamo</h4>
