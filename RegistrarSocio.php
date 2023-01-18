@@ -90,7 +90,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 </div>
                 <!-- Mail -->
                 <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa " aria-hidden="true"></i>
+                  <label class="control-label">E-Mail</label> <i class="fa " aria-hidden="true"></i>
                   <input class="form-control Mail" placeholder="Mail" disabled>
 
                 </div>
