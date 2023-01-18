@@ -1,5 +1,5 @@
 <?php
-require_once('Handler/socios/HandlerRegistrarSocio.php');
+require_once('Handler/socios/HandlerRegistrarPersona.php');
 
 ?>
 
@@ -25,7 +25,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
       <div class="col-md-12">
         <div class="tile">
           <h3 class="tile-title">Ingresa los datos solicitados</h3>
-          <?php /* echo '<p>'.print_r($IngresoRegistro) .'<p>' */ ?>
+          
 
 
           <?php if (!empty($MensajeError)) { ?>
@@ -47,10 +47,20 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
+            <!-- ************************************ -->
+            <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
+            <!-- ************************************ -->
+            
+            <?php /* echo '<p>' . print_r($TipoDNI) . '<p>' */  ?>
+            <?php /* echo '<p>' . print_r($_POST['TipoDNI']) . '<p>'  */ ?>
+            
+            <?php /* if(isset($NewUser)){ echo '<p>'.print_r($NewUser) .'<p>'; } else{ echo "nada aqui";} */ ?>
+            <!-- ************************************ -->
+            <!-- ************************************ -->
 
             <!-- Formulario -->
             <form method="POST" class="row ">
@@ -58,16 +68,20 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
               <div class="col-md-6">
                 <!-- DNI -->
 
+
                 <div class="form-group">
-                  <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <input class="form-control" placeholder="DNI" name="DNI" type="number">
+                  <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
+                  <input class="form-control" placeholder="El DNI A INGRESAR DEBE CONTENER 8 CARACTERES COMO MINIMO" name="DNI" type="number" minlength="8" maxlength="10">
                 </div>
+
                 <!-- TIPO DNI -->
+                
                 <div class="form-group">
-                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <select class="form-control" name="Idioma">
-                    <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
-                      <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
+                  <label class="control-label">Tipo DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
+                  <select class="form-control" name="TIPODNI" placeholder="Seleccione un tipo de Dni">
+                  <option selected disabled hidden>Seleccione un tipo de Dni</option>
+                    <?php for ($i = 0; $i < $CantTipoDni; $i++) { ?>
+                      <option value="<?php echo  $TipoDNI[$i]['ID'] ?>"><?php echo $TipoDNI[$i]['TIPO'] ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -75,26 +89,27 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- NOMBRE -->
                 <div class="form-group">
-                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">NOMBRE</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="NOMBRE" name="NOMBRE">
                 </div>
-              
+
 
                 <!-- Apellido -->
                 <div class="form-group">
-                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Apellido</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" placeholder="Apellido" name="Apellido">
                 </div>
-                </div>
+              </div>
               <div class="col-md-6">
 
                 <!-- Domicilio -->
 
                 <div class="form-group">
-                  <label class="control-label">Domicilio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
-                  <select class="form-control" name="Domicilio" placeholder="Domicilio">
-                    <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
-                      <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
+                  <label class="control-label">Domicilio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
+                  <select class="form-control" name="IDDomicilio" placeholder="Domicilio">
+                  <option selected disabled hidden>Seleccione un Domicilio</option>
+                    <?php for ($i = 0; $i < $CantDomicilio; $i++) { ?>
+                      <option value="<?php echo  $Domicilio[$i]['DomicilioID'] ?>"><?php echo $Domicilio[$i]['Domicilio_Completo'] ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -102,18 +117,23 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- Usuario -->
 
                 <div class="form-group">
-                  <label class="control-label">Usuario</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Usuario</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="Usuario" placeholder="Usuario">
-                    <?php for ($i = 0; $i < $CantIdioma; $i++) { ?>
-                      <option value="<?php echo  $Idioma[$i]['Idioma_ID'] ?>"><?php echo $Idioma[$i]['Idioma_Nombre'] ?></option>
-                    <?php } ?>
+                  
+
+                    <?php if ($CantUsuario > 0) { ?> <option selected disabled hidden>Seleccione un usuario sin registrar</option> <?php
+                      for ($i = 0; $i < $CantUsuario; $i++) { ?>
+                        <option value="<?php echo  $Usuario[$i]['IDUSUARIO'] ?>"><?php echo $Usuario[$i]['MAILUSUARIO'] ?></option>
+                    <?php }
+                    }else{ ?> <option selected disabled hidden>No se hallaron Usuarios</option> <?php }
+                  ?>
                   </select>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="control-label">Puedes subir una captura de pantalla</label>
-                  <input class="form-control" type="file" disabled>
-                </div>
+                  <input class="form-control" type="file" enabled>
+                </div> -->
 
                 <div class="tile-footer">
                   <!--Botones-->
@@ -123,7 +143,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                   <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
-                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Reset Button</button></div>
+                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Limpiar Campos</button></div>
               </div>
 
           </div>

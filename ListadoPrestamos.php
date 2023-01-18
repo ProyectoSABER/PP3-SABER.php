@@ -30,17 +30,19 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
         <div class="tile">
           <h3 class="tile-title">Total de Prestamo Activo <?php echo $CantPrestamos ?> </h3>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="tabla-PrestamosActivos">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>ISBN</th>
                   <th>ID Institucional</th>
                   <th>Título</th>
-                  <th>Estado</th>
                   <th>Socio</th>
                   <th>DNI</th>
-                  <th>Fecha devolucion</th>
+                  <th>Estado</th>
+                  <th>Fecha de Prestamo</th>
+                  <th>Fecha A devolver Prestamo</th>                  
+                  <th>Fecha de devolucion</th>
                   <th>Tipo Prestamo</th>
                   <th>Opciones</th>
 
@@ -56,12 +58,15 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
                     <td><?php echo $Prestamos[$i]['ID_LIBRO'] ?></td>
                     <td><?php echo $Prestamos[$i]['ID_INST_EJEMPLAR'] ?></td>
                     <td><?php echo $Prestamos[$i]['TITULO'] ?></td>
-                    <td><?php echo $Prestamos[$i]['ESTADO'] ?></td>
                     <td><?php echo $Prestamos[$i]['APELLIDO_SOCIO'] . ' ' . $Prestamos[$i]['NOMBRE_SOCIO'] ?></td>
                     <td><?php echo $Prestamos[$i]['DNI'] ?></td>
-                    <td><?php echo $Prestamos[$i]['FECHA_DEVOLUCION'] ?></td>
+                    <td><?php echo $Prestamos[$i]['ESTADO'] ?></td>
+                    <td><?php echo $Prestamos[$i]['FECHA_PRESTAMO'] ?></td>
+                    
+                    <td><?php echo $Prestamos[$i]['FECHA_ADEVOLVER']   ?></td>
+                    <td><?php echo $Prestamos[$i]['FECHA_DEVOLUCION']  ?></td>
                     <td><?php echo $Prestamos[$i]['TIPOPRESTAMO'] ?></td>
-                    <td><a href="#">Ver detalles...</a></td>
+                    <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-search"></i> Detalle</a>&nbsp;&nbsp;</td>
                   </tr>
                 <?php } ?>
 
@@ -78,7 +83,69 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
+  <script>
+    
 
+    $(function() {
+
+      $('#tabla-PrestamosActivos').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+
+          "sProcessing": "Procesando...",
+
+          "sLengthMenu": "Mostrar _MENU_ registros",
+
+          "sZeroRecords": "No se encontraron resultados",
+
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+
+          "sInfoPostFix": "",
+
+          "sSearch": "Buscar:",
+
+          "sUrl": "",
+
+          "sInfoThousands": ",",
+
+          "sLoadingRecords": "Cargando...",
+
+          "oPaginate": {
+
+            "sFirst": "Primero",
+
+            "sLast": "Último",
+
+            "sNext": "Siguiente",
+
+            "sPrevious": "Anterior"
+
+          },
+
+          "oAria": {
+
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -47,14 +47,25 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
+              <!-- ************************************ -->
+            <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
+            <!-- ************************************ -->
+            
+            <?php /*  echo '<p>' . print_r($datoUsuario) . '<p>'  */ ?>
+          
+            <?php /* echo '<p>' . print_r($_POST['TipoDNI']) . '<p>'  */ ?>
+            
+            <?php /*  if(isset($idUsuario)){ echo '<p>'.print_r($idUsuario) .'<p>'; } else{ echo "nada aqui";} */ ?>
+            <!-- ************************************ -->
+            <!-- ************************************ -->
 
             <!-- Formulario -->
-            <form method="POST" class="row ">
-
+            <form method="POST"  class="row ">
+            
               <div class="col-md-6">
 
 
@@ -62,12 +73,12 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                 <!-- NOMBRE y Apellido-->
 
                 <div class="form-group">
-                  <label class="control-label">Seleccione un APELLIDO Y NOMBRE</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione un APELLIDO Y NOMBRE</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                   <select class="form-control NombreApellido" name="DNI">
                     <option selected disabled hidden>Seleccione un Apellido y Nombre</option>
                     <?php for ($i = 0; $i < $CantNoSocio; $i++) { ?>
-                      <option value="<?php echo  $NoSocio[$i]['DNI'] ?>"><?php echo $NoSocio[$i]['APELLIDO'] . ' ' . $NoSocio[$i]['NOMBRE'] ?></option>
+                      <option class="option" value="<?php echo  $NoSocio[$i]['DNI'] ?>" data-mail=<?php echo  $NoSocio[$i]['MAIL'] ?>><?php echo $NoSocio[$i]['APELLIDO'] . ' ' . $NoSocio[$i]['NOMBRE'] ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -77,10 +88,16 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
                   <input class="form-control DNI" placeholder="DNI" disabled>
 
                 </div>
+                <!-- Mail -->
+                <div class="form-group">
+                  <label class="control-label">DNI</label> <i class="fa " aria-hidden="true"></i>
+                  <input class="form-control Mail" placeholder="Mail" disabled>
+
+                </div>
 
                 <!-- Categoria Socio -->
                 <div class="form-group">
-                  <label class="control-label">Seleccione una Categoria de Socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione una Categoria de Socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control CatSocio" name="IDCategoriaSocio">
                     <option selected disabled hidden>Seleccione una categoria de Socio</option>
                     <?php for ($i = 0; $i < $CantCatSocio; $i++) { ?>
@@ -91,7 +108,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- CUOTA-->
                 <div class="form-group">
-                  <label class="control-label">CUOTA</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">CUOTA</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control ValorCuota" placeholder="VALOR CUOTA" disabled>
                 </div>
               </div>
@@ -99,7 +116,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                 <!-- Estado Socio -->
                 <div class="form-group">
-                  <label class="control-label">Seleccione un Estado Incial Para el socio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Seleccione un Estado Incial Para el socio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control" name="IDEstadoSocio">
                     <?php for ($i = 0; $i < $CantEstadoSocio; $i++) { ?>
                       <option value="<?php echo  $EstadoSocio[$i]['IDESTADOSOCIO'] ?>"><?php echo $EstadoSocio[$i]['ESTADOSOCIO'] ?></option>
@@ -118,7 +135,7 @@ require_once('Handler/socios/HandlerRegistrarSocio.php');
 
                   <a class="btn btn-warning" href="index.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                 </div>
-                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Reset Button</button></div>
+                <div class="tile-footer"><button type="reset" class="btn btn-secondary">Limpiar Campos</button></div>
               </div>
           </div>
 

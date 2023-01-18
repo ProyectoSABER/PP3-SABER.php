@@ -64,11 +64,19 @@
       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-cash-register"></i><span class="app-menu__label">Pagos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       
       <ul class="treeview-menu">
-      <li><a class="treeview-item" href="RegistrarPago.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Pago</a></li>
+      <li><a class="treeview-item" href="RegistrarCobro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Pago</a></li>
+      <li><a class="treeview-item" href="ListadoCobros.php"><i class="app-menu__icon fa fa-edit"></i>Listado Pagos</a></li>
       </ul>
-
-
-        <!-- /Black -->
+ 
+      <!-- /Estadisticas -->
+      
+      <li><a class="app-menu__item " href="estadisticas.php"><i class="fa fa-bar-chart "></i><span class="app-menu__label">Estadisticas</span></a></li>
+      
+      
+      
+      
+      
+      <!-- /Black -->
         <!-- Black -->
       <!-- <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-dollar-sign"></i><span class="app-menu__label">Black</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
@@ -85,7 +93,7 @@
       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
 
-          <li><a class="treeview-item" href="RegistrarReservaLibro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Prestamo</a></li>
+          <li><a class="treeview-item" href="RegistrarReservaLibro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Reserva</a></li>
 
         </ul>
       </li>

@@ -71,7 +71,7 @@ function RegistrarLogout($PidUsuario,$Pdate,$PConeccionBD){
 function RegistrarNewUser($PUsername,$PClave,$PConeccionBD){ 
     
         
-        $sql ="INSERT INTO `usuario`(`mail_Usuario`, `clave_Usuario`, `idTipo_Usuario`, `metodoCifrado_Usuario`) VALUES ('$PUsername',MD5('$PClave'),'4','md5')";
+        $sql ="INSERT INTO `usuario`(`mail_Usuario`, `clave_Usuario`, `idTipo_Usuario`, `metodoCifrado_Usuario`) VALUES ('$PUsername',MD5('$PClave'),'5','md5')";
         
         $estadoRegistro=mysqli_query($PConeccionBD,$sql);
    

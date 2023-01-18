@@ -45,7 +45,7 @@ require_once './Handler/HandlerRegistrarEjemplarLibro.php'
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -58,7 +58,7 @@ require_once './Handler/HandlerRegistrarEjemplarLibro.php'
                 <!-- Nombre Libro -->
 
                 <div class="form-group">
-                  <label class="control-label">Título Libro</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Título Libro</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <select class="form-control titulo_libro"  placeholder="Titulo" name="ISBN" onchange="">
                     <option disabled hidden selected>Titulo Libro</option>
                     
@@ -79,7 +79,7 @@ require_once './Handler/HandlerRegistrarEjemplarLibro.php'
                 <!-- Numero de Ejemplar -->
 
                 <div class="form-group">
-                  <label class="control-label">Codigo Ejemplar Institucional</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                  <label class="control-label">Codigo Ejemplar Institucional</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                   <input class="form-control" name="NEjemplar" placeholder="Codigo Ejemplar Institucional">
                 </div>
 

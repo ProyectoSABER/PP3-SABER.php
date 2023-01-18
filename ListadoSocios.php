@@ -62,9 +62,8 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                     <td><?php echo $Socio[$i]['SOCIO_CUOTA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ESTADOSOCIO'] ?></td>
                     <td><?php echo convertir_fecha($Socio[$i]['SOCIO_FECHAALTA']) ?></td>
-                    <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Detalle</a>
-                      <a href="./EditarSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Editar</a>
-                      <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Eliminar</i></a>
+                    <td><a  class="btn btn-md btn-info" href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>"><i class="fa fa-search"></i> Detalle</a>&nbsp;&nbsp;
+                      
                     </td>
                   </tr>
                 <?php } ?>
@@ -95,10 +94,63 @@ require_once './Handler/socios/HandlerListadoSocios.php'
 
     function getData() {
       $('#tabla-Socios').DataTable({
-    scrollY: 250
-});
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        "language": {
+
+          "sProcessing": "Procesando...",
+
+          "sLengthMenu": "Mostrar _MENU_ registros",
+
+          "sZeroRecords": "No se encontraron resultados",
+
+          "sEmptyTable": "Ningún dato disponible en esta tabla",
+
+          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+
+          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+
+          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+
+          "sInfoPostFix": "",
+
+          "sSearch": "Buscar:",
+
+          "sUrl": "",
+
+          "sInfoThousands": ",",
+
+          "sLoadingRecords": "Cargando...",
+
+          "oPaginate": {
+
+            "sFirst": "Primero",
+
+            "sLast": "Último",
+
+            "sNext": "Siguiente",
+
+            "sPrevious": "Anterior"
+
+          },
+
+          "oAria": {
+
+            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+
+          }
+        }
+      });
     }
   </script>
+  
 
 </body>
 

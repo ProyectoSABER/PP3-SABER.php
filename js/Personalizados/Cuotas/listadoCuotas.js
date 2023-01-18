@@ -1,9 +1,13 @@
+
+
 $(document).ready(async function () {
   cargarTabla();
+  init();
   await $(".cuota-delete").click(function (e) {
     e.preventDefault();
     console.log("En el blanco", e.target);
   });
+
 });
 
 function cerrarModal(idModal) {
@@ -86,6 +90,8 @@ function cargarTabla() {
           })" >Eliminar</button></td></tr>`;
         });
         $("#tabla-Socios").find("tbody").html(row);
+        
+
       }
     },
   });

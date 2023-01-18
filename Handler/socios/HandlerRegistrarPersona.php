@@ -18,124 +18,68 @@ $Domicilio=conocerTodosDomicilioCompleto($MiConexion);
 $CantDomicilio=count($Domicilio);
 
 
+$Usuario=array();
+$Usuario=buscarUsuarioSinpersonas($MiConexion);
+$CantUsuario=count($Usuario);
+
+
 
 
 $MensajeError = "";
 $MensajeExito = "";
 
-
-
-
-
-
-
 if (!empty($_POST['Registrar'])) {
 
     if ((!empty($_POST['DNI']) && !(strlen($_POST['DNI']) < 8))) {
-        $VerificarExistencia = conocerUnLibro($_POST['ISBN'], $MiConexion);
-        if ($VerificarExistencia) {
+       
+        if (!empty($_POST['TIPODNI'])) {
+
+            if (!empty($_POST['NOMBRE'])) {
+
+                if (!empty($_POST['Apellido'])) {
+
+                    if (!empty($_POST['IDDomicilio'])) {
+
+                        if (!empty($_POST['Usuario'])) {
+                            
+                            $NewUser = array();
+                $NewUser['DNIPersona'] = $_POST['DNI'];
+                $NewUser['TipoDNI'] = $_POST['TIPODNI'];
+                $NewUser['Nombre'] = $_POST['NOMBRE'];
+                $NewUser['Apellido'] = $_POST['Apellido'];
+                $NewUser['IdDomicilio'] = $_POST['IDDomicilio'];
+                $NewUser['USUARIO_ID'] = $_POST['Usuario'];
+                $rsp = insertarUnaPersonaArray($NewUser, $MiConexion);
 
 
+            if ($rsp) {
+                $MensajeExito = "LA Persona ".$_POST['Apellido']." ". $_POST['NOMBRE']." se guardo correctamente"; 
+                
+            }
 
-
-            if (!empty($_POST['Titulo'])) {
-
-                if (!empty($_POST['Idioma'])) {
-
-                    if (!empty($_POST['NEdicion'])) {
-
-                        if (!empty($_POST['Editorial'])) {
-
-                            if (!empty($_POST['CategoriaLibro'])) {
-
-
-                                if (!empty($_POST['FechaPublicacion'])) {
-
-
-                                    if (!empty($_POST['CantEjemplar'])) {
-
-                                        if (!empty($_POST['ProveedorLibro'])) {
-
-                                            if (!empty($_POST['UbicacionEstanteria'])) {
-
-
-
-
-                                            insertarUnaPersona($DNIPersona,$TipoDNI,$Nombre,$Apellido,$IdDomicilio,$IdUsuario,$FotoSocio, $PConeccionBD);
-
-                                                $estadoRegistro = RegistrarLibro(
-                                                    $_POST['ISBN'],
-                                                    $_POST['Titulo'],
-                                                    $_POST['SubTitulo'],
-                                                    $_POST['Idioma'],
-                                                    $_POST['NEdicion'],
-                                                    $_POST['Editorial'],
-                                                    $_POST['CategoriaLibro'],
-                                                    $_POST['FechaPublicacion'],
-                                                    $_POST['CantEjemplar'],
-                                                    $_POST['ProveedorLibro'],
-                                                    $_POST['UbicacionEstanteria'],
-                                                    $Bibliotecario['Bibliotecario_ID'],
-                                                    $MiConexion
-                                                );
-
-
-
-
-                                                if ($estadoRegistro != false) {
-
-                                                    $MensajeExito = "Registro almacenado!";
-                                                    $MensajeError = "";
-                                                } else {
-                                                    if ($MensajeError) {
-                                                        $MensajeError = "El Registro no se almaceno!" . $MensajeError;
-                                                        return;
-                                                    }
-                                                    $MensajeError = "El Registro no se almaceno!";
-                                                }
-                                            } else {
-
-                                                $MensajeError = "Debes de ingresar una ubicacion de estanteria";
-                                            }
-                                        } else {
-
-                                            $MensajeError = "Debes de seleccionar un proveedor";
-                                        }
-                                    } else {
-
-                                        $MensajeError = "Debes de ingresar una cantidad de ejemplares";
-                                    }
-                                } else {
-
-                                    $MensajeError = "Debes de ingresar una fecha";
-                                }
-                            } else {
-
-                                $MensajeError = "Debes de ingresar un Categoria de libro";
-                            }
                         } else {
 
-                            $MensajeError = "Debes de ingresar una Editorial";
+                            $MensajeError = "Debes de seleccionar un usuario sin registro o debera de crear un usuario nuevo";
                         }
                     } else {
 
-                        $MensajeError = "Debes de ingresar un Numero de Edicion";
+                        $MensajeError = "Debes de seleccionar un Domicilio";
                     }
                 } else {
 
-                    $MensajeError = "Debes de ingresar un Idioma";
+                    $MensajeError = "Debes de ingresar un Apellido";
                 }
             } else {
 
-                $MensajeError = "Debes de ingresar un titulo";
+                $MensajeError = "Debes de ingresar un Nombre";
             }
         } else {
 
-            $MensajeError = 'ISBN existente';
+            $MensajeError = 'Debe de Selecionar un tipo de Dni';
         }
     } else {
 
-        $MensajeError = "Debes de ingresar un ISBN mayor a 12";
+        $MensajeError = "Debes de ingresar un DNI igual o mayor a 8 carácteres";
     }
 
 }

@@ -89,7 +89,7 @@ require_once('./Inc/menus/head.inc.php');
 
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <div class="tile-body">
@@ -97,17 +97,17 @@ require_once('./Inc/menus/head.inc.php');
             <form method="POST">
               <!-- Titulo -->
               <div class="form-group">
-                <label class="control-label">Título</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">Título</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <input class="form-control" name="Titulo">
               </div>
               <!-- Descripcion -->
               <div class="form-group">
-                <label class="control-label">Descripción del problema <i class="fa fa-asterisk" aria-hidden="true"></i></label>
+                <label class="control-label">Descripción del problema <i class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
                 <textarea class="form-control" rows="4" placeholder="Ingresa los detalles..." name="Descripcion"></textarea>
               </div>
               <!-- Radio Button Prioridades -->
               <div class="form-group">
-                <label class="control-label">Prioridad</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">Prioridad</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <div class="form-check">
 
                   <label class="form-check-label">

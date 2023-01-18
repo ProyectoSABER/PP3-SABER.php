@@ -1,6 +1,4 @@
 <?php 
-
-
 require_once('./Inc/session.inc.php');
 
 require_once 'funciones/conexion.php';
@@ -22,25 +20,16 @@ $Bibliotecario=false;
 
 if($_SESSION['USUARIO_IDTIPOUSUARIO']==1){
 $Admin=true;
+require_once 'Handler\Index\HandlerIndexFuncionesAdmin.php';
 }
 if($_SESSION['USUARIO_IDTIPOUSUARIO']==2){
 $Bibliotecario=true;
+require_once 'Handler\Index\HandlerIndexFuncioneslibrarian.php';
+}else{
+
+  require_once 'Handler\Index\HandlerIndexFuncionesPartners.php';
 }
 
-if ($Admin){ 
-
-  require_once 'Handler\Index\HandlerIndexFuncionesAdmin.php';
-  
-}else if($Bibliotecario) { 
-  
-  
-  require_once 'Handler\Index\HandlerIndexFuncioneslibrarian.php';
-  
-  
-}else{
-  
-  require_once 'Handler\Index\HandlerIndexFuncionesPartners.php';
-  }
 
 
 

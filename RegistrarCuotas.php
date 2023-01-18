@@ -46,7 +46,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
           <!-- Mensaje de campo obligatorios -->
           <div class="bs-component">
             <div class="alert alert-dismissible alert-info">
-              <strong>Los campos con <i class="fa fa-asterisk" aria-hidden="true"></i> son obligatorios</strong>
+              <strong>Los campos con <i class="fa fa-asterisk text-danger" aria-hidden="true"></i> son obligatorios</strong>
             </div>
           </div>
           <!-- Body -->
@@ -61,7 +61,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                   <!--Input Mes -->
 
                   <div class="form-group">
-                    <label class="control-label">Seleccione un Mes para la cuota</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Seleccione un Mes para la cuota</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input id="InputMes" class="form-control " type="month" name="Mes" min="<?php echo $año = date("Y-m"); ?>" required>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
                   <!-- Input Fecha de Vencimiento -->
 
                   <div class="form-group FVencimiento">
-                    <label class="control-label">Seleccione la fecha de vencimiento </label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                    <label class="control-label">Seleccione la fecha de vencimiento </label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                     <input id="FVencimiento" class="form-control" type="date" name="FVencimiento" min="" max="">
                   </div>
                 </div>
@@ -81,7 +81,7 @@ require_once './Handler/cuotas/HandlerRegistrarCuota.php'
 
                   <div class="Categoria_Socios ">
                     <div class="form-group ">
-                      <label class="control-label">Seleccione las categorias de Socios a insertar</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                      <label class="control-label">Seleccione las categorias de Socios a insertar</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
 
                       <div class="row">
                         <?php foreach ($catSocios as $Valor) { ?>

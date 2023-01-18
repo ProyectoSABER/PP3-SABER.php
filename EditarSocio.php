@@ -29,65 +29,82 @@ require_once './Handler/socios/HandlerEditarSocio.php'
       <div class="col-md-12">
         <div class="tile">
           <h3 class="tile-title"> ID Socio <?php echo $Socio["SOCIO_ID"] ?> </h3>
+          <!-- ************************************ -->
+            <!-- *****IMPRIMIR ARRAY EN PANTALA****** -->
+            <!-- ************************************ -->
+            
+            <?php  /* echo '<p>' . print_r($Socio) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($dni) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($PERSONA) . '<p>' */  ?>
+            <?php  /* echo '<p>' . print_r($Contacto) . '<p>' */  ?>
+          
+            <?php /* echo '<p>' . print_r($_POST['TipoDNI']) . '<p>'  */ ?>
+            
+            <?php /*  if(isset($idUsuario)){ echo '<p>'.print_r($idUsuario) .'<p>'; } else{ echo "nada aqui";} */ ?>
+            <!-- ************************************ -->
+            <!-- ************************************ -->
+
           <form action="" method="post">
 
             <!-- DNI -->
             <div class="form-group">
-              <label class="control-label">DNI</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">DNI</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_DNI'] ?>" name="DNI" type="number">
             </div>
             <!-- Nombre -->
             <div class="form-group">
-              <label class="control-label">Nombre</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Nombre</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_NOMBRE'] ?>" name="Nombre" type="txt">
             </div>
             <!-- Apellido -->
             <div class="form-group">
-              <label class="control-label">Apellido</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Apellido</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_APELLIDO'] ?>" name="Apellido" type="txt">
             </div>
             <!-- Categoria -->
             <div class="form-group">
-              <label class="control-label">Categoria</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Categoria</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $Socio['SOCIO_CATEGORIA'] ?>" name="Categoria" type="txt">
             </div>
             <!-- Calle -->
             <div class="form-group">
-              <label class="control-label">Calle</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Calle</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['CALLE'] ?>" name="Calle" type="txt">
             </div>
             <!-- AlturaCalle -->
             <div class="form-group">
-              <label class="control-label">AlturaCalle</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">AlturaCalle</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['ALTURACALLE'] ?>" name="AlturaCalle" type="txt">
             </div>
             <!-- Barrio -->
             <div class="form-group">
-              <label class="control-label">Barrio</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Barrio</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['BARRIO'] ?>" name="Barrio" type="txt">
             </div>
             <!-- Localidad -->
             <div class="form-group">
-              <label class="control-label">Localidad</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Localidad</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['LOCALIDAD'] ?>" name="Localidad" type="txt">
             </div>
             <!-- Provincia -->
             <div class="form-group">
-              <label class="control-label">Provincia</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+              <label class="control-label">Provincia</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
               <input class="form-control" placeholder="<?php echo $PERSONA['PROVINCIA'] ?>" name="Provincia" type="txt">
             </div>
             <?php for ($i = 0; $i < $CantContacto; $i++) { ?>
               <!-- TipoContacto -->
               <div class="form-group">
-                <label class="control-label">TipoContacto</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">TipoContacto</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <input class="form-control" placeholder="<?php echo $Contacto[$i]['TIPOCONTACTO'] ?>" name="TipoContacto" type="txt">
               </div>
               <!-- Contacto -->
               <div class="form-group">
-                <label class="control-label">Contacto</label> <i class="fa fa-asterisk" aria-hidden="true"></i>
+                <label class="control-label">Contacto</label> <i class="fa fa-asterisk text-danger" aria-hidden="true"></i>
                 <input class="form-control" placeholder="<?php echo $Contacto[$i]['CONTACTO'] ?>" name="Contacto" type="txt">
               </div>
             <?php } ?>
+            <button id="btn_registrar" class="btn btn-primary" type="button" name="Registrar" value="Registrar"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;
+          </form>
         </div>
 
 
