@@ -1,7 +1,7 @@
 <?php
 
 
-/*
+
 //Conexion Martin
  function ConexionBD(
     $Host = 'localhost:33065',
@@ -18,7 +18,7 @@
     else
         die('No se pudo establecer la conexión.');
 }
- */
+/*
 //Conexion Adrian
 function ConexionBD(
     $Host = 'localhost',
@@ -34,6 +34,6 @@ function ConexionBD(
         return $LinkConexion;
     else
         die('No se pudo establecer la conexión.');
-}
-
+} 
+*/
 ?>
