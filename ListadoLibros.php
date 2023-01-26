@@ -13,9 +13,9 @@ require_once './Handler/libros/HandlerListadoLibros.php'
   <main class="app-content">
     <div class="app-title">
       <div>
-      <h1><i class="fa fa-th-list"></i> Listados</h1>
-       
-        <p>Listado de Libros</p>
+        <h1><i class="fa fa-th-list"></i> Listados</h1>
+
+        <p id="title">Listado de Libros</p>
 
       </div>
       <ul class="app-breadcrumb breadcrumb">
@@ -28,7 +28,7 @@ require_once './Handler/libros/HandlerListadoLibros.php'
 
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Total de Libros <?php echo $CantLibros?> </h3>
+          <h3 class="tile-title">Total de Libros <?php echo $CantLibros ?> </h3>
           <div class="table-responsive">
             <!-- Table -->
             <table class="table" id="Listado-Libros">
@@ -48,46 +48,46 @@ require_once './Handler/libros/HandlerListadoLibros.php'
                   <th>Proveedor</th>
                   <th>Ubicacion Estanteria</th>
                   <th>Responsable carga</th>
-                  <th>Opciones</th>
-                  
+                  <th class="no-print">Opciones</th>
+
                 </tr>
               </thead>
               <tbody>
                 <!-- Form -->
                 <form action="./ListadoEjemplaresLibros.php" method="GET">
-                <?php for ($i = 0; $i < $CantLibros; $i++) { ?>
+                  <?php for ($i = 0; $i < $CantLibros; $i++) { ?>
 
-                    
-                
-                  <tr class=<?php echo ($i%2==0)?  'table-info' : '';?>>
-                    <td><?php echo $i ?></td>
-                    <td><?php echo $libros[$i]['Libro_ISBN'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Titulo'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Subtitulo'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Idioma'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_NEdicion'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_Editorial'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_CategoriaLibro'] ?></td>
-                    <td><?php echo convertir_fecha( $libros[$i]['Libro_FechaPublicacion']) ?></td>
-                    <td><?php echo $libros[$i]['Libro_Stock'] ?></td>
-                    <td><?php echo convertir_fecha( $libros[$i]['Libro_FechaIngreso']) ?></td>
-                    <td><?php echo $libros[$i]['Libro_Proveedor'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_UbicacionEstanteria'] ?></td>
-                    <td><?php echo $libros[$i]['Libro_ResponsableCarga'] ?></td>
-                    <td>
-                    <a class="btn btn-sm btn-info" href="./ListadoEjemplaresLibros.php?Registrar=<?php echo $libros[$i]['Libro_ISBN'] ?>"><i class="fa fa-search"></i> Ver ejemplares</a>&nbsp;&nbsp;
-                      
-                    </td>
-                  </tr>
-                <?php } ?>
+
+
+                    <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
+                      <td><?php echo $i ?></td>
+                      <td><?php echo $libros[$i]['Libro_ISBN'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_Titulo'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_Subtitulo'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_Idioma'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_NEdicion'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_Editorial'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_CategoriaLibro'] ?></td>
+                      <td><?php echo convertir_fecha($libros[$i]['Libro_FechaPublicacion']) ?></td>
+                      <td><?php echo $libros[$i]['Libro_Stock'] ?></td>
+                      <td><?php echo convertir_fecha($libros[$i]['Libro_FechaIngreso']) ?></td>
+                      <td><?php echo $libros[$i]['Libro_Proveedor'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_UbicacionEstanteria'] ?></td>
+                      <td><?php echo $libros[$i]['Libro_ResponsableCarga'] ?></td>
+                      <td >
+                        <a class="btn btn-sm btn-info" href="./ListadoEjemplaresLibros.php?Registrar=<?php echo $libros[$i]['Libro_ISBN'] ?>"><i class="fa fa-search"></i> Ver ejemplares</a>&nbsp;&nbsp;
+
+                      </td>
+                    </tr>
+                  <?php } ?>
 
 
 
               </tbody>
             </table>
             <!-- /Table -->
-          </form>
-          <!-- /Form -->
+            </form>
+            <!-- /Form -->
           </div>
         </div>
       </div>
@@ -98,68 +98,10 @@ require_once './Handler/libros/HandlerListadoLibros.php'
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
   <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
-  <script>
-    
+  
+  <!-- Essential javascripts for application to Export pdf-->
+  <?php require_once('./Inc/js/jsTableToExport.inc.php'); ?>
 
-    $(function() {
-
-      $('#Listado-Libros').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        "language": {
-
-          "sProcessing": "Procesando...",
-
-          "sLengthMenu": "Mostrar _MENU_ registros",
-
-          "sZeroRecords": "No se encontraron resultados",
-
-          "sEmptyTable": "Ningún dato disponible en esta tabla",
-
-          "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-
-          "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-
-          "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
-
-          "sInfoPostFix": "",
-
-          "sSearch": "Buscar:",
-
-          "sUrl": "",
-
-          "sInfoThousands": ",",
-
-          "sLoadingRecords": "Cargando...",
-
-          "oPaginate": {
-
-            "sFirst": "Primero",
-
-            "sLast": "Último",
-
-            "sNext": "Siguiente",
-
-            "sPrevious": "Anterior"
-
-          },
-
-          "oAria": {
-
-            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-
-          }
-        }
-      });
-    });
-  </script>
 
 </body>
 

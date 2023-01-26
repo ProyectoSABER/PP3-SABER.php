@@ -13,7 +13,7 @@
   <link href="assets/css/bootstrap.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="css/assets/metisMenu.min.css" rel="stylesheet">
+  <link href="assets/css/metisMenu.min.css" rel="stylesheet">
   
   <!-- Main CSS-->
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
