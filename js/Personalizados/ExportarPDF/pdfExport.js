@@ -130,7 +130,8 @@ $( function () {
           doc.footer = function (currentPage, pageCount) {
             return {
               columns: [
-                {
+                {text:'S.A.B.Er Sistema para la Administración de Bibliotecas Escolares',
+                margin: [50, 0]
                 },
                 {
                   text: "Página "+currentPage.toString() + " de " + pageCount,
