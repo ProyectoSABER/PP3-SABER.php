@@ -86,48 +86,52 @@
       </div>
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
+<form name="registroUsuarioModal" action="registroUsuarioModal.php" method="POST"> 
 
-
-        <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com">
   <label for="floatingInput">Nombre</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputApellidoModal" name="inputApellidoModal" placeholder="name@example.com">
   <label for="floatingInput">Apellido</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" placeholder="name@example.com">
   <label for="floatingInput">Documento</label>
 </div>
 <div class="form-floating mb-3" >
-  <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="mail@ejemplo.com">
+  <input type="email" class="form-control" id="inputEmailModal" name="inputEmailModal"  placeholder="name@example.com" value="mail@ejemplo.com">
   <label for="floatingInputValue">Email</label>
 </div>
 <div class="form-floating">
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal" placeholder="Password">
   <label for="floatingPassword">Password</label>
 </div>
 <br>
 <div class="form-floating">
-  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+<label for="tipousuario">Tipo de Usuario</label>
+  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Floating label select example">
+    <!-- Buscar info y mostrar oopciones segun BD -->
     <option selected>Seleccione una opción</option>
     <option value="1">1-Administrador</option>
     <option value="2">2-Bibliotecario</option>
     <option value="3">3-Docente</option>
-    <option value="3">4-Socio</option>
-    <option value="3">5-Visitante</option>
+    <option value="4">4-Socio</option>
+    <option value="5">5-Visitante</option>
   </select>
-  <label for="floatingSelect">Tipo de Usuario</label>
+ 
 </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
+</form>
 </div>
 
 <div class="col-md-12">
