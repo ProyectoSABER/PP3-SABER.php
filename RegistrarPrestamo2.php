@@ -210,6 +210,7 @@ require_once './Handler/prestamos/HandlerRegistrarPrestamoLibro2.php';
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <script src="js/Personalizados/ExportarPDF/pdfExport_comprobantePrestamo.js"></script>
 
 </body>
 
