@@ -136,7 +136,7 @@
 
 <div class="col-md-12">
   <div class="tile">
-    <h3 class="tile-title">Usauarios Registrados  </h3>
+    <h3 class="tile-title">Usuarios Registrados  </h3>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -161,6 +161,7 @@
           
             <tr class=<?php echo ($i%2==0)?  'table-info' : '';?>>
               <td><?php echo $i ?></td>
+              
               <td><?php echo $Usuarios[$i]['DNI'] ?></td>
               <td><?php echo $Usuarios[$i]['IDUSUARIO'] ?></td>
               <td><?php echo $Usuarios[$i]['MAIL'] ?></td>
@@ -168,7 +169,13 @@
               <td><?php echo $Usuarios[$i]['APELLIDO'] ?></td>
               <td><?php echo $Usuarios[$i]['ESTADO'] ?></td>
               <td><?php echo convertir_fecha($Usuarios[$i]['FECALTA']) ?></td>
-              <td><!-- Example split danger button -->
+              
+              
+              <!-- UTILIZAMOS ID USUARIO PARA PODER HABILITAR/DESHABILITAR -->
+              <?php $usuID = $Usuarios[$i]['IDUSUARIO']; ?>
+
+                    
+              <td><!-- BOTON DE OPCIONES -->
 
               <div class="btn-group">
                 <button type="button" class="btn btn-primary">Action</button>
@@ -177,8 +184,15 @@
                 </button>
               <ul class="dropdown-menu">
                 
-                <li><a class="dropdown-item" href="#">Eliminar <i class="fa fa-trash-o fa-fw"></i></a></li>
-                <li><a class="dropdown-item" href="#">Limitar Acceso <i class="fa fa-ban fa-fw"></i></a></li>
+                
+                 
+              
+
+                 <li><button type="button" class="dropdown-item" onClick="deshabilitarUsuario('<?php echo $usuID;?>');" Deshabilitar ><a class="dropdown-item" href="#"> Limitar <i class="fa fa-power-off" aria-hidden="true"></i></a></button></li>
+                    
+                 <li><button type="button" class="dropdown-item" onClick="habilitarUsuario('<?php echo $usuID;?>');" Habilitar ><a class="dropdown-item" href="#">Habilitar<i class="fa fa-power-off" aria-hidden="true"></i></a></button></li>
+
+                <!--<li><a class="dropdown-item" href="#">Limitar Acceso <i class="fa fa-ban fa-fw"></i></a></li>-->
                 <li><a class="dropdown-item" href="#">Modificar<i class="fa fa-pencil fa-fw"></i></a></li>
                 
               </ul>
@@ -200,4 +214,48 @@
 
 </div>
 
+<script> 
+function deshabilitarUsuario(data) {
+  Swal.fire({
+  title: 'Esta seguro que desea dehabilitar el usuario?',
+  showDenyButton: true,
+ 
+  confirmButtonText: 'Si, confirmar',
+  denyButtonText: `No, Cancelar`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    window.location='UsuarioModalLimitar.php?usuID='+data;
+    Swal.fire('Usuario deshabilitado!', '', 'success')
+  } else if (result.isDenied) {
+    Swal.fire('Cancelo los cambios', '', 'info')
+  }
+})}
+function habilitarUsuario(data) {
+  Swal.fire({
+  title: 'Esta seguro que desea habilitar el usuario?',
+  showDenyButton: true,
+ 
+  confirmButtonText: 'Si, confirmar',
+  denyButtonText: `No, Cancelar`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    Swal.fire('Usuario Habilitado!', '', 'success')
+    window.location='UsuarioModalHabilitar.php?usuID='+data;
+  } else if (result.isDenied) {
+    Swal.fire('Cancelo los cambios', '', 'info')
+  }
+})}
+/*
+  console.log(data);
+  let text = "Press a button!\nEither OK or Cancel.";
+  if (confirm(text) == true) {
+window.location='UsuarioModalLimitar.php?usuID='+data;
+   
+  }
 
+}*/
+
+
+</script>
