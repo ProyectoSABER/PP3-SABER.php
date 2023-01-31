@@ -1,6 +1,14 @@
     .app-content {
       margin-left: auto !important;
     }
-
+    
+    @media print {
+      @page {
+        margin-left: 0.8in;
+        margin-right: 0.8in;
+        margin-top: 200;
+        margin-bottom: 0;
+      }
+   }
   
   

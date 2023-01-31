@@ -1,8 +1,4 @@
-<?php
-ob_start();
 
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -15,16 +11,16 @@ ob_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap Core CSS -->
-  <link href="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 
   <!-- MetisMenu CSS -->
-  <link href="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
+  <link href="../../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
   
   <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/main.css">
   
-  <link rel="stylesheet" type="text/css" href="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/assets/css/myStyleComprobantePago.css">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/myStyleComprobantePago.css">
  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 
@@ -147,15 +143,17 @@ ob_start();
 
   </main>
   <!-- Essential javascripts for application to work-->
-  <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/js/jquery-3.6.1.min.js"></script>
-  <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/js/popper.min.js"></script>
+  <script src="../../js/jquery-3.6.1.min.js"></script>
+  <script src="../../js/popper.min.js"></script>
   <!-- Bootstrap Core JavaScript -->
-  <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/js/main.js"></script>
-  <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/js/bootstrap.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
 
   <!-- FontAwesome -->
-  <script src="http://<?php echo $_SERVER['HTTP_HOST']?>/proyectos/S.A.B.E.R/js/fontawesonKit.js"></script>
-
+  <script src="../../js/fontawesonKit.js"></script>
+  <script>
+  window.addEventListener("load", window.print());
+</script>
 
 
 
@@ -163,36 +161,3 @@ ob_start();
 </body>
 
 </html>
-<?php
-$html=ob_get_clean();
-
-echo $html;
-
-require_once '../../assets/plugins/dompdf/autoload.inc.php';
-use Dompdf\Dompdf;
-$dompdf= new Dompdf();
-
-/* $dompdf->setBasePath($_SERVER['HTTP_HOST'].'proyectos/S.A.B.E.R/'); */
-
-//para obtener imagenes
-$options= $dompdf->getOptions();
-$options->set(array('isRemoteEnabled'=>true));
-$dompdf->setOptions($options);
-
-//cargamos el pdf
-$dompdf->loadHtml($html);
-//Modificamos el papel
-$dompdf->setPaper('A4','landscape');
-/* $dompdf->setPaper('letter', 'landscape); */ //apaisado y en hoja carta
-
-//dibujamos el pdf
-$dompdf->render();
-
-//configuramos la vista o descarga
-$dompdf->stream("ComprobanteDePago_.pdf", array("Attachment"=>false)) //configuramos el nombre y que no se descargue automaticamente
-
-
-
-
-
-?>
