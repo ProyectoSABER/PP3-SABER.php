@@ -221,3 +221,22 @@ function mostrarUsuarioSegunDni($DNIPersona, $PConeccionBD)
 
     return $Usuario;
 }
+
+function modificarUnaPersonaDNI($DNIPersona,$Nombre,$Apellido,$PConeccionBD){
+    $SQL="UPDATE `persona` SET `nombre_Persona`='$Nombre',`apellido_persona`='$Apellido'WHERE `dni_Persona`='$DNIPersona'";
+    $consulta = mysqli_query($PConeccionBD, $SQL);
+    
+    return $consulta;
+}
+
+function modificarImagenIdUsuario($idUsuario,$rutaImagen,$PConeccionBD){
+    $SQL=" UPDATE `persona` SET `foto_socio`='$rutaImagen' WHERE `id_usuario`= '$idUsuario' ";
+    $update=mysqli_query($PConeccionBD,$SQL);
+    return $update;
+}
+
+function modificarImagenDniPersona($dniUsuario,$rutaImagen,$PConeccionBD){
+    $SQL=" UPDATE `persona` SET `foto_socio`='$rutaImagen' WHERE `dni_Persona`= '$dniUsuario' ";
+    $update=mysqli_query($PConeccionBD,$SQL);
+    return $update;
+}

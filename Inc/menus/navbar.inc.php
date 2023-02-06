@@ -58,7 +58,7 @@
       <li class="dropdown"><a class="app-nav__item " href="#" data-bs-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
         <ul class="dropdown-menu settings-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> configuracion</a></li>
-          <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> perfil</a></li>
+          <li><a class="dropdown-item" href="miPerfil.php"><i class="fa fa-user fa-lg"></i> perfil</a></li>
           <li><a class="dropdown-item" href="cerrarSesion.php"><i class="fa fa-sign-out fa-lg"></i> salir</a></li>
         </ul>
       </li>

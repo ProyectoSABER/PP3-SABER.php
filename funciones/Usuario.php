@@ -76,6 +76,8 @@ return $estadoRegistro;
 
 }
 function DatosUsuario($idUsuario,$PConeccionBD){
+
+
         $Usuario=array();
         $data=array();
         
@@ -101,4 +103,11 @@ function DatosUsuario($idUsuario,$PConeccionBD){
         
         return $Usuario;
         
-        }
+}
+
+function modificarClave($Email,$NuevaClave,$PConeccionBD){
+
+        $SQL="UPDATE `usuario` SET `clave_Usuario`=MD5('$NuevaClave') WHERE `mail_Usuario`='$Email'";
+        $rs= mysqli_query($PConeccionBD, $SQL);
+        return $rs;
+}
