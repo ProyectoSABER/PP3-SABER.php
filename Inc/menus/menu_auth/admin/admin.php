@@ -1,4 +1,7 @@
-
+<?php require_once('./Inc/menus/navbar.inc.php'); ?>
+  <!-- Sidebar menu-->
+  <?php require_once('./Inc/menus/sidebar.inc.php'); ?>
+  <!-- fin Sidebar menu-->
 
 <div class="row">
       <div class="col-md-3">
@@ -8,58 +11,8 @@
             <p><b><?php echo $CantUsuarios?></b></p>
           </div>
         </div>
-      </div>
-      <!-- <div class="col-md-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias Finalizadas</h4>
-            <p><b>205</b></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias en proceso</h4>
-            <p><b>100</b></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias Iniciadas</h4>
-            <p><b>500</b></p>
-          </div>
-        </div>
-      </div> -->
-    </div>
-
-
-      <!-- <div class="col-md-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias Finalizadas</h4>
-            <p><b>205</b></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias en proceso</h4>
-            <p><b>100</b></p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="widget-small danger coloured-icon"><i class="icon fa fa-star fa-3x"></i>
-          <div class="info">
-            <h4>Incidencias Iniciadas</h4>
-            <p><b>500</b></p>
-          </div>
-        </div>
-      </div> -->
+      </div>  
+    </div> 
     </div>
    
 <!--comienza modal-->
@@ -76,7 +29,7 @@
         </div>
       </div>
 
-<!-- Modal -->
+<!-- Modal Nuevo Usuario-->
 <div class="modal fade" id="newUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -134,6 +87,106 @@
 </form>
 </div>
 
+
+<!-- Modal Modificar Usuario-->
+<div class="modal fade" id="EditarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- DATOS DEL USUARIO -->
+        
+<form action="EditarUsuario.php" method="POST"> 
+
+<input type="hidden" name="update_id" id="update_id">
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="nombreEditUser" name="nombreEditUser" readonly >
+  <label for="floatingInput">Nombre</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="apellidoEditUser" name="apellidoEditUser" readonly >
+  <label for="floatingInput">Apellido</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="dniEditUser" name="dniEditUser" readonly >
+  <label for="floatingInput">Documento</label>
+</div>
+
+<div class="form-floating mb-3" >
+  <input type="email" class="form-control" id="mailEditUser" name="mailEditUser"  placeholder="name@example.com" value="mail@ejemplo.com">
+  <label for="floatingInputValue">Email</label>
+</div>
+
+<div class="form-floating">
+  <input type="text" class="form-control" id="passwordEditUser" name="passwordEditUser" placeholder="Password">
+  <label for="floatingPassword">Password</label>
+</div>
+
+<br>
+<div class="form-floating">
+<label for="tipousuario">Tipo de Usuario</label>
+  <select class="form-select" id="rolEditUser" name="rolEditUser" aria-label="Floating label select example">
+    <!-- Buscar info y mostrar oopciones segun BD -->
+    <option value="1">1-Administrador</option>
+    <option value="2">2-Bibliotecario</option>
+    <option value="3">3-Docente</option>
+    <option value="4">4-Socio</option>
+    <option value="5">5-Visitante</option>
+  </select>
+ 
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
+<!--AUTOCOMPLETADO DE FORMULARIO-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- POR QUE TENGO QUE PONER ESTO PARA QUE FUNCIONE XD!!!!!--->
+
+<script>
+
+$('.editbtn').on('click',function(){
+
+$tr=$(this).closest('tr');
+var datos=$tr.children("td").map(function (){
+return $(this).text();
+
+});
+
+
+$('#update_id').val(datos[0]);
+$('#nombre').val(datos[1]);
+$('#apellido').val(datos[2]);
+$('#dni').val(datos[3]);
+$('#mail').val(datos[4]);
+$('#password').val(datos[5]);
+$('#rol').val(datos[6]);
+
+       
+
+});
+
+</script>
+
+
+<!--AUTOCOMPLETADO DE FORMULARIO-->
+
+
+
 <div class="col-md-12">
   <div class="tile">
     <h3 class="tile-title">Usuarios Registrados  </h3>
@@ -141,15 +194,18 @@
       <table class="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>DNI</th>
-            <th>ID Usuario</th>
-            <th>Email</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Estado Usuario</th>
-            <th>Fecha Alta</th>
-            <th>OPCIONES</th>
+            
+          
+          
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>DNI</th>
+          <th>Email</th>
+          <th>ID Usuario</th>
+          <th>Estado Usuario</th>
+          <th>Fecha Alta</th>
+          <th>OPCIONES</th>
             
 
           </tr>
@@ -161,16 +217,15 @@
           
             <tr class=<?php echo ($i%2==0)?  'table-info' : '';?>>
               <td><?php echo $i ?></td>
-              
-              <td><?php echo $Usuarios[$i]['DNI'] ?></td>
-              <td><?php echo $Usuarios[$i]['IDUSUARIO'] ?></td>
-              <td><?php echo $Usuarios[$i]['MAIL'] ?></td>
               <td><?php echo $Usuarios[$i]['NOMBRE'] ?></td>
               <td><?php echo $Usuarios[$i]['APELLIDO'] ?></td>
-              <td><?php echo $Usuarios[$i]['ESTADO'] ?></td>
+              <td><?php echo $Usuarios[$i]['DNI'] ?></td>
+              <td><?php echo $Usuarios[$i]['MAIL'] ?></td>
+              <td><?php echo $Usuarios[$i]['IDUSUARIO'] ?></td> 
+              <td><?php echo $Usuarios[$i]['ESTADO'] ? 'Habilitado' : 'Deshabilitado' ?></td>
               <td><?php echo convertir_fecha($Usuarios[$i]['FECALTA']) ?></td>
               
-              
+            
               <!-- UTILIZAMOS ID USUARIO PARA PODER HABILITAR/DESHABILITAR -->
               <?php $usuID = $Usuarios[$i]['IDUSUARIO']; ?>
 
@@ -184,17 +239,21 @@
                 </button>
               <ul class="dropdown-menu">
                 
-                
-                 
-              
-
                  <li><button type="button" class="dropdown-item" onClick="deshabilitarUsuario('<?php echo $usuID;?>');" Deshabilitar ><a class="dropdown-item" href="#"> Limitar <i class="fa fa-power-off" aria-hidden="true"></i></a></button></li>
                     
                  <li><button type="button" class="dropdown-item" onClick="habilitarUsuario('<?php echo $usuID;?>');" Habilitar ><a class="dropdown-item" href="#">Habilitar<i class="fa fa-power-off" aria-hidden="true"></i></a></button></li>
 
-                <!--<li><a class="dropdown-item" href="#">Limitar Acceso <i class="fa fa-ban fa-fw"></i></a></li>-->
-                <li><a class="dropdown-item" href="#">Modificar<i class="fa fa-pencil fa-fw"></i></a></li>
-                
+                 <li><button type="button" class="btn btn-success" data-bs-toggle="modal"
+                  onclick="enviarModal('<?php echo $Usuarios[$i]['NOMBRE'] ?>',
+                  '<?php echo $Usuarios[$i]['APELLIDO'] ?>',
+                  '<?php echo $Usuarios[$i]['DNI'] ?>',
+                 ' <?php echo $Usuarios[$i]['MAIL'] ?>',
+                  '<?php echo $Usuarios[$i]['PASSWORD'] ?>',
+                 ' <?php echo $Usuarios[$i]['IDTIPOUSER'] ?>',
+                 ' <?php echo $Usuarios[$i]['NOMTIPOUSER'] ?>',
+                 '<?php echo $Usuarios[$i]['IDUSUARIO'] ?>')
+                 " data-bs-target="#EditarUsuario">Modificar<i class="fa fa-pencil fa-fw"></i></h4></button><li>
+
               </ul>
               </div>
               </td>
@@ -213,6 +272,26 @@
 <div class="clearfix"></div>
 
 </div>
+
+<script>
+function enviarModal(nombre,apellido,dni,mail,password,idTipoUser,NomTipoUser,idUser)
+{
+  $('#update_id').val(idUser);
+  $('#nombreEditUser').val(nombre);
+  $('#apellidoEditUser').val(apellido);
+  $('#dniEditUser').val(dni);
+  $('#mailEditUser').val(mail);
+  $('#passwordEditUser').val(password);
+  $("#rolEditUser").append('<option value='+idTipoUser+' selected>'+NomTipoUser+'</option>');
+
+}
+
+</script>
+
+
+
+
+
 
 <script> 
 function deshabilitarUsuario(data) {

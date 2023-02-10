@@ -10,8 +10,11 @@ function conocerTodosUsuario($PConeccionBD)
 
 
 
-    $SQL = "SELECT per.dni_persona,  per.nombre_Persona, per.apellido_Persona, Us.mail_Usuario,per.fechaAlta_Persona, Us.id_usuario, US.activo_Usuario
-        FROM persona as per, usuario as Us WHERE Us.id_Usuario=per.id_usuario";
+    $SQL = "SELECT per.dni_persona,  per.nombre_Persona, per.apellido_Persona, Us.mail_Usuario,per.fechaAlta_Persona, Us.id_usuario, US.activo_Usuario,US.clave_Usuario,TU.idTipo_Usuario,TU.nom_TipoUsuario,US.Id_Usuario
+        FROM persona as per
+        INNER JOIN usuario Us ON Us.id_Usuario=per.id_usuario
+        INNER JOIN tipo_usuario TU on TU.idTipo_Usuario = Us.idTipo_Usuario
+       ";
 
     $rs = mysqli_query($PConeccionBD, $SQL);
     $i = 0;
@@ -22,9 +25,12 @@ function conocerTodosUsuario($PConeccionBD)
         $Usuario[$i]['MAIL'] = $data['mail_Usuario'];
         $Usuario[$i]['NOMBRE'] = $data['nombre_Persona'];
         $Usuario[$i]['APELLIDO'] = $data['apellido_Persona'];
-        
+        $Usuario[$i]['PASSWORD'] = $data['clave_Usuario'];
         $Usuario[$i]['ESTADO'] = $data['activo_Usuario'];
         $Usuario[$i]['FECALTA'] = $data['fechaAlta_Persona'];
+        $Usuario[$i]['IDTIPOUSER'] = $data['idTipo_Usuario'];
+        $Usuario[$i]['NOMTIPOUSER'] = $data['nom_TipoUsuario'];
+        $Usuario[$i]['IDUSUARIO'] = $data['Id_Usuario'];
         $i++;
     }
 
