@@ -1,8 +1,7 @@
 <?php
-
 require_once './Handler/HandlerIndex.php'
-
 ?>
+
 
 <link rel="stylesheet" href="css/login.css">
 
@@ -29,94 +28,55 @@ require_once './Handler/HandlerIndex.php'
         <div class="tile">
             <h3 class="tile-title">Sistema de Estadisticas S.A.B.E.R
             </h3> <br><br><br>
+            <head>
+             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+             <script type="text/javascript">
+      
+      
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+         
+          ['Task', 'Hours per Day'],
           
-          
-              <div class="table-responsive">
-                        <div class="gr1">
-                        <h4>Libros mas solicitados por genero</h4>
-                        <div style="width: 600px;">
-                          <canvas id="myChart"></canvas>
-                         </div>
-                          </div>
-            <br>
-                        <div class="gr2">
-                            <h4>Perfiles que más libros solicitaron</h4>
-                            <div style="width: 500px;">
-                            <canvas id="solicitados"></canvas>
-                            </div>
-                        </div>
-              </div>
-      </div>
-</div>
+          <?php  
+              
+          $SQL ="SELECT COUNT(idPrestamoLibro) AS Cantidad,cs.nom_CategoriaSocio AS Nombre, cs.Id_CategoriaSocio
+          FROM prestamolibro  pl
+          INNER JOIN socio so ON so.id_socio = pl.id_socio
+          INNER JOIN categoriasocio cs ON cs.Id_CategoriaSocio = so.idcategoria_Socio
+          GROUP BY cs.Id_CategoriaSocio";
+          $consulta = mysqli_query($MiConexion,$SQL);
+          while ($resultado = mysqli_fetch_assoc($consulta)) {
+            echo '['.$resultado['Nombre'].', '.$resultado['Cantidad'].'],';
+          }
+         
+          ?>
 
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script><br><br><br><br>
+        ]);
 
-<script>
-  const ctx = document.getElementById('myChart');
+        var options = {
+          title: 'My Daily Activities'
+        };
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['historia', 'ciencias', 'quimica', 'idiomas', 'novela', 'ficcion'],
-      datasets: [{
-        label: 'Libros mas solicitados por Tema',
-        data: [19, 12, 3, 5, 2, 3],
-        backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
       }
-    }
-  });
-</script>
-<script>
-    const ctxi = document.getElementById('solicitados');
+    </script>
+  </head>
 
-new Chart(ctxi, {
-  type: 'doughnut',
-  data: {
-    labels: ['Administrador', 'Bibliotecario', 'Docente', 'Alumno', 'Socio Externo'],
-    datasets: [{
-     
-      data: [12, 19, 3, 5, 2],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-</script>
+
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
+   
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
  
-
+ 
 
 </body>
 
