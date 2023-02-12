@@ -100,7 +100,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
 
                           </thead>
                           <tbody>
-                          
+
                           </tbody>
                         </table>
                       </div>
@@ -146,7 +146,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                             </thead>
                             <tbody>
                               <tr class="">
-                                
+
                               </tr>
 
                             </tbody>
@@ -155,7 +155,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
 
                       </div>
                       <div class="d-flex justify-content-center">
-                      <button type="button" class="btn btn-md btn-success" id="ConfirmarCuotas">Confirmar</button>
+                        <button type="button" class="btn btn-md btn-success" id="ConfirmarCuotas">Confirmar</button>
                       </div>
 
                     </div>
@@ -209,11 +209,13 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
 
 
 
-                        
+
 
                       </div>
                       <div class="row mt-4">
-                        <div class="row "><p class="h5">Detalle de cuota</p></div>
+                        <div class="row ">
+                          <p class="h5">Detalle de cuota</p>
+                        </div>
                         <div class="table-responsive-md mt-1">
                           <table class="table   table-bordered" id="t-cobro">
                             <thead class="table-light">
@@ -245,18 +247,22 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                               </tr>
                               <tr class="">
                                 <td scope="row" colspan="4" class="table-light"></td>
-                                
+
                                 <td class="table-success">Total</td>
                                 <td class="table-success">$</td>
                               </tr>
-                              
+
                             </tbody>
                           </table>
                         </div>
-                        <div class="d-flex justify-content-center">
-                      <button type="button" class="btn btn-md btn-warning" id="CobrarCuotas">Cobrar Cuota</button>
-                      </div>
-                        
+                        <div class="d-flex justify-content-center align-items-center ">
+                          <button type="button" class="btn btn-md btn-warning" id="CobrarCuotas">Cobrar Cuota</button>
+                          <div class="form-check form-switch ml-5">
+                            <input class="form-check-input" type="checkbox" id="imprimirCheck">
+                            <label class="form-check-label" for="imprimirCheck">Imprimir comprobante (Nueva ventana)</label>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>

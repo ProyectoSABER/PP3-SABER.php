@@ -66,6 +66,8 @@
       <ul class="treeview-menu">
       <li><a class="treeview-item" href="RegistrarCobro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Pago</a></li>
       <li><a class="treeview-item" href="ListadoCobros.php"><i class="app-menu__icon fa fa-edit"></i>Listado Pagos</a></li>
+      <li><a class="treeview-item" href="ListadoTodosCobros.php"><i class="app-menu__icon fa fa-edit"></i>Listado Todos los Pagos</a></li>
+      <li><a class="treeview-item" href="CuotasNoAbonadas.php"><i class="app-menu__icon fa fa-edit"></i>Listado de Cuotas Sin Abonar</a></li>
       </ul>
  
       <!-- /Estadisticas -->

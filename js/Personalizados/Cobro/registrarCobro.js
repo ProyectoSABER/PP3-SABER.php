@@ -37,7 +37,7 @@ async function ordenEleccion() {
   $("#search-input").click(function (e) {
     limpiarCampos();
   });
-
+  //marca la seleccion en la tabla
   let espera = await clickrowTable("#table-Socios>tbody");
 
   espera = await dblclickrowTableSeleccionarSocio("#table-Socios>tbody");
@@ -60,6 +60,7 @@ function limpiarCampos() {
   $("#t-Cuota>tbody").html("")
   //ocultarBotones
   $("#CobrarCuotas").hide();
+  $("#imprimirCheck").parent("div").hide();
   $("#ConfirmarCuotas").hide();
 }
 async function añadirRecargo() {
@@ -87,6 +88,7 @@ async function btnSeleccionarCuotas(idContenedor) {
       espera = await cargarDatosSociosRegistrarCobro();
       espera = await cargarDatosbibliotecarioRegistrarCobro();
       $("#CobrarCuotas").show();
+      $("#imprimirCheck").parent("div").show();
 
       ocultarAcordion("acordion2");
       mostrarAcordion("acordion3");
@@ -115,6 +117,7 @@ function incial() {
   $(":radio:first").attr("checked", true);
   buscarDatodeBibliotecario();
   $("#CobrarCuotas").hide();
+  $("#imprimirCheck").parent("div").hide();
   $("#ConfirmarCuotas").hide();
   var tipoBusqueda = radioChecked("#container_RadioCheck1");
   attrDelInputbuscador(tipoBusqueda);
@@ -293,7 +296,7 @@ async function consultarCuotasxDniSocio(DniSocio) {
       if (error.status == 404) {
        /*  console.log("no se encontraron cuotas para el socio solicitado"); */
        /*  console.log(error.responseText); */
-        let res = JSON.parse(error.responseText);
+        let res = error.responseText;
 
         $("#t-Cuota>tbody").html(
           '<tr class=""><td scope="row" colspan="7" class="table-warnnig"><p class="h4 text-primary  ">El Socio no posee cuotas Adeudadas</p></td></tr>'
@@ -596,17 +599,17 @@ function registraCobroDeCuotas() {
 function registraCobroCuotaEnBd(data) {
   result = $.ajax({
     type: "POST",
+    dataType:"json",
+
     url: `Handler/Cobro/HandlerRegistrarCobro.php?RegistrarCobro=${true}`,
     data: {
       data,
     },
 
     success: function (response) {
-      let respuesta = JSON.parse(response);
-
-     /*  console.log(respuesta); */
-      incial()
-      
+      let respuesta = response/*  JSON.parse(response); */
+      imprimirComprobante(respuesta.id_cobro);
+      incial();
       mostrarMsgExito(["Se registro el cobro con exito"])
     },
     error: function (error) {
@@ -617,10 +620,22 @@ function registraCobroCuotaEnBd(data) {
         incial()
         return "";
       }
-    },
+    }
+    
   });
 }
+function imprimirComprobante(data){
+ 
+  if($("#imprimirCheck").prop('checked')){
+    $.post("page/Comprobantes/comprobantePago.php",{"idCobro":data}, function(result){
+  newWind=window.open('page/Comprobantes/comprobantePago.php','nuevaVentana');
+  newWind.document.open();
+  newWind.document.write(result);
+  newWind.document.close();
+    })
+}
 
+}
 function convertDateMysql() {
   const hoy = new Date();
   const hoyIso = hoy.toISOString();

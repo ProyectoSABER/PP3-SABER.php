@@ -102,6 +102,114 @@ function mostrarTodasCuotas($PConeccionBD){
  * @param mysqli $PConeccionBD Proporcionar link de conexion a la base de datos mysqli
  * @return array[index]["IdCuota","MesCuota","IdDetCuota","CatSocio","VCUOTA","FVENC"]|false|Null
  */
+function mostrarTodasDetCuotaAbonadas(mysqli $PConeccionBD)
+
+{
+    $res = array();
+    $detalleSocio = array();
+    $detalleBibliotecario = array();
+    $detalleCobro = array();
+    $sql = "SELECT
+    `dc`.`id_DetalleCobro` AS `IDDETALLECOBRO`,
+    `dc`.`idCobroCuota` AS `IDCOBROCUOTA`,
+    `dc`.`idDetalleCuota` AS `IDDETALLECUOTA`,
+    `dc`.`valorCuota` AS `VALORCUOTA`,
+    `dc`.`recargo` AS `RECARGO`,
+    `dc`.`estadoCobroCuota` AS `ESTADOCOBROCUOTA`,
+    `dc`.`idResponsableCobro` AS `IDRESPOSABLECOBRO`,
+    `dc`.`Observaciones` AS `OBSERVACIONES`,
+    `cc`.`fecha_CobroCuota` AS `FECHACOBROCUOTA`,
+    `cc`.`idSocio` AS `IDSOCIO`,
+    `s`.`dni_Socio` AS `DNISOCIO`,
+    `s`.`idcategoria_Socio` AS `IDCATESOCIO`,
+    
+    `dtc`.`fechaVencimiento` AS `FECHAVENCIMIENTO`,
+    `cuota`.`MesAnio_Cuota` AS `MESANIOCUOTA`,
+
+    `s`.`id_EstadoSocio` AS `IDESTADOSOCIO`,
+    `s`.`fechaAlta_socio` AS `FECHAALTASOCIO`,
+    `b`.`dni_Bibliotecario` AS `DNIBIBLIOTECARIO`,
+    `b`.`id_bibliotecario` AS `IDBIBLIOTECARIO`,
+    
+    
+    `ds`.`tipoDNI_persona` AS `TIPODNISOCIO`,
+    `ds`.`nombre_Persona` AS `NOMBRESOCIO`,
+    `ds`.`apellido_persona` AS `APELLIDOSOCIO`,
+
+    `p`.`tipoDNI_persona` AS `TIPODNIBIBLIOTECARIO`,
+    `p`.`nombre_Persona` AS `NOMBREBIBLIOTECARIO`,
+    `p`.`apellido_persona` AS `APELLIDOBIBLIOTECARIO`,
+    
+    `cs`.`nom_CategoriaSocio` AS `CATEGORIASOCIO`
+FROM
+    `detallecobro` as `dc`,
+    `cobrocuota` as `cc`,
+    `socio` as `s`,
+    `bibliotecario` as `b`,
+    `persona` as `p`,
+    `persona` as `ds`,
+    `categoriasocio` as `cs`,
+    `detallecuota` as `dtc`,
+    `cuota` as `cuota`
+
+WHERE
+
+    `ESTADOCOBROCUOTA`='PAGADO'
+    and `cc`.`idCobroCuota` = `dc`.`idCobroCuota`
+    and `dc`.`idDetalleCuota` = `dtc`.`id_detalleCuota`
+    and `dtc`.`id_Cuota` = `cuota`.`id`
+    and `s`.`id_socio` = `cc`.`idSocio`
+    and `b`.`id_bibliotecario` = `dc`.`idResponsableCobro`
+    and `b`.`dni_Bibliotecario` = `p`.`dni_Persona`
+    and `s`.`dni_Socio` = `ds`.`dni_Persona`
+    and `cs`.`id_CategoriaSocio` = `s`.`idcategoria_Socio`";
+
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+
+
+    $i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $res[$i]['detalleCobro']['IDDETALLECOBRO'] = $data['IDDETALLECOBRO'];
+        $res[$i]['detalleCobro']['IDCOBROCUOTA'] = $data['IDCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDDETALLECUOTA'] = $data['IDDETALLECUOTA'];
+        $res[$i]['detalleCobro']['VALORCUOTA'] = $data['VALORCUOTA'];
+        $res[$i]['detalleCobro']['RECARGO'] = $data['RECARGO'];
+        $res[$i]['detalleCobro']['ESTADOCOBROCUOTA'] = $data['ESTADOCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDRESPOSABLECOBRO'] = $data['IDRESPOSABLECOBRO'];
+        $res[$i]['detalleCobro']['OBSERVACIONES'] = $data['OBSERVACIONES'];
+        $res[$i]['detalleCobro']['FECHACOBROCUOTA'] = $data['FECHACOBROCUOTA'];
+
+        $res[$i]['detalleCobro']['FECHAVENCIMIENTO'] = $data['FECHAVENCIMIENTO'];
+        $res[$i]['detalleCobro']['MESANIOCUOTA'] = $data['MESANIOCUOTA'];
+
+        $res[$i]['detalleSocio']['ID'] = $data['IDSOCIO'];
+        $res[$i]['detalleSocio']['DNI'] = $data['DNISOCIO'];
+        $res[$i]['detalleSocio']['IDCATE'] = $data['IDCATESOCIO'];
+        $res[$i]['detalleSocio']['IDESTADO'] = $data['IDESTADOSOCIO'];
+        $res[$i]['detalleSocio']['FECHAALTA'] = $data['FECHAALTASOCIO'];
+        $res[$i]['detalleSocio']['CATEGORIA'] = $data['CATEGORIASOCIO'];
+        $res[$i]['detalleSocio']['TIPODNI'] = $data['TIPODNISOCIO'];
+        $res[$i]['detalleSocio']['NOMBRE'] = $data['NOMBRESOCIO'];
+        $res[$i]['detalleSocio']['APELLIDO'] = $data['APELLIDOSOCIO'];
+
+        $res[$i]['detalleBibliotecario']['DNI'] = $data['DNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['ID'] = $data['IDBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['TIPODNI'] = $data['TIPODNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['NOMBRE'] = $data['NOMBREBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['APELLIDO'] = $data['APELLIDOBIBLIOTECARIO'];
+
+
+        $i++;
+    }
+    return $res ?? 'false';
+};
+
+/**
+ * Mostrar todos los detalles de cuotas con su Id de Cuotas y categoria de Socio
+ * @param mysqli $PConeccionBD Proporcionar link de conexion a la base de datos mysqli
+ * @return array[index]["IdCuota","MesCuota","IdDetCuota","CatSocio","VCUOTA","FVENC"]|false|Null
+ */
 function mostrarTodasDetCuota(mysqli $PConeccionBD)
 {
     $cuotas = array();
@@ -227,6 +335,7 @@ function mostrarDetCuotaAbonadasSocio(int $IdSocio, mysqli $PConeccionBD)
     }
     $i = 0;
     while ($data = mysqli_fetch_array($consulta)) {
+        $cuotas[$i]["idDetalleCuota"] = $data["idDetalle"];
         $cuotas[$i]["IdCuota"] = $data["iDCuota"];
         $cuotas[$i]["MesCuota"] = $data["mesCuota"];
         $cuotas[$i]["IdDetCuota"] = $data["iDdetCuota"];
@@ -253,4 +362,87 @@ function eliminarDetalleCuota(string $idDetalleCuota, mysqli $PConeccionBD)
     $qr = "DELETE FROM `detallecuota` WHERE `id_detalleCuota`= $idDetalleCuota";
     $rs = mysqli_query($PConeccionBD, $qr);
     return $rs;
+}
+
+/**
+ * Mostrar cuotas no abonadas y vencidas
+ * 
+ * @param mysqli $PConeccionBD Cadena de conexion de mysql
+ * @return array
+ * For successful queries eliminarDetalleCuota() will return TRUE. Returns FALSE on failure.
+ */
+function mostrarCuotasNoAbonadasyVencidas(mysqli $PConeccionBD)
+{
+    $res = array();
+
+    $SQL = "SELECT
+    
+    `c`.`MesAnio_Cuota` as MESANIOCUOTA , 
+    `dc`.`valorCuota` as VALORCUOTA,
+    `dc`.`fechaVencimiento` as  FECHAVENCIMIENTO,
+
+    `s`.`id_socio` as IDSOCIO,    
+    `s`.`dni_Socio` as DNISOCIO,
+    `p`.`apellido_persona` as APELLIDOSOCIO,
+    `p`.`nombre_Persona` as NOMBRESOCIO,
+    `cs`.`nom_CategoriaSocio` as CATEGORIASOCIO,
+    `dom`.`nom_calle` as CALLE,
+    `dom`.`alt_calle` as ALT,
+    `loc`.`nom_localidad` as LOCALIDAD
+FROM
+    `cuota` as `c`,
+    `detallecuota` as `dc`,
+    `socio` as `s`,
+    `persona` as `p`,
+    `categoriasocio` as `cs`,
+    `domicilio`as `dom`,
+    `barrio`as `barr`,
+    `localidad` as `loc`    
+Where
+    `dc`.`id_Cuota` = `c`.`id`
+     and `dc`.`id_CatSocio`= `s`.`idcategoria_Socio`
+    and `p`.`id_domicilio` =`dom`.`idDomicilio`
+    and `dom`.`idBarrio` = `barr`.`idBarrio`
+    and `barr`.`idLocalidad` = `loc`.`idLocalidad`
+    and `s`.`idcategoria_Socio`= `cs`.`id_CategoriaSocio`
+    and `dc`.`fechaVencimiento` <  (CURDATE())
+    and `s`.`dni_Socio` = `p`.`dni_Persona`
+    and `dc`.`id_detalleCuota`
+     not in (SELECT
+        `dcc`.`idDetalleCuota`
+    FROM
+        `detallecuota` as `dc`,
+    `cobrocuota` as `cc`,
+    `detallecobro` as `dcc`
+Where
+         `dcc`.`idDetalleCuota` = `dc`.`id_detalleCuota`
+    and `dcc`.`idCobroCuota` = `cc`.`idCobroCuota`
+    and `cc`.`idSocio` = `s`.`id_socio`
+    )";
+    $rs = mysqli_query($PConeccionBD, $SQL);
+
+    $i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $res[$i]['detalleCuota']['VALORCUOTA'] = $data['VALORCUOTA'];
+        $res[$i]['detalleCuota']['FECHAVENCIMIENTO'] = $data['FECHAVENCIMIENTO'];
+        $res[$i]['detalleCuota']['MESANIOCUOTA'] = $data['MESANIOCUOTA'];
+
+        $res[$i]['detalleSocio']['ID'] = $data['IDSOCIO'];
+        $res[$i]['detalleSocio']['DNI'] = $data['DNISOCIO'];
+        $res[$i]['detalleSocio']['CATEGORIA'] = $data['CATEGORIASOCIO'];
+        $res[$i]['detalleSocio']['NOMBRE'] = $data['NOMBRESOCIO'];
+        $res[$i]['detalleSocio']['APELLIDO'] = $data['APELLIDOSOCIO'];
+        
+        $res[$i]['detalleSocio']['CALLE'] = $data['CALLE'];
+        $res[$i]['detalleSocio']['ALT'] = $data['ALT'];
+        $res[$i]['detalleSocio']['LOCALIDAD'] = $data['LOCALIDAD'];
+
+
+        $i++;
+    }
+
+
+
+
+    return $res ?? "";
 }

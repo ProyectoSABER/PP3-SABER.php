@@ -70,10 +70,219 @@ function consultardetalleCobroPorIdCobro($idCobro, $PConeccionBD)
     
     $data = mysqli_fetch_array($rs);
     if(!empty($data)){
-    $idBuscado=$data["IDCuota"];
+    $idBuscado=$data["idCobroCuota"];
     return $idBuscado;
 }else{
     return $idBuscado=false;
 }
     
+};
+function consultardetallesdeCobro($idCobro, $PConeccionBD)
+{
+    $res=array();
+    $detalleSocio=array();
+    $detalleBibliotecario=array();
+    $detalleCobro=array();
+    $sql = "SELECT
+    `dc`.`id_DetalleCobro` AS `IDDETALLECOBRO`,
+    `dc`.`idCobroCuota` AS `IDCOBROCUOTA`,
+    `dc`.`idDetalleCuota` AS `IDDETALLECUOTA`,
+    `dc`.`valorCuota` AS `VALORCUOTA`,
+    `dc`.`recargo` AS `RECARGO`,
+    `dc`.`estadoCobroCuota` AS `ESTADOCOBROCUOTA`,
+    `dc`.`idResponsableCobro` AS `IDRESPOSABLECOBRO`,
+    `dc`.`Observaciones` AS `OBSERVACIONES`,
+    `cc`.`fecha_CobroCuota` AS `FECHACOBROCUOTA`,
+    `cc`.`idSocio` AS `IDSOCIO`,
+    `s`.`dni_Socio` AS `DNISOCIO`,
+    `s`.`idcategoria_Socio` AS `IDCATESOCIO`,
+    
+    `dtc`.`fechaVencimiento` AS `FECHAVENCIMIENTO`,
+    `cuota`.`MesAnio_Cuota` AS `MESANIOCUOTA`,
+
+    `s`.`id_EstadoSocio` AS `IDESTADOSOCIO`,
+    `s`.`fechaAlta_socio` AS `FECHAALTASOCIO`,
+    `b`.`dni_Bibliotecario` AS `DNIBIBLIOTECARIO`,
+    `b`.`id_bibliotecario` AS `IDBIBLIOTECARIO`,
+    
+    
+    `ds`.`tipoDNI_persona` AS `TIPODNISOCIO`,
+    `ds`.`nombre_Persona` AS `NOMBRESOCIO`,
+    `ds`.`apellido_persona` AS `APELLIDOSOCIO`,
+
+    `p`.`tipoDNI_persona` AS `TIPODNIBIBLIOTECARIO`,
+    `p`.`nombre_Persona` AS `NOMBREBIBLIOTECARIO`,
+    `p`.`apellido_persona` AS `APELLIDOBIBLIOTECARIO`,
+    
+    `cs`.`nom_CategoriaSocio` AS `CATEGORIASOCIO`
+FROM
+    `detallecobro` as `dc`,
+    `cobrocuota` as `cc`,
+    `socio` as `s`,
+    `bibliotecario` as `b`,
+    `persona` as `p`,
+    `persona` as `ds`,
+    `categoriasocio` as `cs`,
+    `detallecuota` as `dtc`,
+    `cuota` as `cuota`
+
+WHERE
+    `dc`.`idCobroCuota` = '$idCobro'
+    and `cc`.`idCobroCuota` = `dc`.`idCobroCuota`
+    and `dc`.`idDetalleCuota` = `dtc`.`id_detalleCuota`
+    and `dtc`.`id_Cuota` = `cuota`.`id`
+    and `s`.`id_socio` = `cc`.`idSocio`
+    and `b`.`id_bibliotecario` = `dc`.`idResponsableCobro`
+    and `b`.`dni_Bibliotecario` = `p`.`dni_Persona`
+    and `s`.`dni_Socio` = `ds`.`dni_Persona`
+    and `cs`.`id_CategoriaSocio` = `s`.`idcategoria_Socio`";
+
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+    
+    
+$i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $res[$i]['detalleCobro']['IDDETALLECOBRO'] = $data['IDDETALLECOBRO'];
+        $res[$i]['detalleCobro']['IDCOBROCUOTA'] = $data['IDCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDDETALLECUOTA'] = $data['IDDETALLECUOTA'];
+        $res[$i]['detalleCobro']['VALORCUOTA'] = $data['VALORCUOTA'];
+        $res[$i]['detalleCobro']['RECARGO'] = $data['RECARGO'];
+        $res[$i]['detalleCobro']['ESTADOCOBROCUOTA'] = $data['ESTADOCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDRESPOSABLECOBRO'] = $data['IDRESPOSABLECOBRO'];
+        $res[$i]['detalleCobro']['OBSERVACIONES'] = $data['OBSERVACIONES'];
+        $res[$i]['detalleCobro']['FECHACOBROCUOTA'] = $data['FECHACOBROCUOTA'];
+
+        $res[$i]['detalleCobro']['FECHAVENCIMIENTO'] = $data['FECHAVENCIMIENTO'];
+        $res[$i]['detalleCobro']['MESANIOCUOTA'] = $data['MESANIOCUOTA'];
+        
+        $res[$i]['detalleSocio']['ID'] = $data['IDSOCIO'];
+        $res[$i]['detalleSocio']['DNI'] = $data['DNISOCIO'];
+        $res[$i]['detalleSocio']['IDCATE'] = $data['IDCATESOCIO'];
+        $res[$i]['detalleSocio']['IDESTADO'] = $data['IDESTADOSOCIO'];
+        $res[$i]['detalleSocio']['FECHAALTA'] = $data['FECHAALTASOCIO'];
+        $res[$i]['detalleSocio']['CATEGORIA'] = $data['CATEGORIASOCIO'];
+        $res[$i]['detalleSocio']['TIPODNI'] = $data['TIPODNISOCIO'];
+        $res[$i]['detalleSocio']['NOMBRE'] = $data['NOMBRESOCIO'];
+        $res[$i]['detalleSocio']['APELLIDO'] = $data['APELLIDOSOCIO'];
+        
+        $res[$i]['detalleBibliotecario']['DNI'] = $data['DNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['ID'] = $data['IDBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['TIPODNI'] = $data['TIPODNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['NOMBRE'] = $data['NOMBREBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['APELLIDO'] = $data['APELLIDOBIBLIOTECARIO'];
+        
+        
+        $i++;
+    }
+    return $res??'false';
+};
+/* Array ( 
+    [0] => Array ( 
+        [detalleCobro] => Array ( [IDDETALLECOBRO] => 136 [IDCOBROCUOTA] => 81 [IDDETALLECUOTA] => 62 [VALORCUOTA] => 100 [RECARGO] => 0 [ESTADOCOBROCUOTA] => PAGADO [IDRESPOSABLECOBRO] => 2 [OBSERVACIONES] => [FECHACOBROCUOTA] => 2023-02-07 11:12:50 )
+         
+        [detalleSocio] => Array ( [IDSOCIO] => 58 [DNISOCIO] => 987456321 [IDCATESOCIO] => 1 [IDESTADOSOCIO] => 1 [FECHAALTASOCIO] => 2022-12-17 11:53:29 [CATEGORIASOCIO] => Docente )
+
+        [detalleBibliotecario] => Array ( [DNIBIBLIOTECARIO] => 33673150 [IDBIBLIOTECARIO] => 2 [TIPODNIBIBLIOTECARIO] => 1 [NOMBREBIBLIOTECARIO] => Sofia [APELLIDOBIBLIOTECARIO] => de Guzman ) ) ; */
+
+        function consultardetallesdeCobroIdDetalle($idDetalleCobro, $PConeccionBD)
+{
+    $res=array();
+    $detalleSocio=array();
+    $detalleBibliotecario=array();
+    $detalleCobro=array();
+    $sql = "SELECT
+    `dc`.`id_DetalleCobro` AS `IDDETALLECOBRO`,
+    `dc`.`idCobroCuota` AS `IDCOBROCUOTA`,
+    `dc`.`idDetalleCuota` AS `IDDETALLECUOTA`,
+    `dc`.`valorCuota` AS `VALORCUOTA`,
+    `dc`.`recargo` AS `RECARGO`,
+    `dc`.`estadoCobroCuota` AS `ESTADOCOBROCUOTA`,
+    `dc`.`idResponsableCobro` AS `IDRESPOSABLECOBRO`,
+    `dc`.`Observaciones` AS `OBSERVACIONES`,
+    `cc`.`fecha_CobroCuota` AS `FECHACOBROCUOTA`,
+    `cc`.`idSocio` AS `IDSOCIO`,
+    `s`.`dni_Socio` AS `DNISOCIO`,
+    `s`.`idcategoria_Socio` AS `IDCATESOCIO`,
+    
+    `dtc`.`fechaVencimiento` AS `FECHAVENCIMIENTO`,
+    `cuota`.`MesAnio_Cuota` AS `MESANIOCUOTA`,
+
+    `s`.`id_EstadoSocio` AS `IDESTADOSOCIO`,
+    `s`.`fechaAlta_socio` AS `FECHAALTASOCIO`,
+    `b`.`dni_Bibliotecario` AS `DNIBIBLIOTECARIO`,
+    `b`.`id_bibliotecario` AS `IDBIBLIOTECARIO`,
+    
+    
+    `ds`.`tipoDNI_persona` AS `TIPODNISOCIO`,
+    `ds`.`nombre_Persona` AS `NOMBRESOCIO`,
+    `ds`.`apellido_persona` AS `APELLIDOSOCIO`,
+
+    `p`.`tipoDNI_persona` AS `TIPODNIBIBLIOTECARIO`,
+    `p`.`nombre_Persona` AS `NOMBREBIBLIOTECARIO`,
+    `p`.`apellido_persona` AS `APELLIDOBIBLIOTECARIO`,
+    
+    `cs`.`nom_CategoriaSocio` AS `CATEGORIASOCIO`
+FROM
+    `detallecobro` as `dc`,
+    `cobrocuota` as `cc`,
+    `socio` as `s`,
+    `bibliotecario` as `b`,
+    `persona` as `p`,
+    `persona` as `ds`,
+    `categoriasocio` as `cs`,
+    `detallecuota` as `dtc`,
+    `cuota` as `cuota`
+
+WHERE
+
+`dc`.`id_DetalleCobro` = $idDetalleCobro
+    and `cc`.`idCobroCuota` = `dc`.`idCobroCuota`
+    and `dc`.`idDetalleCuota` = `dtc`.`id_detalleCuota`
+    and `dtc`.`id_Cuota` = `cuota`.`id`
+    and `s`.`id_socio` = `cc`.`idSocio`
+    and `b`.`id_bibliotecario` = `dc`.`idResponsableCobro`
+    and `b`.`dni_Bibliotecario` = `p`.`dni_Persona`
+    and `s`.`dni_Socio` = `ds`.`dni_Persona`
+    and `cs`.`id_CategoriaSocio` = `s`.`idcategoria_Socio`";
+
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+    
+    
+$i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $res[$i]['detalleCobro']['IDDETALLECOBRO'] = $data['IDDETALLECOBRO'];
+        $res[$i]['detalleCobro']['IDCOBROCUOTA'] = $data['IDCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDDETALLECUOTA'] = $data['IDDETALLECUOTA'];
+        $res[$i]['detalleCobro']['VALORCUOTA'] = $data['VALORCUOTA'];
+        $res[$i]['detalleCobro']['RECARGO'] = $data['RECARGO'];
+        $res[$i]['detalleCobro']['ESTADOCOBROCUOTA'] = $data['ESTADOCOBROCUOTA'];
+        $res[$i]['detalleCobro']['IDRESPOSABLECOBRO'] = $data['IDRESPOSABLECOBRO'];
+        $res[$i]['detalleCobro']['OBSERVACIONES'] = $data['OBSERVACIONES'];
+        $res[$i]['detalleCobro']['FECHACOBROCUOTA'] = $data['FECHACOBROCUOTA'];
+
+        $res[$i]['detalleCobro']['FECHAVENCIMIENTO'] = $data['FECHAVENCIMIENTO'];
+        $res[$i]['detalleCobro']['MESANIOCUOTA'] = $data['MESANIOCUOTA'];
+        
+        $res[$i]['detalleSocio']['ID'] = $data['IDSOCIO'];
+        $res[$i]['detalleSocio']['DNI'] = $data['DNISOCIO'];
+        $res[$i]['detalleSocio']['IDCATE'] = $data['IDCATESOCIO'];
+        $res[$i]['detalleSocio']['IDESTADO'] = $data['IDESTADOSOCIO'];
+        $res[$i]['detalleSocio']['FECHAALTA'] = $data['FECHAALTASOCIO'];
+        $res[$i]['detalleSocio']['CATEGORIA'] = $data['CATEGORIASOCIO'];
+        $res[$i]['detalleSocio']['TIPODNI'] = $data['TIPODNISOCIO'];
+        $res[$i]['detalleSocio']['NOMBRE'] = $data['NOMBRESOCIO'];
+        $res[$i]['detalleSocio']['APELLIDO'] = $data['APELLIDOSOCIO'];
+        
+        $res[$i]['detalleBibliotecario']['DNI'] = $data['DNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['ID'] = $data['IDBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['TIPODNI'] = $data['TIPODNIBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['NOMBRE'] = $data['NOMBREBIBLIOTECARIO'];
+        $res[$i]['detalleBibliotecario']['APELLIDO'] = $data['APELLIDOBIBLIOTECARIO'];
+        
+        
+        $i++;
+    }
+    return $res??'false';
 };

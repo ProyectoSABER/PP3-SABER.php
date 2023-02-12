@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(!$rs){
                 $error[$indice]=[intval($idCuota),intval($DetCuota["idDetalleCuota"]),intval($DetCuota["valorCuota"]),intval($DetCuota["recargo"]),$estadoCobroCuota,intval($DetCuota["idResponsableCobro"]),$DetCuota["observaciones"]];
             }
-            $indice++;
+            
             if($rs){
                 $res[$indice]=[intval($idCuota),intval($DetCuota["idDetalleCuota"]),intval($DetCuota["valorCuota"]),intval($DetCuota["recargo"]),$estadoCobroCuota,intval($DetCuota["idResponsableCobro"]),$DetCuota["observaciones"]];
             }
@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'status' => 200,
                 'results' => $res,
                 'errorGuardado'=>$error,
-                'tipoSolicitud' => "$tipoSolicitud"
+                'tipoSolicitud' => "$tipoSolicitud",
+                'id_cobro'=>"$idCuota",
             );
         } else {
             $json = array(

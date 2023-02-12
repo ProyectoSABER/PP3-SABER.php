@@ -125,7 +125,7 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                     <div class="container-md-12">
 
                       <div class="row d-flex">
-                        <p class="h5 ml-md-5">Seleccione las cuotas a cobrar</p>
+                        
                         <!-- <p class="h6 d-flex justify-content-center mt-2">(DobleClick sobre el resultado para Confirmar)</p> -->
                         </p>
                       </div>
@@ -138,12 +138,15 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
                                 <th scope="col"># Cuota</th>
                                 <th scope="col">Mes-Año</th>
                                 <th scope="col">Tipo Cuota</th>
-                                <th scope="col">$ Cuota</th>
-                                <th scope="col">$ Recargo</th>
                                 <th scope="col">Fecha Venc</th>
                                 <th scope="col">Estado Venc</th>
                                 <th scope="col">Estado Cuota</th>
                                 <th scope="col">Fecha Pago</th>
+                                <th scope="col">$ Cuota</th>
+                                <th scope="col">$ Recargo</th>
+                                <th scope="col">$ Total</th>
+                                <th scope="col" class="no-print">Opciones</th>
+                                
                                 
                               </tr>
                             </thead>
@@ -176,6 +179,11 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <script src="./assets/plugins/DataTables/DataTables-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="./assets/plugins/DataTables/Buttons-2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="./assets/plugins/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+<script src="./assets/plugins/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+<script src="./assets/plugins/DataTables/Buttons-2.2.3/js/buttons.html5.min.js"></script>
   <script type="text/javascript" src="./js/Personalizados/Cobro/ListadoCobro.js"></script>
 
 

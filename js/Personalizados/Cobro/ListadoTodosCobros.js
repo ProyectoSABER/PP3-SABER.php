@@ -1,9 +1,10 @@
-$(function () {
+$(document).ready(function () {
+ 
   var NombreUsuario = "",
     ApellidoUsuario = "",
     TipoUsuario = "",
     EmailUsuario = "";
-  function obtenerDatos() {
+  (function obtenerDatos() {
     $.ajax({
       type: "POST",
       url: "./Handler/Usuario/usuarioActual.php",
@@ -25,10 +26,10 @@ $(function () {
         inicializarTabla();
       },
     });
-  }
+  })();
   function inicializarTabla() {
-    var title = $("p#title").text();
-    var table = $("table.table").DataTable({
+    var title = "Listado De Cuotas";
+    var table = $("#t-TotalCuotas").DataTable({
       paging: true,
       lengthChange: false,
       searching: true,
@@ -80,10 +81,64 @@ $(function () {
             ": Activar para ordenar la columna de manera descendente",
         },
       },
+      'createdRow':function(row,data,index){
+      
+        let datacell=data[9].replace("$","")
+        
+        
+              if(parseInt(datacell)>0){
+                $("td",row).eq(9).css({
+                  'background-color':'#00beff',
+                  'color':"white"
+                })
+              }
+              if((data[4])=="Vencida"){
+                $("td",row).eq(4).css({
+                  'background-color':'#83ffff',
+                  'color':"white"
+                })
+              }
+
+      },
+      /* 'drawCallback':function(settings){
+        const api = this.api();
+        $(api.column(10).footer()).html(
+          `Total ${api.column(10,{page:'current'}).data().sum()}`
+        )
+      }, */
+      footerCallback: function (row, data, start, end, display) {
+        var api = this.api();
+
+        // Remove the formatting to get integer data for summation
+        var intVal = function (i) {
+            return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+        };
+
+        // Total over all pages
+        total = api
+            .column(10)
+            .data()
+            .reduce(function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0);
+
+        // Total over this page
+        pageTotal = api
+            .column(10, { page: 'current' })
+            .data()
+            .reduce(function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0);
+
+        // Update footer
+        $(api.column(10).footer()).html('$' + pageTotal + ' ( $' + total + ' total)');
+    },
+
       dom: "Bfrtip",
       buttons: [
         {
           extend: "pdfHtml5",
+          footer:true,
           text: '<i class="fas fa-file-pdf"></i>',
           className: "btn !important btn-info btn-lg",
           download: "open",
@@ -100,7 +155,8 @@ $(function () {
             doc.styles.tableBodyEven.alignment = "center";
             /* doc.styles.tableHeader.alignment = 'center'; */
             /* doc.pageSize="A4" */
-            doc.header = {
+            doc.header =function  (currentPage){
+              return currentPage==1 ? {
               table: {
                 widths: ["*", "*", "*"],
                 height: ["*", "*", "*"],
@@ -117,7 +173,7 @@ $(function () {
                     {},
                     {},
                   ],
-                  [{}, {}, {}],
+                  [{}, {text:currentPage}, {}],
                   [{}, {}, { text: `Categoria: ${TipoUsuario}` }],
                   [
                     {},
@@ -131,7 +187,7 @@ $(function () {
                 ],
               },
               layout: "noBorders", // Quita los bordes de la tabla
-            };
+            }:''};
             doc.footer = function (currentPage, pageCount) {
               return {
                 columns: [
@@ -150,10 +206,18 @@ $(function () {
             };
           },
         },
-      ],
+      ]
     });
     $("button.dt-button").removeClass("dt-button");
   }
-  obtenerDatos();
-  /* inicializarTabla() */
 });
+function imprimirComprobante(data){
+ 
+ 
+  $.post("page/Comprobantes/comprobantePago.php",{"idDetalleCobro":data}, function(result){
+  newWind=window.open('page/Comprobantes/comprobantePago.php','nuevaVentana');
+  newWind.document.open();
+  newWind.document.write(result);
+  newWind.document.close();
+    })
+}
