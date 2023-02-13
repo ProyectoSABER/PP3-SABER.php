@@ -39,7 +39,7 @@
       </div>
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
-<form name="registroUsuarioModal" action="registroUsuarioModal.php" method="POST"> 
+<form name="registroUsuarioModal" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <div class="form-floating mb-3">
   <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com">
