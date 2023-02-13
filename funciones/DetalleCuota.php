@@ -313,19 +313,36 @@ function mostrarDetCuotaAbonadasSocio(int $IdSocio, mysqli $PConeccionBD)
     `DC`.`fechaVencimiento` AS `fVenc`,    
     `C`.`MesAnio_Cuota` AS `mesCuota`,
     `C`.`id` AS `iDCuota`,  
-    `CS`.`nom_CategoriaSocio` AS `catSocio`
+    `CS`.`nom_CategoriaSocio` AS `catSocio`,
+    `P`.`nombre_Persona` as `nombBibliotecario`,
+    `P`.`apellido_persona` as `apellBibliotecario`,
+
+    `Ps`.`nombre_Persona` as `nombSocio`,
+    `Ps`.`apellido_persona` as `apellSocio`
+    	
+
+
     FROM
     `detallecobro` AS `DCC`,
     `cobrocuota` AS `CC`,
     `detallecuota` AS `DC`,
     `cuota` AS `C`,
-    `categoriasocio` AS `CS`
+    `categoriasocio` AS `CS`,
+    `bibliotecario` AS `B`,
+    `persona` AS `P`,
+    `persona` AS `Ps`,
+    `socio` AS `S`
+
     WHERE
     `DCC`.`idCobroCuota` = `CC`.`idCobroCuota`
     AND `DCC`.`idDetalleCuota` = `DC`.`id_detalleCuota`
     AND `DC`.`id_Cuota` = `C`.`id` 
     AND `DC`.`id_CatSocio` = `CS`.`id_CategoriaSocio`
-    AND `CC`.`idSocio` = $IdSocio ";
+    AND `CC`.`idSocio` = '$IdSocio'
+    AND `B`.`id_bibliotecario` = `DCC`.`idResponsableCobro`
+    AND  `B`.`dni_Bibliotecario`=`P`.`dni_Persona`
+    AND `S`.`id_socio`= `CC`.`idSocio`
+    AND  `S`.`dni_Socio`=`Ps`.`dni_Persona`";
 
 
     $consulta = mysqli_query($PConeccionBD, $qr);
@@ -345,6 +362,10 @@ function mostrarDetCuotaAbonadasSocio(int $IdSocio, mysqli $PConeccionBD)
         $cuotas[$i]["FCOBRO"] = $data["fechaCobro"];
         $cuotas[$i]["ESTADOCOBRO"] = $data["estadoCobroCuota"];
         $cuotas[$i]["FVENC"] = $data["fVenc"];
+        $cuotas[$i]["NOMBREBIBLIOTECARIO"] = $data["nombBibliotecario"];
+        $cuotas[$i]["APELLIDOBIBLIOTECARIO"] = $data["apellBibliotecario"];
+        $cuotas[$i]["NOMBRESOCIO"] = $data["nombSocio"];
+        $cuotas[$i]["APELLIDOSOCIO"] = $data["apellSocio"];
         $i++;
     }
     return $cuotas;

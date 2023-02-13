@@ -85,7 +85,7 @@ $(function () {
         {
           extend: "pdfHtml5",
           text: '<i class="fas fa-file-pdf"></i>',
-          className: "btn !important btn-info btn-lg",
+          className: "btn !important btn-outline-info btn-lg mb-3",
           download: "open",
           filename: title,
           orientation: "landscape",

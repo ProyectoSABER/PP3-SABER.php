@@ -99,6 +99,20 @@
 
         </ul>
       </li>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-cash-register"></i><span class="app-menu__label">Pagos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      
+      <ul class="treeview-menu">
+      
+      <li><a class="treeview-item" href="CuotasAbonadasUsuario.php"><i class="app-menu__icon fa fa-edit"></i>Cuotas abonadas</a></li>
+      
+      </ul>
+      <!-- MISPrestamos -->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book-reader"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+
+          <li><a class="treeview-item" href="HistorialdePrestamosLibros.php"><i class="app-menu__icon fa fa-th-list"></i>Historial de Prestamos</a></li>
+        </ul>
+      </li>
 
     <?php } ?>
 
