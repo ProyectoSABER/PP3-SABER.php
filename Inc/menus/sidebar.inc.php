@@ -1,7 +1,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user">
-    <img class="app-sidebar__user-avatar" src="<?php echo (!empty($_SESSION['USUARIO_Foto'])) ? $_SESSION['USUARIO_Foto']  : 'images/team/Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
+    <img class="app-sidebar__user-avatar" src="<?php echo (!empty($_SESSION['USUARIO_Foto']) & $_SESSION['USUARIO_Foto']!="null" ) ? $_SESSION['USUARIO_Foto']  : 'images/team/Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
     <div>
       <p class="app-sidebar__user-name"><?php echo $_SESSION['USUARIO_NOMBRE'] . ' ' . $_SESSION['USUARIO_APELLIDO'] ?></p>
       <p class="app-sidebar__user-designation"><?php echo $_SESSION['USUARIO_NOMTIPOUSUARIO'] ?></p>
