@@ -80,7 +80,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" name="NuevoUsuario" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
         
-<form action="EditarUsuario.php" method="POST"> 
+<form action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <input type="hidden" name="update_id" id="update_id">
 
@@ -146,7 +146,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" name="ModificarUsuario" class="btn btn-primary">Guardar Cambios</button>
       </div>
     </div>
   </div>
@@ -183,7 +183,7 @@ $('#rol').val(datos[6]);
 </script>
 
 
-<!--AUTOCOMPLETADO DE FORMULARIO-->
+<!--/AUTOCOMPLETADO DE FORMULARIO-->
 
 
 
