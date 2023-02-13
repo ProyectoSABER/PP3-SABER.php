@@ -247,10 +247,10 @@ $('#rol').val(datos[6]);
                   onclick="enviarModal('<?php echo $Usuarios[$i]['NOMBRE'] ?>',
                   '<?php echo $Usuarios[$i]['APELLIDO'] ?>',
                   '<?php echo $Usuarios[$i]['DNI'] ?>',
-                 ' <?php echo $Usuarios[$i]['MAIL'] ?>',
+                 '<?php echo $Usuarios[$i]['MAIL'] ?>',
                   '<?php echo $Usuarios[$i]['PASSWORD'] ?>',
-                 ' <?php echo $Usuarios[$i]['IDTIPOUSER'] ?>',
-                 ' <?php echo $Usuarios[$i]['NOMTIPOUSER'] ?>',
+                 '<?php echo $Usuarios[$i]['IDTIPOUSER'] ?>',
+                 '<?php echo $Usuarios[$i]['NOMTIPOUSER'] ?>',
                  '<?php echo $Usuarios[$i]['IDUSUARIO'] ?>')
                  " data-bs-target="#EditarUsuario">Modificar<i class="fa fa-pencil fa-fw"></i></h4></button><li>
 
@@ -282,7 +282,7 @@ function enviarModal(nombre,apellido,dni,mail,password,idTipoUser,NomTipoUser,id
   $('#dniEditUser').val(dni);
   $('#mailEditUser').val(mail);
   $('#passwordEditUser').val(password);
-  $("#rolEditUser").append('<option value='+idTipoUser+' selected>'+NomTipoUser+'</option>');
+  $("#rolEditUser").val(idTipoUser).change();
 
 }
 
