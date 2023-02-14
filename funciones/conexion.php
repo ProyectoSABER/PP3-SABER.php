@@ -3,7 +3,7 @@
 
 
 //Conexion Martin
- function ConexionBD(
+/*  function ConexionBD(
     $Host = 'localhost:33065',
     $User = 'root',
     $Password = '',
@@ -17,8 +17,8 @@
         return $LinkConexion;
     else
         die('No se pudo establecer la conexión.');
-}
-/*
+} */
+
 //Conexion Adrian
 function ConexionBD(
     $Host = 'localhost',
@@ -35,5 +35,5 @@ function ConexionBD(
     else
         die('No se pudo establecer la conexión.');
 } 
-*/
+
 ?>

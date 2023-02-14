@@ -39,7 +39,7 @@
       </div>
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
-<form name="registroUsuarioModal" action="registroUsuarioModal.php" method="POST"> 
+<form name="registroUsuarioModal" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <div class="form-floating mb-3">
   <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com">
@@ -80,7 +80,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" name="NuevoUsuario" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
         
-<form action="EditarUsuario.php" method="POST"> 
+<form action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <input type="hidden" name="update_id" id="update_id">
 
@@ -146,7 +146,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <button type="submit" name="ModificarUsuario" class="btn btn-primary">Guardar Cambios</button>
       </div>
     </div>
   </div>
@@ -183,7 +183,7 @@ $('#rol').val(datos[6]);
 </script>
 
 
-<!--AUTOCOMPLETADO DE FORMULARIO-->
+<!--/AUTOCOMPLETADO DE FORMULARIO-->
 
 
 
@@ -247,10 +247,10 @@ $('#rol').val(datos[6]);
                   onclick="enviarModal('<?php echo $Usuarios[$i]['NOMBRE'] ?>',
                   '<?php echo $Usuarios[$i]['APELLIDO'] ?>',
                   '<?php echo $Usuarios[$i]['DNI'] ?>',
-                 ' <?php echo $Usuarios[$i]['MAIL'] ?>',
+                 '<?php echo $Usuarios[$i]['MAIL'] ?>',
                   '<?php echo $Usuarios[$i]['PASSWORD'] ?>',
-                 ' <?php echo $Usuarios[$i]['IDTIPOUSER'] ?>',
-                 ' <?php echo $Usuarios[$i]['NOMTIPOUSER'] ?>',
+                 '<?php echo $Usuarios[$i]['IDTIPOUSER'] ?>',
+                 '<?php echo $Usuarios[$i]['NOMTIPOUSER'] ?>',
                  '<?php echo $Usuarios[$i]['IDUSUARIO'] ?>')
                  " data-bs-target="#EditarUsuario">Modificar<i class="fa fa-pencil fa-fw"></i></h4></button><li>
 
@@ -282,7 +282,7 @@ function enviarModal(nombre,apellido,dni,mail,password,idTipoUser,NomTipoUser,id
   $('#dniEditUser').val(dni);
   $('#mailEditUser').val(mail);
   $('#passwordEditUser').val(password);
-  $("#rolEditUser").append('<option value='+idTipoUser+' selected>'+NomTipoUser+'</option>');
+  $("#rolEditUser").val(idTipoUser).change();
 
 }
 
