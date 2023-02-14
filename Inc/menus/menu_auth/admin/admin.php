@@ -326,6 +326,23 @@ function habilitarUsuario(data) {
     Swal.fire('Cancelo los cambios', '', 'info')
   }
 })}
+
+function EditarUsuario(data) {
+  Swal.fire({
+  title: 'Esta seguro que desea modificar el usuario?',
+  showDenyButton: true,
+ 
+  confirmButtonText: 'Si, confirmar',
+  denyButtonText: `No, Cancelar`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    window.location='UsuarioModalLimitar.php?usuID='+data;
+    Swal.fire('Usuario deshabilitado!', '', 'success')
+  } else if (result.isDenied) {
+    Swal.fire('Cancelo los cambios', '', 'info')
+  }
+})}
 /*
   console.log(data);
   let text = "Press a button!\nEither OK or Cancel.";
