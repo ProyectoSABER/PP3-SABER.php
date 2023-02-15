@@ -13,9 +13,9 @@ require_once './Handler/HandlerListadoEjemplaresLibros.php'
   <main class="app-content">
     <div class="app-title">
       <div>
-      <h1><i class="fa fa-th-list"></i> Listados</h1>
-       
-        <p>Listado de Ejemplares de Libros</p>
+        <h1><i class="fa fa-th-list"></i> Listados</h1>
+
+        <p id="title">Listado de Ejemplares de Libros</p>
 
       </div>
       <ul class="app-breadcrumb breadcrumb">
@@ -28,32 +28,33 @@ require_once './Handler/HandlerListadoEjemplaresLibros.php'
 
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Total de Libros <?php echo $CantEjLibros?> </h3>
+          <h3 class="tile-title">Total de Libros <?php echo $CantEjLibros ?> </h3>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="tabla-Ejemplares">
               <thead>
                 <tr>
                   <th>#</th>
                   <th>ISBN</th>
                   <th>ID Institucional</th>
-                  <th>Título</th>                  
-                  <th>Estado</th>                  
-                  <th>Opciones</th>
+                  <th>Título</th>
+                  <th>Estado</th>
+                  <th class="no-print">Opciones</th>
 
                 </tr>
               </thead>
               <tbody>
                 <?php for ($i = 0; $i < $CantEjLibros; $i++) { ?>
 
-                    
-                
-                  <tr class=<?php echo ($i%2==0)?  'table-info' : '';?>>
+
+
+                  <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
                     <td><?php echo $i ?></td>
                     <td><?php echo $ISBN ?></td>
                     <td><?php echo $Ejlibros[$i]['IDINSTEJEMPLAR'] ?></td>
                     <td><?php echo $Ejlibros[$i]['TITULO'] ?></td>
                     <td><?php echo $Ejlibros[$i]['ESTADO'] ?></td>
-                    <td><a href="#">Ver detalles...</a></td>
+                    <td> <a class="btn btn-sm btn-info" href="#"><i class="fa fa-search"></i> Detalles</a>&nbsp;&nbsp;
+                    </td>
                   </tr>
                 <?php } ?>
 
@@ -70,7 +71,10 @@ require_once './Handler/HandlerListadoEjemplaresLibros.php'
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
-
+  <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
+  <!-- Essential javascripts for application to Export pdf-->
+  <?php require_once('./Inc/js/jsTableToExport.inc.php'); ?>
+  
 </body>
 
 </html>

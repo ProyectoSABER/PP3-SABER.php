@@ -62,3 +62,52 @@ function RegistrarLogout($PidUsuario,$Pdate,$PConeccionBD){
 
 }
 
+function ActualizarNuevoSocio($idUsuario,$NtipoUsuario=4,$PConeccionBD){
+        $tipoUsuario=$NtipoUsuario;
+        $sql="UPDATE
+        `usuario`
+    SET `idTipo_Usuario` = '$tipoUsuario'
+    WHERE
+    `id_Usuario` =$idUsuario";
+
+$estadoRegistro=mysqli_query($PConeccionBD,$sql);
+
+return $estadoRegistro;
+
+}
+function DatosUsuario($idUsuario,$PConeccionBD){
+
+
+        $Usuario=array();
+        $data=array();
+        
+        $SQL="SELECT * FROM usuario WHERE id_Usuario='$idUsuario' ";
+        
+        $rs= mysqli_query($PConeccionBD, $SQL);
+        
+        $data=mysqli_fetch_array($rs);
+        
+        if(!empty($data)){
+            $Usuario['USUARIO_ID'] = $data['id_Usuario'];
+              
+              $Usuario['USUARIO_EMAIL'] = $data['mail_Usuario'];
+              
+              $Usuario['USUARIO_IDTIPO'] = $data['idTipo_Usuario']; 
+              
+              $Usuario['USUARIO_ULT_ACCESO'] = $data['ultAcceso_Usuario'];
+              
+              $Usuario['USUARIO_ACTIVO'] = $data['activo_Usuario'];
+              
+        }
+        
+        
+        return $Usuario;
+        
+}
+
+function modificarClave($Email,$NuevaClave,$PConeccionBD){
+
+        $SQL="UPDATE `usuario` SET `clave_Usuario`=MD5('$NuevaClave') WHERE `mail_Usuario`='$Email'";
+        $rs= mysqli_query($PConeccionBD, $SQL);
+        return $rs;
+}

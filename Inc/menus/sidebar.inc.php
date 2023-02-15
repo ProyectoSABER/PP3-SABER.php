@@ -1,7 +1,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user">
-    <img class="app-sidebar__user-avatar" src="images/team/<?php echo (!empty($_SESSION['USUARIO_Foto'])) ? $_SESSION['USUARIO_Foto']  : 'Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
+    <img class="app-sidebar__user-avatar" src="<?php echo (!empty($_SESSION['USUARIO_Foto']) & $_SESSION['USUARIO_Foto']!="null" ) ? $_SESSION['USUARIO_Foto']  : 'images/team/Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
     <div>
       <p class="app-sidebar__user-name"><?php echo $_SESSION['USUARIO_NOMBRE'] . ' ' . $_SESSION['USUARIO_APELLIDO'] ?></p>
       <p class="app-sidebar__user-designation"><?php echo $_SESSION['USUARIO_NOMTIPOUSUARIO'] ?></p>
@@ -64,7 +64,10 @@
       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-cash-register"></i><span class="app-menu__label">Pagos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       
       <ul class="treeview-menu">
-      <li><a class="treeview-item" href="RegistrarPago.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Pago</a></li>
+      <li><a class="treeview-item" href="RegistrarCobro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Pago</a></li>
+      <li><a class="treeview-item" href="ListadoCobros.php"><i class="app-menu__icon fa fa-edit"></i>Listado Pagos</a></li>
+      <li><a class="treeview-item" href="ListadoTodosCobros.php"><i class="app-menu__icon fa fa-edit"></i>Listado Todos los Pagos</a></li>
+      <li><a class="treeview-item" href="CuotasNoAbonadas.php"><i class="app-menu__icon fa fa-edit"></i>Listado de Cuotas Sin Abonar</a></li>
       </ul>
  
       <!-- /Estadisticas -->
@@ -92,8 +95,22 @@
       <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
 
-          <li><a class="treeview-item" href="RegistrarReservaLibro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Prestamo</a></li>
+          <li><a class="treeview-item" href="RegistrarReservaLibro.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Reserva</a></li>
 
+        </ul>
+      </li>
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa-solid fa-cash-register"></i><span class="app-menu__label">Pagos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      
+      <ul class="treeview-menu">
+      
+      <li><a class="treeview-item" href="CuotasAbonadasUsuario.php"><i class="app-menu__icon fa fa-edit"></i>Cuotas abonadas</a></li>
+      
+      </ul>
+      <!-- MISPrestamos -->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book-reader"></i><span class="app-menu__label">Prestamos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <ul class="treeview-menu">
+
+          <li><a class="treeview-item" href="HistorialdePrestamosLibros.php"><i class="app-menu__icon fa fa-th-list"></i>Historial de Prestamos</a></li>
         </ul>
       </li>
 

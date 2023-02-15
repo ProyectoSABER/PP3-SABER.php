@@ -1,12 +1,12 @@
 <?php
 require_once 'Bibliotecario.php';
 
-
+if(!function_exists('calcularFechaDevolucion')){
 function calcularFechaDevolucion($fechaActual){
     
     $fechaFechaDevolucion=date("y-m-d",strtotime($fechaActual."+ 7 days"));
 return $fechaFechaDevolucion;
-}
+}}
 
 
 function registrarPrestamo($datos,$ConexionBD,$IdEstadoPrestamo=1){
@@ -63,13 +63,12 @@ function registrarPrestamo($datos,$ConexionBD,$IdEstadoPrestamo=1){
 
 
 }
-function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=4){
+function registrarPrestamoSocio($datos,$ConexionBD,$IdEstadoPrestamo=1){
     
     $IDSocio=$datos['IDSocio'];
     $IDISBN = $datos['IDISBN'];
     $IDEJEMPLAR=$datos['IDEJEMPLAR'];
     $IDTIPOPRESTAMO=$datos['IDTIPOPRESTAMO'];
-
     
     $fechaActual=date("y-m-d");
     

@@ -11,7 +11,7 @@ $IDSocio='';
 if(isset($_SESSION['RegistrarPrestamo']['ISBN'])){
 $ISBNlibro = $_SESSION['RegistrarPrestamo']['ISBN'];
 $IDSocio = $_SESSION['RegistrarPrestamo']['IDSocio'];
-
+$TipoSocio=$_SESSION['RegistrarPrestamo']['TipoSocio'];
 }
 $MensajeError = "";
 $MensajeExito = "";
@@ -31,7 +31,7 @@ $Socio = MostrarUnoSocioID($IDSocio, $MiConexion);
 
 require_once './funciones/TipoPrestamo.php';
 $TipoPrestamo = array();
-$TipoPrestamo = conocerTodoTipoPrestamos($MiConexion);
+$TipoPrestamo = conocerTodoTipoPrestamos($MiConexion);;
 $CantTipoPrestamo = count($TipoPrestamo);
 
 $IngresoRegistro = array();
@@ -52,6 +52,7 @@ if (!empty($_POST['RegistrarPrestamo'])) {
             $IngresoRegistro = $rp;
             $EjemplaresDispo = conocerEjemplaresDisponiblesUnLibro($ISBNlibro, $MiConexion);
             $CantEjemplaresDispo = count($EjemplaresDispo);
+            $MensajeExito = "Se registro el préstamo";
         } else {
             $MensajeError = ' Debe de seleccionar un tipo de prestamo';
         }
@@ -59,6 +60,7 @@ if (!empty($_POST['RegistrarPrestamo'])) {
         $MensajeError = ' Debe de seleccionar un Ejemplar de libro';
     }
 }
+
 
 /* TPrestamo nombre radio 
 IDEJEMPLARLIBRO nombre ejemplar*/

@@ -80,6 +80,7 @@ if (!empty($_POST['RegistrarPrestamo'])) {
 
     $_SESSION['RegistrarPrestamo']['ISBN'] = $_GET['ISBN'];
     $_SESSION['RegistrarPrestamo']['IDSocio'] = $_GET['IDSocio'];
+    $_SESSION['RegistrarPrestamo']['TipoSocio'] = $SocioID['SOCIO_CATEGORIA'];
 
     header('Location:RegistrarPrestamo2.php');
     exit;

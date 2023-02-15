@@ -15,7 +15,7 @@ require_once './Handler/socios/HandlerListadoSocios.php'
       <div>
         <h1><i class="fa fa-th-list"></i> Listados</h1>
 
-        <p>Listado de Socios</p>
+        <p id="title">Listado de Socios</p>
 
       </div>
       <ul class="app-breadcrumb breadcrumb">
@@ -42,7 +42,8 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                   <th>Cuota</th>
                   <th>EstadoSocio</th>
                   <th>Fecha Alta</th>
-                  <th>OPCIONES</th>
+                  <th class="no-print">Opciones</th>
+
 
 
                 </tr>
@@ -62,9 +63,8 @@ require_once './Handler/socios/HandlerListadoSocios.php'
                     <td><?php echo $Socio[$i]['SOCIO_CUOTA'] ?></td>
                     <td><?php echo $Socio[$i]['SOCIO_ESTADOSOCIO'] ?></td>
                     <td><?php echo convertir_fecha($Socio[$i]['SOCIO_FECHAALTA']) ?></td>
-                    <td><a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Detalle</a>
-                      <a href="./EditarSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Editar</a>
-                      <a href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>">Eliminar</i></a>
+                    <td><a  class="btn btn-md btn-info" href="./DetalleSocio.php?SOCIO_ID=<?php echo $Socio[$i]['SOCIO_ID'] ?>"><i class="fa fa-search"></i> Detalle</a>&nbsp;&nbsp;
+                      
                     </td>
                   </tr>
                 <?php } ?>
@@ -77,7 +77,7 @@ require_once './Handler/socios/HandlerListadoSocios.php'
         </div>
       </div>
       <div class="clearfix"></div>
-      <!-- <?php require_once("./page/modals/ListadoLibros/ModalDetalleLibros.php") ?> -->
+      <!-- <?php require_once("./page/modals/ListadoLibros/ModalDetalleLibros.php") ?>
 
     </div>
 
@@ -86,19 +86,10 @@ require_once './Handler/socios/HandlerListadoSocios.php'
   <?php require_once('./Inc/js/js.inc.php'); ?>
   <!-- DataTable -->
   <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
-  <script>
-    init();
+  <!-- Essential javascripts for application to Export pdf-->
+  <?php require_once('./Inc/js/jsTableToExport.inc.php'); ?>
 
-    function init() {
-      getData();
-    }
-
-    function getData() {
-      $('#tabla-Socios').DataTable({
-    scrollY: 250
-});
-    }
-  </script>
+  
 
 </body>
 

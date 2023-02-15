@@ -1,9 +1,25 @@
 const selectElementNombre =document.querySelector('.NombreApellido');
 const input =document.querySelector('.DNI');
+const MAIL =document.querySelector('.Mail');
+const optionDni =document.querySelectorAll('.option');
+
 
 selectElementNombre.addEventListener('change', (event)=>{
-    
-    input.placeholder=event.target.value;
+    const dni= event.target.value;
+    input.placeholder=dni
+    let mailbuscado;
+    optionDni.forEach(element=>{
+      const opt=element.dataset.mail;
+      
+
+      if (element.value==dni) {
+            
+        mailbuscado=opt;
+        console.log("mailbuscado",mailbuscado)
+    }
+
+    })
+    MAIL.placeholder=mailbuscado
 
 })
 

@@ -29,6 +29,7 @@ require_once './Handler/HandlerBlack.php'
       <div class="col-md-12">
         <div class="tile">
           <h3 class="tile-title">Black </h3>
+          <p><?php print_r($_SESSION)?></p>
           <p><?php echo $acceso?></p>
           <p><?php echo $_SERVER['REQUEST_METHOD']?></p>
           <p> pruebas de Host</p>
