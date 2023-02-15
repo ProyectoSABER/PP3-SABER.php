@@ -28,6 +28,7 @@ require_once './Handler/HandlerIndex.php'
         <div class="tile">
             <h3 class="tile-title">Sistema de Estadisticas S.A.B.E.R
             </h3> <br><br><br>
+
             <head>
              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
              <script type="text/javascript">
@@ -44,14 +45,14 @@ require_once './Handler/HandlerIndex.php'
           
           <?php  
               
-          $SQL ="SELECT COUNT(idPrestamoLibro) AS Cantidad,cs.nom_CategoriaSocio AS Nombre, cs.Id_CategoriaSocio
+          $SQL ="SELECT COUNT(idPrestamoLibro) AS Cantidad,cs.nom_CategoriaSocio AS Nombre
           FROM prestamolibro  pl
           INNER JOIN socio so ON so.id_socio = pl.id_socio
           INNER JOIN categoriasocio cs ON cs.Id_CategoriaSocio = so.idcategoria_Socio
           GROUP BY cs.Id_CategoriaSocio";
           $consulta = mysqli_query($MiConexion,$SQL);
           while ($resultado = mysqli_fetch_assoc($consulta)) {
-            echo '['.$resultado['Nombre'].', '.$resultado['Cantidad'].'],';
+            echo '["'.$resultado['Nombre'].'", '.$resultado['Cantidad'].'],';
           }
          
           ?>
@@ -59,7 +60,7 @@ require_once './Handler/HandlerIndex.php'
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'INFORME DE PRESTAMO DE LIBROS SEGÚN TIPO DE SOCIOS'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -67,11 +68,36 @@ require_once './Handler/HandlerIndex.php'
         chart.draw(data, options);
       }
     </script>
+
+
+
+
+
+
   </head>
 
 
   <div id="piechart" style="width: 900px; height: 500px;"></div>
    
+
+<!-- GRAFICO 3 -->
+
+
+
+
+  <div class="align-items-end">
+
+<div>
+  <canvas id="myChart" style="width: 45px; height: 15px;"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+
+</div>
   </main>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
