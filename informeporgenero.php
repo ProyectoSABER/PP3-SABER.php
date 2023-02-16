@@ -45,10 +45,17 @@ require_once './Handler/HandlerIndex.php'
       
         <?php  
               
-              $SQL ="SELECT categorialibro.categoria_cateLibro AS categorias FROM categorialibro";
+              $SQL ="
+              SELECT COUNT(CAT.id_CateLibro) AS 'cantidad', CAT.categoria_cateLibro AS 'Libro' FROM prestamolibro AS PL
+              INNER JOIN detalleprestamolibro AS DPL ON PL.idPrestamoLibro = DPL.id_PrestamoLibro
+              INNER JOIN ejemplarlibro AS EJL ON DPL.id_EjemplarLibro_Libro = EJL.id_EjemplarLibro
+              INNER JOIN libro AS LIB ON EJL.id_Libro = LIB.id_isbn
+              INNER JOIN categorialibro AS CAT ON LIB.categoria_libro = CAT.id_CateLibro
+              GROUP BY CAT.id_CateLibro";
               $consulta = mysqli_query($MiConexion,$SQL);
+              
               while ($resultado = mysqli_fetch_assoc($consulta)) {
-                echo '["'.$resultado['categorias'].'"],';
+                echo '["'.$resultado['Libro'].'"],';
               }
              
               ?>
@@ -56,7 +63,21 @@ require_once './Handler/HandlerIndex.php'
       ],
       datasets: [{
         label: 'Cantidad de libros por Genero',
-        data: [12, 19, 3, 5, 2, 17, 3, 4, 22, 12],
+        data: [
+          <?php
+          $SQL ="
+          SELECT COUNT(CAT.id_CateLibro) AS 'cantidad', CAT.categoria_cateLibro FROM prestamolibro AS PL
+          INNER JOIN detalleprestamolibro AS DPL ON PL.idPrestamoLibro = DPL.id_PrestamoLibro
+          INNER JOIN ejemplarlibro AS EJL ON DPL.id_EjemplarLibro_Libro = EJL.id_EjemplarLibro
+          INNER JOIN libro AS LIB ON EJL.id_Libro = LIB.id_isbn
+          INNER JOIN categorialibro AS CAT ON LIB.categoria_libro = CAT.id_CateLibro
+          GROUP BY CAT.id_CateLibro";
+          $consulta = mysqli_query($MiConexion,$SQL);
+          while ($resultado = mysqli_fetch_assoc($consulta)) {
+            echo '['.$resultado['cantidad'].'],';
+          }
+          ?>
+        ],
         borderWidth: 1
       }]
     },
