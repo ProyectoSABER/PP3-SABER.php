@@ -12,7 +12,7 @@ $rs= mysqli_query($PConeccionBD, $SQL);
 $data=mysqli_fetch_array($rs);
 
 if(!empty($data)){
-    $Usuario['USUARIO_ID'] = $data['id_Usuario'];
+      $Usuario['USUARIO_ID'] = $data['id_Usuario'];
       
       $Usuario['USUARIO_EMAIL'] = $data['mail_Usuario'];
       
