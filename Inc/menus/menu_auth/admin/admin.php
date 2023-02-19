@@ -39,34 +39,35 @@
       </div>
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
+        
 <form name="registroUsuarioModal" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com" required>
   <label for="floatingInput">Nombre</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputApellidoModal" name="inputApellidoModal" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputApellidoModal" name="inputApellidoModal" placeholder="Escriba su apellido" required>
   <label for="floatingInput">Apellido</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" placeholder="ingrese su documento" required>
   <label for="floatingInput">Documento</label>
 </div>
 <div class="form-floating mb-3" >
-  <input type="email" class="form-control" id="inputEmailModal" name="inputEmailModal"  placeholder="name@example.com" value="mail@ejemplo.com">
+  <input type="email" class="form-control" id="inputEmailModal" name="inputEmailModal"  placeholder="name@example.com" required>
   <label for="floatingInputValue">Email</label>
 </div>
 <div class="form-floating">
-  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal" placeholder="Password">
+  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal" placeholder="Password" value='' required>
   <label for="floatingPassword">Password</label>
 </div>
 <br>
 <div class="form-floating">
 <label for="tipousuario">Tipo de Usuario</label>
-  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Floating label select example">
+  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Floating label select example" required> 
     <!-- Buscar info y mostrar oopciones segun BD -->
-    <option selected>Seleccione una opción</option>
+    <option selected value=''>Seleccione una opción</option>
     <option value="1">1-Administrador</option>
     <option value="2">2-Bibliotecario</option>
     <option value="3">3-Docente</option>

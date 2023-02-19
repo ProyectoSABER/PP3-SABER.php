@@ -6,6 +6,7 @@ require_once('../../funciones/conexion.php');
 $conn = ConexionBD();
 if(isset($_POST["NuevoUsuario"])){
 //Declaramos variables enviadas por POST
+
 $nombre = $_POST['inputNameModal'];
 $apellido =  $_POST['inputApellidoModal'];
 $documento  = $_POST['inputDocumentoModal'];
@@ -18,9 +19,19 @@ if(empty($email) || empty($password) || empty($rol)){
     echo "<script>alert('DEBE COMPLETAR NOMBRE APELLIDO Y DOCUMENTO PARA REGISTRAR UN USUARIO')</script>";
     echo "<script>window.history.back();</script>"; 
 }else{
-    $sql = "INSERT INTO usuario(mail_Usuario,clave_Usuario,idTipo_Usuario)VALUES('$email','$password','$rol')";
+    $sql = "SELECT id_Usuario FROM usuario WHERE mail_Usuario = '$email'";
     $cs = mysqli_query($conn,$sql);
+    $usuarioExistente = mysqli_fetch_array($cs);
+    if(!empty($usuarioExistente)){
         
+        echo "<script>alert('USUARIO DUPLICADO')</script>";
+        echo "<script>window.history.back();</script>";   
+    
+    }else{
+        
+        $sql = "INSERT INTO usuario(mail_Usuario,clave_Usuario,idTipo_Usuario)VALUES('$email','$password','$rol')";
+        $cs = mysqli_query($conn,$sql);
+      
      if($cs == 1){
          $sql = "SELECT id_Usuario FROM usuario WHERE mail_Usuario = '$email' AND clave_Usuario='$password'";
          $cs = mysqli_query($conn,$sql);
@@ -30,8 +41,12 @@ if(empty($email) || empty($password) || empty($rol)){
               $idUsuario = $resul[0];
          }
 
+    }else{
+       
+        echo "<script>alert('Hubo un error al registrar el usuario verifique la informacion, el usuario puede estar duplicado')</script>";
+        echo "<script>window.history.back();</script>"; 
     }
-
+}
  
 }
 
@@ -43,12 +58,27 @@ if(isset($idUsuario)){
         }
         else
         {
+            $sql = "SELECT dni_Persona FROM persona WHERE dni_Persona = '$documento'";
+            $cs = mysqli_query($conn,$sql);
+            $resul = mysqli_fetch_array($cs);
+            if(!empty($resul)){
+                echo "<script>alert('No se pudo registrar la persona, DNI DUPLICADO, contacte al ADMINISTRADOR DEL SISTEMA.')</script>";
+                echo "<script>window.history.back();</script>";
+            }{
+
+         
             $sql = "INSERT INTO persona(dni_Persona,tipoDNI_persona,nombre_Persona,apellido_persona,id_domicilio,id_usuario)VALUES('$documento',1,'$nombre','$apellido',1,'$idUsuario')";
             $cs = mysqli_query($conn,$sql);
             if($cs==1){
                     echo "<script>alert('REGISTRO EXITOSO')</script>";
                     echo "<script>window.history.back();</script>";
-            }       
+            } 
+              else{
+       
+                echo "<script>alert('Hubo un error al registrar el usuario verifique la informacion, el usuario puede estar duplicado')</script>";
+                echo "<script>window.history.back();</script>"; 
+            }    
+         }   
         }
     }else{
       echo "<script>alert('No se pudo registrar el usuario, verifique la informacion ingresada por favor.')</script>";
