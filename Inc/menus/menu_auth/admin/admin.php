@@ -58,7 +58,7 @@
   <label for="floatingInput">Apellido</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="number" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" minlength="7" placeholder="ingrese su documento" required>
+  <input type="number" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" minlength="7" placeholder="ingrese su documento" onkeyup="validate();" required>
   <label for="floatingInput">Documento</label>
 </div>
 <div class="form-floating mb-3" >
@@ -66,14 +66,14 @@
   <label for="floatingInputValue">Email</label>
 </div>
 <div class="form-floating">
-  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal" placeholder="Password" value='' required>
+  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal"  minlength="8" placeholder="Password"  onkeyup="validate();" value='' required>
   <label for="floatingPassword">Password</label>
 </div>
 <br>
 <div class="form-floating">
 <label for="tipousuario">Tipo de Usuario</label>
 <br>
-  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Floating label select example" required> 
+  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Tipo de Usuario" required> 
     <!-- Buscar info y mostrar oopciones segun BD -->
     <option selected value=''>Seleccione una opción</option>
     <option value="1">1-Administrador</option>
@@ -91,7 +91,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" name="NuevoUsuario" class="btn btn-primary">Guardar</button>
+        <button type="submit" name="NuevoUsuario" id="NuevoUsuario" class="btn btn-primary" onmouseover="validate();">Guardar</button>
       </div>
     </div>
   </div>
@@ -135,14 +135,14 @@
 </div>
 
 <div class="form-floating">
-  <input type="text" class="form-control" id="passwordEditUser" name="passwordEditUser" placeholder="Password">
+  <input type="text" class="form-control" id="passwordEditUser" name="passwordEditUser" minlength="8" placeholder="Password">
   <label for="floatingPassword">Password</label>
 </div>
 
 <br>
 <div class="form-floating">
 <label for="tipousuario">Tipo de Usuario</label>
-  <select class="form-select" id="rolEditUser" name="rolEditUser" aria-label="Floating label select example">
+  <select class="form-select" id="rolEditUser" name="rolEditUser" aria-label="Tipo de usuario">
     <!-- Buscar info y mostrar oopciones segun BD -->
     <option value="1">1-Administrador</option>
     <option value="2">2-Bibliotecario</option>
@@ -310,6 +310,17 @@ $('#rol').val(datos[6]);
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+ function validate(){
+ documento = $('#inputDocumentoModal').val();
+ password = $('#inputPasswordModal').val();
+ if(documento.length < 7 || password.length < 7){
+     $('#NuevoUsuario').attr('disabled', 'disabled');
+  }
+ else
+  {  
+    $('#NuevoUsuario').removeAttr("disabled");   
+  }
+ } 
 function enviarModal(nombre,apellido,dni,mail,password,idTipoUser,NomTipoUser,idUser)
 {
   $('#update_id').val(idUser);
