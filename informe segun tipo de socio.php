@@ -27,7 +27,16 @@ require_once './Handler/HandlerIndex.php'
     <div class="col-md-12">
         <div class="tile">
             <h3 class="tile-title">Sistema de Estadisticas S.A.B.E.R
-            </h3> <br><br><br>
+            </h3> <br>
+            
+
+    <div class="referencias">        
+      <p><h6>
+      EN ESTA SECCIÓN ENCONTRARÁS DE FORMA GRÁFICA, REPRESENTADAS EN UN GRÁFICO TIPO PASTEL <br>
+      EL PORCENTAJE DE LIBROS PRESTADOS A LOS DISTINTOS TIPOS DE SOCIOS REGISTRADOS BAJO NUESTRO SISTEMA.
+      </h6></p>
+      
+    </div>
 
             <head>
              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -77,7 +86,7 @@ require_once './Handler/HandlerIndex.php'
   </head>
 
 
-  <div id="piechart" style="width: 900px; height: 500px;"></div>
+  <div id="piechart" style="width: 1050px; height: 800px;"></div>
    
 
 <!-- GRAFICO 3 -->
@@ -102,7 +111,7 @@ require_once './Handler/HandlerIndex.php'
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
  
- 
+
 
 </body>
 

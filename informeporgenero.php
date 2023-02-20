@@ -27,7 +27,17 @@ require_once './Handler/HandlerIndex.php'
     <div class="col-md-12">
         <div class="tile">
             <h3 class="tile-title">Sistema de Estadisticas S.A.B.E.R
-            </h3> <br><br><br>
+            </h3> <br>
+          
+     <div class="referencias">        
+      <p><h6>
+      EN ESTA SECCIÓN ENCONTRARÁS REPRESENTADO EN UN GRÁFICO DE BARRAS 
+      LA CANTIDAD DE LIBROS SOLICITADOS SEGÚN SU CATEGORÍA, POR NUESTROS SOCIOS.<BR>
+      DE ESTA MANERA EL USUARIO A CARGO, PUEDE VERIFICAR CUAL ES LA MAYOR DEMANDA SEGÚN LA CATEGORÍA.
+      </h6></p>
+      
+    </div>
+    <br>
 
 <div>
   <canvas id="myChart" style="width: 45px; height: 15px;"></canvas>
@@ -64,6 +74,7 @@ require_once './Handler/HandlerIndex.php'
       datasets: [{
         label: 'Cantidad de libros por Genero',
         data: [
+
           <?php
           $SQL ="
           SELECT COUNT(CAT.id_CateLibro) AS 'cantidad', CAT.categoria_cateLibro FROM prestamolibro AS PL
@@ -75,11 +86,35 @@ require_once './Handler/HandlerIndex.php'
           $consulta = mysqli_query($MiConexion,$SQL);
           while ($resultado = mysqli_fetch_assoc($consulta)) {
             echo '['.$resultado['cantidad'].'],';
+            
+            
           }
           ?>
+          
         ],
-        borderWidth: 1
+
+        backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+        borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+        borderWidth: 2
+        
       }]
+      
     },
     options: {
       scales: {
