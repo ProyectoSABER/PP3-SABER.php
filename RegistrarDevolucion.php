@@ -30,6 +30,8 @@ require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
         <div class="tile">
           <h3 class="tile-title">Total de Prestamos Activos <?php echo $CantPActivos ?> </h3>
           <div class="table-responsive">
+          <form id="RegistrarDevolucion" method="post">
+
             <table class="table" id="tabla-libros">
               <thead>
                 <tr>
@@ -46,12 +48,8 @@ require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
                 </tr>
               </thead>
               <tbody>
-
-                <form id="RegistrarDevolucion" method="POST">
+                
                   <?php for ($i = 0; $i < $CantPActivos; $i++) { ?>
-
-
-
                     <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
                       <td><?php echo $i ?></td>
                       <td><?php echo $PActivos[$i]['ID_LIBRO'] ?></td>
@@ -65,12 +63,9 @@ require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
                       <td><button type="submit" name='Devolucion' value="<?php echo $PActivos[$i]['ID'] ?>" class="btn btn-warning btn-xs">DEVUELTO</button></td>
                     </tr>
                   <?php } ?>
-                </form>
-
-
-
-              </tbody>
+                  </tbody>
             </table>
+          </form>
           </div>
         </div>
       </div>
@@ -84,6 +79,8 @@ require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
   <script type="text/javascript" src="./assets/plugins/DataTables/datatables.js"></script>
   <script>
     $(function() {
+
+    
 
       $('#tabla-libros').DataTable({
         "paging": true,
@@ -101,7 +98,7 @@ require_once './Handler/prestamos/HandlerListadoPrestamosActivos.php'
 
           "sZeroRecords": "No se encontraron resultados",
 
-          "sEmptyTable": "Ningún dato disponible en esta tabla",
+          "sEmptyTable": "No hay prestamos Activos",
 
           "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
 

@@ -22,10 +22,11 @@ $CantPActivos=count($PActivos);
 if(!empty($_POST['Devolucion'])){
 
     registrarDevolucion($_POST['Devolucion'],$MiConexion);
-    header('Location:index.php');
+    header('Location:RegistrarDevolucion.php');
     exit;
     
 }
+
 
 
 

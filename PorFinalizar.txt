@@ -1,0 +1,30 @@
+-Modificar datos de Socio atraves de un modal,(USAR VALIDADORES DE CAMPOS)
+-agregar funcion CRUD  localidad, provincia, pais =Finalizado Falta poder borrar y Modificar
+
+Modificar carga de los datos de nuevos usuario
+
+falta  modificar libro, modificar ejemplar
+
+agragr funcion crud de AUtor de Libro
+agregar funcion agragar autor de libro en la carga de libro
+agregar Select para los campos de ubicacion en estanteria
+agragar funcion de carga de imagenes en la carga de libros
+validar los campos en la carga de libro
+
+
+Listado de cuotas pagas con salida de pdf en vista usuario => Finalizado
+Listado de libros devueltos con salida de pdf en vista usuario=> Finalizado
+
+mostrar imagenes aparce roto cuando no se introdujo una foto de usuario => Finalizado
+
+
+en consulta sql de cuotas por abonar deberia solo mostrarse aquellas cuotas que se crearon depues de que el socio fue dado ede alta( actualmente se muestran todas las cuotas hasta las generadas en el pasado asntes de que el socio se diera de alta)
+
+caundo registro el pago de una cuota a nombre de andres salvador (56	98745632	Andres	Salvador	Docente	Activo) se muestran todas sus cuotas pero al mometo de pagarlas se registran a nombre de otro socio (58	987456321	San martin	San MArtin	Docente	Activo)
+
+Listado Registrar Devolucion de prestamos no funcione el bonto de registro devuelto
+Actulizar datos de Persona no funciona
+
+Listado de Cuota debe de realizarze con una consulta jq.ajax en el listado para poder filtrar
+
+Falta un reporte donde se indique cuales Fueron los montos por mes del ultimo año, mes, dia segun se pueda seleccionar
