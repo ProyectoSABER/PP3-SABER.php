@@ -26,9 +26,47 @@ function conocerTodasCatLibros($PConeccionBD)
 
 
 
-
-
-
-function cargarCatLibros($idEditorial, $PConeccionBD)
+function registrarCategoriaLibro($categoriaLibro,$PConeccionBD)
 {
+    
+
+
+
+
+    $sql = "INSERT INTO `categoriaLibro`( `categoria_cateLibro`) VALUES ('$categoriaLibro')";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
 }
+
+function modificarCategoriaLibro($id,$Nombre,$PConeccionBD)
+{
+    
+
+    $sql = "UPDATE `categoriaLibro` SET `categoria_cateLibro`='$Nombre' WHERE `id_CateLibro`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+function eliminarCategoriaLibro($id,$PConeccionBD)
+{
+    
+
+    $sql = "DELETE FROM `categoriaLibro` WHERE `id_CateLibro`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+
+

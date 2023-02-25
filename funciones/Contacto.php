@@ -99,3 +99,41 @@ function ConocerContactoDNI($DNI, $PConeccionBD)
         return $Contacto;
     }
 }
+function ConocerContacto($contacto, $TipoContacto, $PConeccionBD)
+{
+
+    $SQL = "SELECT `idContacto`, `contact`, `id_tipoContacto` FROM `contacto` WHERE `contact`='$contacto'AND `id_tipoContacto`='$TipoContacto'";
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    $i = 0;
+    while ($data = mysqli_fetch_array($rs)) {
+        $Contacto[$i]['IDCONTACTO'] = $data['idContacto'];
+        $Contacto[$i]['CONTACTO'] = $data['contact'];
+        $Contacto[$i]['IDTIPOCONTACTO'] = $data['id_tipoContacto'];
+        $i++;
+    }
+    return $Contacto ??$data;
+}
+function registrarContacto($contacto, $TipoContacto, $PConeccionBD)
+{
+    $SQL = "INSERT INTO `contacto`
+    (`contact`,
+    `id_tipoContacto`)
+    VALUES('$contacto','$TipoContacto');";
+
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    return $rs;
+}
+
+function registrarContacto_proveedor($cuitProveedor,$idContacto,$PConeccionBD){
+
+    $SQL="INSERT INTO `contacto_proveedor`(`id_Propietario`, `idContacto`) VALUES ('$cuitProveedor','$idContacto')";
+    $rs = mysqli_query($PConeccionBD, $SQL);
+    return $rs;
+}
+
+function eliminarAsociacionProveedorContacto($cuitProveedor,$PConeccionBD){
+
+    
+
+
+}

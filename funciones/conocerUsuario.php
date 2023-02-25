@@ -3,7 +3,7 @@
 
 function conocerTodosUsuario($PConeccionBD)
 {
-    
+
     $Usuario = array();
     $data = array();
 
@@ -20,8 +20,8 @@ function conocerTodosUsuario($PConeccionBD)
     $i = 0;
     while ($data = mysqli_fetch_array($rs)) {
 
-        $Usuario[$i]['DNI'] = $data['dni_persona'];        
-        $Usuario[$i]['IDUSUARIO'] = $data['id_usuario'];        
+        $Usuario[$i]['DNI'] = $data['dni_persona'];
+        $Usuario[$i]['IDUSUARIO'] = $data['id_usuario'];
         $Usuario[$i]['MAIL'] = $data['mail_Usuario'];
         $Usuario[$i]['NOMBRE'] = $data['nombre_Persona'];
         $Usuario[$i]['APELLIDO'] = $data['apellido_Persona'];
@@ -34,8 +34,7 @@ function conocerTodosUsuario($PConeccionBD)
         $i++;
     }
 
-        return $Usuario;
-    
+    return $Usuario;
 }
 function conocerUsuario($idUsuario, $PConeccionBD)
 {
@@ -64,24 +63,21 @@ function conocerUsuario($idUsuario, $PConeccionBD)
             $Usuario['USUARIO_BARRIO'] = $data['nom_barrio'];
             $Usuario['USUARIO_LOCALIDAD'] = $data['nom_localidad'];
             $Usuario['USUARIO_PROVINCIA'] = $data['nom_prov'];
-        }
-        else{
+        } else {
             $SQL = "SELECT per.dni_persona, per.tipoDNI_persona, per.nombre_Persona, per.apellido_Persona, per.foto_socio
         FROM persona as per
         WHERE id_usuario='$idUsuario'";
 
-        $rs = mysqli_query($PConeccionBD, $SQL);
-        $data = mysqli_fetch_array($rs);
-        if (!empty($data)) {
+            $rs = mysqli_query($PConeccionBD, $SQL);
+            $data = mysqli_fetch_array($rs);
+            if (!empty($data)) {
 
-            $Usuario['USUARIO_DNI'] = $data['dni_persona'];
-            $Usuario['USUARIO_TIPODNI'] = $data['tipoDNI_persona'];
-            $Usuario['USUARIO_NOMBRE'] = $data['nombre_Persona'];
-            $Usuario['USUARIO_APELLIDO'] = $data['apellido_Persona'];
-            $Usuario['USUARIO_Foto'] = $data['foto_socio'];
-            
-        }
-
+                $Usuario['USUARIO_DNI'] = $data['dni_persona'];
+                $Usuario['USUARIO_TIPODNI'] = $data['tipoDNI_persona'];
+                $Usuario['USUARIO_NOMBRE'] = $data['nombre_Persona'];
+                $Usuario['USUARIO_APELLIDO'] = $data['apellido_Persona'];
+                $Usuario['USUARIO_Foto'] = $data['foto_socio'];
+            }
         }
 
         return $Usuario;
@@ -95,20 +91,20 @@ function cargarUsuario($idUsuario, $PConeccionBD)
     $data = conocerUsuario($idUsuario, $PConeccionBD);
 
     if (!empty($data)) {
-        
+
 
         $_SESSION['USUARIO_DNI'] = $data['USUARIO_DNI'];
         $_SESSION['USUARIO_TIPODNI'] = $data['USUARIO_TIPODNI'];
         $_SESSION['USUARIO_NOMBRE'] = $data['USUARIO_NOMBRE'];
         $_SESSION['USUARIO_APELLIDO'] = $data['USUARIO_APELLIDO'];
         $_SESSION['USUARIO_Foto'] = $data['USUARIO_Foto'];
-        if(!empty($data['USUARIO_CALLE'])){
-        $_SESSION['USUARIO_CALLE'] = $data['USUARIO_CALLE'];
-        $_SESSION['USUARIO_ALTURACALLE'] = $data['USUARIO_ALTURACALLE'];
-        $_SESSION['USUARIO_BARRIO'] = $data['USUARIO_BARRIO'];
-        $_SESSION['USUARIO_LOCALIDAD'] = $data['USUARIO_LOCALIDAD'];
-        $_SESSION['USUARIO_PROVINCIA'] = $data['USUARIO_PROVINCIA'];
-}
+        if (!empty($data['USUARIO_CALLE'])) {
+            $_SESSION['USUARIO_CALLE'] = $data['USUARIO_CALLE'];
+            $_SESSION['USUARIO_ALTURACALLE'] = $data['USUARIO_ALTURACALLE'];
+            $_SESSION['USUARIO_BARRIO'] = $data['USUARIO_BARRIO'];
+            $_SESSION['USUARIO_LOCALIDAD'] = $data['USUARIO_LOCALIDAD'];
+            $_SESSION['USUARIO_PROVINCIA'] = $data['USUARIO_PROVINCIA'];
+        }
         return 'define';
     }
     return 'undefine';

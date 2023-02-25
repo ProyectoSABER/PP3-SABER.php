@@ -1,6 +1,7 @@
 <?php
 
-require_once './Handler/HandlerIndex.php'
+require_once './Handler/HandlerIndex.php';
+
 
 ?>
 

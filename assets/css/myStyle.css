@@ -12,3 +12,18 @@
 html{
     font-size: 1rem !important ;
 }
+
+label.error{
+    margin: 0px;
+    display: block;
+    color: red;
+
+}
+input.error{
+    border:1px solid red;
+    color:red;
+}
+select.error{
+    border:1px solid red;
+    color:red;
+}

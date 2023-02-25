@@ -261,6 +261,7 @@ require_once('./Inc/menus/head.inc.php');
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
   <script type="text/javascript" src="js/plugins/jquery.validate.js"></script>
+  
   <script>
     $(function() {
 
@@ -275,6 +276,7 @@ require_once('./Inc/menus/head.inc.php');
 
       $("#form_NewPassword").validate({
         rules: {
+          
           emailActual: {
             required: true,
             email: true

@@ -29,6 +29,44 @@ function conocerTodasEditorial($PConeccionBD)
 
 
 
-function cargarEditorial($idEditorial, $PConeccionBD)
+function registrarEditorial($editorial,$PConeccionBD)
 {
+    
+
+
+
+
+    $sql = "INSERT INTO `editorial`( `nom_editorial`) VALUES ('$editorial')";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+function modificarEditorial($id,$Nombre,$PConeccionBD)
+{
+    
+
+    $sql = "UPDATE `editorial` SET `nom_editorial`='$Nombre' WHERE `id_Editorial`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+function eliminarEditorial($id,$PConeccionBD)
+{
+    
+
+    $sql = "DELETE FROM `editorial` WHERE `id_Editorial`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
 }

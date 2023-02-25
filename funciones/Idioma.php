@@ -29,6 +29,46 @@ function conocerTodosIdioma($PConeccionBD)
 
 
 
-function cargarIdioma($idEditorial, $PConeccionBD)
+
+
+function registrarIdioma($idioma,$PConeccionBD)
 {
+    
+
+
+
+
+    $sql = "INSERT INTO `idioma`( `nom_idioma`) VALUES ('$idioma')";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+function modificarIdioma($id,$Nombre,$PConeccionBD)
+{
+    
+
+    $sql = "UPDATE `idioma` SET `nom_idioma`='$Nombre' WHERE `id_idioma`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
+}
+
+function eliminarIdioma($id,$PConeccionBD)
+{
+    
+
+    $sql = "DELETE FROM `idioma` WHERE `id_idioma`='$id'";
+
+    $rs = mysqli_query($PConeccionBD, $sql);
+   
+
+   
+    return $rs;
 }

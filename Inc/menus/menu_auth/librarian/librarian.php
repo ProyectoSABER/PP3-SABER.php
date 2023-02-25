@@ -25,9 +25,6 @@
         <tbody>
           <form id="RegistrarDevolucion" method="post">
             <?php for ($i = 0; $i < $CantPDiarios; $i++) { ?>
-
-
-
               <tr class=<?php echo ($i % 2 == 0) ?  'table-info' : ''; ?>>
                 <td><?php echo $i ?></td>
                 <td><?php echo $PDiarios[$i]['ID_LIBRO'] ?></td>
@@ -64,7 +61,7 @@
               <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#acordion1" aria-expanded="true" aria-controls="flush-collapseOne ">
                   <h3 class="tile-title">Solicitudes de Libros</h3><br>
-                  
+
                 </button>
                 <h5 class="tile-subtitle">Solicitados: <?php echo $cantReservaSolicitados ?></h5>
               </h2>
@@ -73,7 +70,7 @@
                 <!-- Body Acordion -->
                 <div class="accordion-body">
                   <!-- Elements in Body Acordion -->
-                  
+
                   <div class="tile-body">
                     <div class="table-responsive">
                       <table class="table" id="tabla-reservas">
