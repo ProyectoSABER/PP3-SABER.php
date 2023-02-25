@@ -63,8 +63,8 @@ require_once('Handler/personas/HandlerRegistrarPersona.php');
                 required: true,
                 digits:true,
 
-                minlength: 8,
-                maxlength: 4
+                minlength: 6,
+                maxlength: 8
               },
 
             },
@@ -96,8 +96,8 @@ require_once('Handler/personas/HandlerRegistrarPersona.php');
               Ncelular: {
                 required: "Campo Obligatorio",
                 digits:"El campo requiere un valor numerico",
-                minlength: "El campo DNI debe contener entre 8 y 10 Digitos",
-                maxlength: "El campo DNI debe contener entre 8 y 10 Digitos"
+                minlength: "El campo Celular debe contener entre 6 y 8 Digitos",
+                maxlength: "El campo Celular debe contener entre 6 y 8 Digitos"
               },
               
             },

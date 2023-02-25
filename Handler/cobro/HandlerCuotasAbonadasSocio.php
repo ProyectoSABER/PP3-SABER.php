@@ -11,12 +11,14 @@
     $MiConexion = ConexionBD();
     $dni=$_SESSION["USUARIO_DNI"];
     $socio=  MostrarUnoSocioDni($dni,$MiConexion);
-    $idUsuario=  $socio["SOCIO_ID"];
+    $idUsuario=  $socio["SOCIO_ID"]??false;
 
+    if($idUsuario){
+        $res = array();
+        $res =  mostrarDetCuotaAbonadasSocio($idUsuario,$MiConexion);
+        $CantCuota = count($res);
+    }
     
-    $res = array();
-    $res =  mostrarDetCuotaAbonadasSocio($idUsuario,$MiConexion);
-    $CantCuota = count($res);
 
 
 

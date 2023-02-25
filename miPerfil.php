@@ -47,7 +47,7 @@ require_once('./Inc/menus/head.inc.php');
                     <div class="card card-primary card-outline">
                       <div class="card-body box-profile">
                         <div class="text-center">
-                          <img class="profile-user-img img-fluid img-circle" src="<?php echo (!empty($_SESSION['USUARIO_Foto'])) ? $_SESSION['USUARIO_Foto']  : 'Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
+                          <img class="profile-user-img img-fluid img-circle " src="<?php echo (!empty($_SESSION['USUARIO_Foto']) & $_SESSION['USUARIO_Foto']!="null" ) ? $_SESSION['USUARIO_Foto']  : 'images/team/Profile_avatar.png';  ?>" alt="<?php echo $_SESSION['USUARIO_NOMBRE'] . $_SESSION['USUARIO_APELLIDO'] ?>">
                         </div>
 
                         <h3 class="profile-username text-center"><?php echo $_SESSION['USUARIO_NOMBRE'] . " " . $_SESSION['USUARIO_APELLIDO'] ?></h3>

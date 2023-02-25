@@ -24,13 +24,14 @@ require_once './Handler/cobro/HandlerCuotasAbonadasSocio.php'
         <li class="breadcrumb-item active"><a href="#">Listado de Cuotas Abonadas</a></li>
       </ul>
     </div>
+    
     <div class="row">
 
       <div class="col-md-12">
         <div class="tile">
           <h3 class="tile-title">Total de cuotas abonadas: <?php echo $CantCuota ?? '' ?> </h3>
 
-                    <!-- Table -->
+          <!-- Table -->
           <div class="row">
             <div class="table-responsive-md">
               <table id="t-TotalCuotas" class="table table-light">
@@ -59,30 +60,32 @@ require_once './Handler/cobro/HandlerCuotasAbonadasSocio.php'
                 </thead>
                 <tbody>
                   <?php $total = 0;
-                  for ($i = 0; $i < $CantCuota; $i++) {
+                  if ($idUsuario) {
+                    for ($i = 0; $i < $CantCuota; $i++) {
 
                   ?>
-                    <tr class="">
+                      <tr class="">
 
-                      <td scope="row"><?php echo convertir_fechaMesAnio($res[$i]["MesCuota"]) ?></td>
+                        <td scope="row"><?php echo convertir_fechaMesAnio($res[$i]["MesCuota"]) ?></td>
 
 
-                      <td><?php  echo $res[$i]["APELLIDOSOCIO"] . " " . $res[$i]['NOMBRESOCIO'] ?></td>
-                      <td><?php echo $res[$i]["CatSocio"] ?></td>
-                      <td><?php echo convertir_fecha($res[$i]["FVENC"]) ?></td>
-                      <td><?php echo estadoCuota(convertir_fecha($res[$i]["FVENC"]), convertir_fecha($res[$i]["FCOBRO"])) ?></td>
+                        <td><?php echo $res[$i]["APELLIDOSOCIO"] . " " . $res[$i]['NOMBRESOCIO'] ?></td>
+                        <td><?php echo $res[$i]["CatSocio"] ?></td>
+                        <td><?php echo convertir_fecha($res[$i]["FVENC"]) ?></td>
+                        <td><?php echo estadoCuota(convertir_fecha($res[$i]["FVENC"]), convertir_fecha($res[$i]["FCOBRO"])) ?></td>
 
-                      <td><?php echo $res[$i]["ESTADOCOBRO"] ?></td>
-                      <td><?php echo convertir_fecha($res[$i]["FCOBRO"]) ?></td>
-                      <td><?php echo $res[$i]["APELLIDOBIBLIOTECARIO"] . ' ' . $res[$i]["NOMBREBIBLIOTECARIO"] ?></td>
-                      <td>$<?php echo $res[$i]["VCUOTA"] ?></td>
-                      <td>$<?php echo $res[$i]["RECARGO"] ?></td>
+                        <td><?php echo $res[$i]["ESTADOCOBRO"] ?></td>
+                        <td><?php echo convertir_fecha($res[$i]["FCOBRO"]) ?></td>
+                        <td><?php echo $res[$i]["APELLIDOBIBLIOTECARIO"] . ' ' . $res[$i]["NOMBREBIBLIOTECARIO"] ?></td>
+                        <td>$<?php echo $res[$i]["VCUOTA"] ?></td>
+                        <td>$<?php echo $res[$i]["RECARGO"] ?></td>
 
-                      <td class="table-info">$<?php echo $subtotal = $res[$i]["VCUOTA"] + $res[$i]["RECARGO"]; ?></td>
-                      <td><a class="btn btn-outline-light" role="button" onClick="imprimirComprobante(<?php echo $res[$i]["idDetalleCuota"] ?>)"><i class="fas fa-file-pdf"></i></a></td>
-                    </tr>
+                        <td class="table-info">$<?php echo $subtotal = $res[$i]["VCUOTA"] + $res[$i]["RECARGO"]; ?></td>
+                        <td><a class="btn btn-outline-light" role="button" onClick="imprimirComprobante(<?php echo $res[$i]["idDetalleCuota"] ?>)"><i class="fas fa-file-pdf"></i></a></td>
+                      </tr>
                   <?php
-                    $total += $subtotal;
+                      $total += $subtotal;
+                    }
                   } ?>
 
                 </tbody>
