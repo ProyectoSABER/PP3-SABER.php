@@ -14,7 +14,7 @@ $(document).ready(function () {
 });
 async function ordenEleccion() {
   //escucha el cambio de checker buscar socio
-  $(":radio").change(function (e) {
+  $("#container_RadioCheck1 :radio").change(function (e) {
     e.preventDefault();
     tipoBusqueda = radioChecked("#container_RadioCheck1");
     attrDelInputbuscador(tipoBusqueda);
@@ -52,12 +52,12 @@ function limpiarCampos() {
   $("#detFact-tipoSocio").html(`Tipo Socio:`);
   $("#detFact-dniSocio").html(`DNI Socio:`);
   //limpiar tabla seleccionar Socios
-  $("#table-Socios>tbody").html("")
+  $("#table-Socios>tbody").html("");
   $("#search-input").val("");
   //limpiar tabla registrarCobro
-  $("#t-cobro>tbody").html("")
+  $("#t-cobro>tbody").html("");
   //limpiar tabla SeleccionarCuota
-  $("#t-Cuota>tbody").html("")
+  $("#t-Cuota>tbody").html("");
   //ocultarBotones
   $("#CobrarCuotas").hide();
   $("#imprimirCheck").parent("div").hide();
@@ -72,11 +72,9 @@ async function añadirRecargo() {
 }
 async function btnSeleccionarCuotas(idContenedor) {
   let confirmarCuotas = await $("#ConfirmarCuotas").click(async (e) => {
-    
     e.preventDefault();
     const CuotasSeleccionadas = [];
     if ($(idContenedor).find(":checked").length > 0) {
-      
       let espera = await $(idContenedor)
         .find(":checked")
         .each(async function (index, element) {
@@ -96,7 +94,7 @@ async function btnSeleccionarCuotas(idContenedor) {
       console.log(
         "colocar objeto toast indicando el error de ningun elemento seleccionado"
       );
-      mostrarMsgAdvertencia(["Debe seleccionar las cuotas a cobrar"])
+      mostrarMsgAdvertencia(["Debe seleccionar las cuotas a cobrar"]);
     }
   });
 }
@@ -122,10 +120,9 @@ function incial() {
   var tipoBusqueda = radioChecked("#container_RadioCheck1");
   attrDelInputbuscador(tipoBusqueda);
   ocultarAcordion("acordion2");
-      ocultarAcordion("acordion3");
-      mostrarAcordion("acordion1");
-      limpiarCampos();
-
+  ocultarAcordion("acordion3");
+  mostrarAcordion("acordion1");
+  limpiarCampos();
 }
 
 function attrDelInputbuscador(val) {
@@ -240,12 +237,12 @@ function buscarDatodeSocio(tipobusqueda, datoBuscado, succesFunction) {
       succesFunction(socios);
     },
     error: function (error) {
-     /*  console.log(error); */
+      /*  console.log(error); */
       if (error.status == 404) {
-       /*  console.log("No se encontro un socio"); */
-       /*  console.log(error.responseText); */
+        /*  console.log("No se encontro un socio"); */
+        /*  console.log(error.responseText); */
         let res = JSON.parse(error.responseText);
-       /*  console.log(res); */
+        /*  console.log(res); */
         $("#table-Socios>tbody").html(
           '<tr class=""><td scope="row" colspan="6" class="table-warnnig"><p class="h4 justify-content-center">No se encontraron Socios</p></td></tr>'
         );
@@ -261,7 +258,6 @@ function buscarDatodeSocio(tipobusqueda, datoBuscado, succesFunction) {
 
 function registrarDataSocio(socioBuscado) {
   buscarDatodeSocio("DNI", socioBuscado, function (elementos) {
-
     elementos.forEach((elemento) => {
       socioSeleccionado = {
         nSocio: elemento.SOCIO_ID,
@@ -271,8 +267,6 @@ function registrarDataSocio(socioBuscado) {
         dniSocio: elemento.SOCIO_DNI,
       };
     });
-
-    
   });
 }
 
@@ -294,8 +288,8 @@ async function consultarCuotasxDniSocio(DniSocio) {
     },
     error: function (error) {
       if (error.status == 404) {
-       /*  console.log("no se encontraron cuotas para el socio solicitado"); */
-       /*  console.log(error.responseText); */
+        /*  console.log("no se encontraron cuotas para el socio solicitado"); */
+        /*  console.log(error.responseText); */
         let res = error.responseText;
 
         $("#t-Cuota>tbody").html(
@@ -342,13 +336,11 @@ function cargarDatosCuotas(cuotas) {
 //mostrar Cuotas a abonar por interfaz
 async function cargarDetalleDePago(cuotas) {
   if (cuotas.length > 0) {
-    if(typeof(DetCuotasSeleccionadas)!=="undefined"){
+    if (typeof DetCuotasSeleccionadas !== "undefined") {
       for (const obj in DetCuotasSeleccionadas) {
         if (Object.hasOwnProperty.call(DetCuotasSeleccionadas, obj)) {
           delete DetCuotasSeleccionadas[obj];
-          
         }
-        
       }
     }
     let iteracioncuotas = await cuotas.forEach(async (element, index) => {
@@ -405,8 +397,8 @@ async function consultarCuotasPorDetalle(IdDetalleCuota) {
     return result;
   } catch (error) {
     if (error.status == 404) {
-     /*  console.log("no se encontraron cuotas para el detalle Solicitado"); */
-     /*  console.log(error.responseText); */
+      /*  console.log("no se encontraron cuotas para el detalle Solicitado"); */
+      /*  console.log(error.responseText); */
       let res = JSON.parse(error.responseText);
     }
   }
@@ -474,10 +466,7 @@ function cargarDatosCuotasRegistrarCobro() {
 }
 
 function calcularSubtotal(idcelda) {
- 
-  
- 
-  let recargo = $(idcelda).val()==""? 0 :parseInt($(idcelda).val());
+  let recargo = $(idcelda).val() == "" ? 0 : parseInt($(idcelda).val());
   let IdFila = $(idcelda).closest("tr");
 
   let cuotaText = $(IdFila).find(".cuota").text();
@@ -532,7 +521,6 @@ function buscarDatodeBibliotecario() {
 
       let datoBibliotecario = Solicitudbibliotecario.results;
 
-
       bibliotecario = {
         id: datoBibliotecario.idBibliotecario,
         nombre: datoBibliotecario.nombre,
@@ -542,56 +530,86 @@ function buscarDatodeBibliotecario() {
   });
 }
 
-function registraCobroDeCuotas() {
-  $("#CobrarCuotas").click((e) => {
+function escucharMetodoPago() {
+  $("#modalMetodPago").modal("show");
+
+  $("#modalMetodPago :radio").change(function (e) {
     e.preventDefault();
-    if (confirm("¿Deseas registrar el cobro de las cuotas seleccionadas?")) {
-      let data = {};
-      let detalleCobro = {};
-      let i;
-      $("#t-cobro>tbody")
-        .find("tr")
-        .each(function (index, element) {
-          if ($(element).attr("id") == undefined) {
-            return false;
-          }
-          i = index;
+    $("#btnMetodoPago_Seleccionar").attr("disabled", false);
+  });
+  $("#btnMetodoPago_Seleccionar").click((e) => {
+    e.preventDefault();
+    let metodoPago = $(
+      '#modalMetodPago input[name="metodoPago"]:checked'
+    ).val();
+    $("#modalMetodPago").modal("hide");
+    if (metodoPago) {
+      //*Añadir metodo pago
+      Swal.fire({
+        title: `¿Desea registrar el pago?`,
+       
+        showDenyButton: true,
 
-          let idDetalleCuota = $(element).attr("id");
+        confirmButtonText: "Si, confirmar",
+        denyButtonText: `No, Cancelar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+        let data = {};
+        let detalleCobro = {};
+        let i;
+        $("#t-cobro>tbody")
+          .find("tr")
+          .each(function (index, element) {
+            if ($(element).attr("id") == undefined) {
+              return false;
+            }
+            i = index;
 
-          let valorCuota = $(element)
-            .find("td.cuota")
-            .text()
-            .replace(/[^\d,]/g, "");
-         /*  console.log(valorCuota); */
-          let recargo=$(element)
-          .find("input.recargo")
-          .val()
-         
-       /*  console.log("recargo",recargo); */
-          detalleCobro[index] = {
-            idDetalleCuota,
-            valorCuota,
-            recargo:(recargo==undefined||recargo==""? "0" : recargo),
-            estadoCobroCuota: "Pagada",
-            idResponsableCobro: bibliotecario.id,
-            observaciones: null,
-          };
+            let idDetalleCuota = $(element).attr("id");
 
-         /*  console.log(detalleCobro); */
-        });
+            let valorCuota = $(element)
+              .find("td.cuota")
+              .text()
+              .replace(/[^\d,]/g, "");
+            let recargo = $(element).find("input.recargo").val();
 
-      data.detalleCobro = detalleCobro;
-      data.cobroCuota = {
-        fechaCobro: convertDateMysql(),
-        idSocio: parseInt(
-          $("#detFact-nSocio").text().replace("N° Socio: ", "")
-        ),
-      };
+            detalleCobro[index] = {
+              idDetalleCuota,
+              valorCuota,
+              recargo: recargo == undefined || recargo == "" ? "0" : recargo,
+              estadoCobroCuota: "Pagada",
+              idResponsableCobro: bibliotecario.id,
+              observaciones: null,
+            };
+          });
 
-     /*  console.log(data); */
-      registraCobroCuotaEnBd(data);
+        data.detalleCobro = detalleCobro;
+        data.cobroCuota = {
+          fechaCobro: convertDateMysql(),
+          idSocio: parseInt(
+            $("#detFact-nSocio").text().replace("N° Socio: ", "")
+          ),
+          idMetodoPago:parseInt(metodoPago)
+        };
+console.log(data);
+        registraCobroCuotaEnBd(data);
+      } else if (result.isDenied) {
+        Swal.fire("Cancelo los cambios", "", "info");
+      }
+    });
     }
+  });
+
+  $("#btnMetodoPago_cerrar").click((e) => {
+    $("#modalMetodPago").modal("hide");
+  });
+}
+function registraCobroDeCuotas() {
+  $("#CobrarCuotas").click(async (e) => {
+    e.preventDefault();
+
+    escucharMetodoPago();
   });
 }
 
@@ -599,7 +617,7 @@ function registraCobroDeCuotas() {
 function registraCobroCuotaEnBd(data) {
   result = $.ajax({
     type: "POST",
-    dataType:"json",
+    dataType: "json",
 
     url: `Handler/Cobro/HandlerRegistrarCobro.php?RegistrarCobro=${true}`,
     data: {
@@ -607,34 +625,44 @@ function registraCobroCuotaEnBd(data) {
     },
 
     success: function (response) {
-      let respuesta = response/*  JSON.parse(response); */
+      let respuesta = response; /*  JSON.parse(response); */
       imprimirComprobante(respuesta.id_cobro);
       incial();
-      mostrarMsgExito(["Se registro el cobro con exito"])
+      Swal.fire("Exito!", "Se registro el cobro con exito", "success");
+
     },
     error: function (error) {
       if (error.status == 404) {
         let respuesta = JSON.parse(error.responseText);
-       /*  console.log(respuesta); */
-        mostrarMsgError(["Hubo un error al registrar el cobro, por favor reintente"])
-        incial()
+        /*  console.log(respuesta); */
+        Swal.fire({
+          icon: "error",
+          title: "Oops... ",
+          text: "Hubo un error al registrar el cobro, por favor reintente",
+        });
+        
+        incial();
         return "";
       }
-    }
-    
+    },
   });
 }
-function imprimirComprobante(data){
- 
-  if($("#imprimirCheck").prop('checked')){
-    $.post("page/Comprobantes/comprobantePago.php",{"idCobro":data}, function(result){
-  newWind=window.open('page/Comprobantes/comprobantePago.php','nuevaVentana');
-  newWind.document.open();
-  newWind.document.write(result);
-  newWind.document.close();
-    })
-}
-
+function imprimirComprobante(data) {
+  if ($("#imprimirCheck").prop("checked")) {
+    $.post(
+      "page/Comprobantes/comprobantePago.php",
+      { idCobro: data },
+      function (result) {
+        newWind = window.open(
+          "page/Comprobantes/comprobantePago.php",
+          "nuevaVentana"
+        );
+        newWind.document.open();
+        newWind.document.write(result);
+        newWind.document.close();
+      }
+    );
+  }
 }
 function convertDateMysql() {
   const hoy = new Date();
@@ -718,7 +746,7 @@ function mostrarMsgError(array) {
     tapToDismiss: false,
   };
 }
-function resetForm(idForm){
+function resetForm(idForm) {
   $(idForm).trigger("reset");
   ocultarInputInicio();
 }

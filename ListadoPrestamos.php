@@ -28,7 +28,7 @@ require_once './Handler/prestamos/HandlerListadoPrestamos.php'
 
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Total de Prestamo Activo <?php echo $CantPrestamos ?> </h3>
+          <h3 class="tile-title">Total de Prestamo <?php echo $CantPrestamos ?> </h3>
           <div class="table-responsive">
             <table class="table" id="tabla-PrestamosActivos">
               <thead>

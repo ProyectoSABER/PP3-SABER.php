@@ -201,6 +201,15 @@ $(document).ready(function () {
             };
           },
         },
+        {
+          extend: 'excelHtml5',
+          text: '<i class="fa-solid fa-file-excel"></i>',
+          titleAttr: 'Exportar a Excel',
+          className: "btn !important btn-succes btn-lg",
+          filename: "Listado de Cuotas no Abonadas",
+          title: "S.A.B.Er Listado de Cuotas no Abonadas"
+
+        }
       ]
     });
     $("button.dt-button").removeClass("dt-button");

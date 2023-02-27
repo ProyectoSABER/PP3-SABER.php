@@ -237,10 +237,12 @@ function mostrarTodasDetCuota(mysqli $PConeccionBD)
  * @param mysqli $PConeccionBD Proporcionar link de conexion a la base de datos mysqli
  * @param int $IdSocio Id de socio
  * @param int|string $CatSocio Id categoria de Socio || Nombre de categoria de socio
+ * @param int $fechaAlta fecha de alta de Socio
+ * 
  * 
  * @return array[index]["IdCuota","MesCuota","IdDetCuota","CatSocio","VCUOTA","FVENC"]|false|Null
  */
-function mostrarDetCuotaNoAbonadasSocio(int $IdSocio, $CatSocio, mysqli $PConeccionBD)
+function mostrarDetCuotaNoAbonadasSocio(int $IdSocio, $CatSocio, $fechaAlta ,mysqli $PConeccionBD)
 {
     $cuotas = array();
 
@@ -252,7 +254,7 @@ function mostrarDetCuotaNoAbonadasSocio(int $IdSocio, $CatSocio, mysqli $PConecc
      `DC`.`valorCuota` AS vCuota ,
      `DC`.`fechaVencimiento` AS fVenc
     FROM `cuota` AS C, `detallecuota` AS DC, `categoriasocio` AS CS 
-    WHERE C.id = DC.id_Cuota AND `DC`.`id_CatSocio` = `CS`.`id_CategoriaSocio` AND DC.id_CatSocio='$CatSocio' AND
+    WHERE C.id = DC.id_Cuota AND `DC`.`id_CatSocio` = `CS`.`id_CategoriaSocio` AND DC.id_CatSocio='$CatSocio' AND `DC`.`fechaVencimiento`>'$fechaAlta' AND
     DC.id_detalleCuota  Not in 
      ( SELECT `DCC`.`idDetalleCuota` FROM `cobrocuota` AS CC, `detallecobro` AS DCC WHERE `CC`.`idCobroCuota`=`DCC`.`idCobroCuota` 
      AND `CC`.`idSocio`='$IdSocio') ";
@@ -264,7 +266,7 @@ function mostrarDetCuotaNoAbonadasSocio(int $IdSocio, $CatSocio, mysqli $PConecc
      `DC`.`valorCuota` AS vCuota ,
      `DC`.`fechaVencimiento` AS fVenc
     FROM `cuota` AS C, `detallecuota` AS DC, `categoriasocio` AS CS 
-    WHERE C.id = DC.id_Cuota AND `DC`.`id_CatSocio` = `CS`.`id_CategoriaSocio` AND CS.nom_CategoriaSocio='$CatSocio' AND
+    WHERE C.id = DC.id_Cuota AND `DC`.`id_CatSocio` = `CS`.`id_CategoriaSocio` AND CS.nom_CategoriaSocio='$CatSocio'  AND `DC`.`fechaVencimiento` >'$fechaAlta' AND
     DC.id_detalleCuota  Not in 
      ( SELECT `DCC`.`idDetalleCuota` FROM `cobrocuota` AS CC, `detallecobro` AS DCC WHERE `CC`.`idCobroCuota`=`DCC`.`idCobroCuota` 
      AND `CC`.`idSocio`='$IdSocio') ";
@@ -428,6 +430,7 @@ Where
     and `s`.`idcategoria_Socio`= `cs`.`id_CategoriaSocio`
     and `dc`.`fechaVencimiento` <  (CURDATE())
     and `s`.`dni_Socio` = `p`.`dni_Persona`
+    and `dc`.`fechaVencimiento`>`s`.`fechaAlta_socio`
     and `dc`.`id_detalleCuota`
      not in (SELECT
         `dcc`.`idDetalleCuota`

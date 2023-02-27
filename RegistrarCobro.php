@@ -277,8 +277,10 @@ require_once './Handler/Cobro/HandlerRegistrarCobro.php'
     </div>
 
   </main>
+  <?php require_once './page/modals/RegistrarPago/RegistrarPago.php';?>
   <!-- Essential javascripts for application to work-->
   <?php require_once('./Inc/js/js.inc.php'); ?>
+  <script src="./js/sweetalert2.all.js"></script>
   <script type="text/javascript" src="./js/Personalizados/Cobro/registrarCobro.js"></script>
 
 

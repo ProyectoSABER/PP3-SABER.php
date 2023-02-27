@@ -22,6 +22,8 @@ require_once './Handler/HandlerBlack.php'
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="javascript:history.back()" class="btn "><i class="fa-solid fa-backward"></i> Volver Atrás</a></li>
+        <li class="breadcrumb-item"><a href="javascript:history.back()" class="btn "><i class="fa-regular fa-backward"></i>Volver Atrás</a></li>
       </ul>
     </div>
     <div class="row">
@@ -132,6 +134,9 @@ require_once './Handler/HandlerBlack.php'
 
           </form>
           <button type="submit" id="prueba" class="btn btn-success">iniciar Prueba</button>
+          <div class="container mt-3">
+            <?php require_once "./page/modals/RegistrarPago/RegistrarPago.php"?>
+          </div>
         </div>
       </div>
     </div>

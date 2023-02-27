@@ -45,7 +45,7 @@
           <li><a class="treeview-item" href="UpdatePersona.php"><i class="app-menu__icon fa fa-edit"></i>Actualizar Datos Persona</a></li>
           <li><a class="treeview-item" href="RegistrarSocio.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Socio</a></li>
           <li><a class="treeview-item" href="ListadoSocios.php"><i class="app-menu__icon fa fa-th-list"></i>Listado Socios</a></li>
-          <li><a class="treeview-item" href="crudDomicilio.php"><i class="app-menu__icon fa fa-edit"></i>Registrar Localiad/provincia/pais</a></li>
+          <li><a class="treeview-item" href="crudDomicilio.php"><i class="app-menu__icon fa fa-edit"></i>Registros Generales</a></li>
         </ul>
       </li>
       <!-- /SOCIOS -->

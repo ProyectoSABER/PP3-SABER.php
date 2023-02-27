@@ -150,6 +150,22 @@ $(function () {
             };
           },
         },
+        {
+          extend: "excelHtml5",
+          text: '<i class="fa-solid fa-file-excel"></i>',
+          titleAttr: "Exportar a Excel",
+          className: "btn !important btn-outline-success btn-lg mb-3",
+          filename: function () {
+            var pagina = self.location.href.match(/\/([^/]+)$/)[1];
+            let nombre = pagina.split(".")[0];
+            return nombre;
+          },
+          title: function () {
+            var pagina = self.location.href.match(/\/([^/]+)$/)[1];
+            let nombre = pagina.split(".")[0];
+            return "S.A.B.Er "+nombre;
+          },
+        },
       ],
     });
     $("button.dt-button").removeClass("dt-button");

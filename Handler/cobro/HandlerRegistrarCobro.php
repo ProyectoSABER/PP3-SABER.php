@@ -1,4 +1,7 @@
 <?Php
+
+use FontLib\Table\Type\post;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once('./../../Inc/session.inc.php');
     require_once('./../../funciones/conexion.php');
@@ -10,15 +13,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_GET["RegistrarCobro"])) {
         $res = array();
         $tipoSolicitud = "Insert";
-        
+        $error=array();
         $data = $_POST["data"];
         
         $CobroCuota=$data["cobroCuota"];
         $DetCobroCuota=$data["detalleCobro"];
-        crearCobro(intval($CobroCuota["idSocio"]),$CobroCuota["fechaCobro"],$MiConexion);
+        
+        $resCobro=crearCobro(intval($CobroCuota["idSocio"]),$CobroCuota["fechaCobro"],$CobroCuota["idMetodoPago"],$MiConexion);
+        if(!$resCobro){
+            $error[0]=["Error al crear el cobro linea: ".__LINE__];
+        }else{
+
+        
         $idCuota=consultarIdCobroNoAsignado(intval($CobroCuota["idSocio"]),$CobroCuota["fechaCobro"], $MiConexion);
         $estadoCobroCuota="PAGADO";
-        $error=array();
+        unset($error);
         $indice=0;
         foreach ($DetCobroCuota as $DetCuota){
             $rs=crearDetalleCobro(intval($idCuota),intval($DetCuota["idDetalleCuota"]),intval($DetCuota["valorCuota"]),intval($DetCuota["recargo"]),$estadoCobroCuota,intval($DetCuota["idResponsableCobro"]),$DetCuota["observaciones"], $MiConexion);
@@ -38,13 +47,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(!$idCobroSinAsignar){
                 eliminarCobroCuotaPorIdCobro($idCuota,$MiConexion);
             }
-         }   
+         }
+        }   
 
         if ((!empty($res)&&(empty($error)))) {
             $json = array(
                 'status' => 200,
                 'results' => $res,
-                'errorGuardado'=>$error,
+                'errorGuardado'=>$error??"",
                 'tipoSolicitud' => "$tipoSolicitud",
                 'id_cobro'=>"$idCuota",
             );
@@ -53,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'status' => 404,
                 'results' => "Sin resultados:",
                 'errorGuardado'=>$error,
-                'tipoSolicitud' => "$tipoSolicitud"
+                'tipoSolicitud' => "$tipoSolicitud",
+                'request' => $_POST
             );
         }
 
@@ -199,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
         $SOCIO = MostrarUnoSocioDni($DNIsocioBuscado, $MiConexion);
-        $res=mostrarDetCuotaNoAbonadasSocio($SOCIO['SOCIO_ID'],$SOCIO['SOCIO_CATEGORIA'],$MiConexion);
+        $res=mostrarDetCuotaNoAbonadasSocio($SOCIO['SOCIO_ID'],$SOCIO['SOCIO_CATEGORIA'],$SOCIO['SOCIO_FECHAALTA'],$MiConexion);
 
 
 

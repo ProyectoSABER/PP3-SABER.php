@@ -7,10 +7,10 @@
  * 
  * @return array|false|null
  */
-function crearCobro($idUsuario,$fechaCobro,$PConeccionBD)
+function crearCobro($idUsuario,$fechaCobro,$idMetodoPago,$PConeccionBD)
 {
 
-    $sql = "INSERT INTO `cobrocuota` (`idCobroCuota`, `fecha_CobroCuota`, `idSocio`) VALUES (NULL, '$fechaCobro', '$idUsuario');";
+    $sql = "INSERT INTO `cobrocuota` ( `fecha_CobroCuota`, `idSocio`,`id_metodoPago`) VALUES ('$fechaCobro', '$idUsuario','$idMetodoPago');";
 
     $consulta = mysqli_query($PConeccionBD, $sql);
 
@@ -177,13 +177,7 @@ $i = 0;
     }
     return $res??'false';
 };
-/* Array ( 
-    [0] => Array ( 
-        [detalleCobro] => Array ( [IDDETALLECOBRO] => 136 [IDCOBROCUOTA] => 81 [IDDETALLECUOTA] => 62 [VALORCUOTA] => 100 [RECARGO] => 0 [ESTADOCOBROCUOTA] => PAGADO [IDRESPOSABLECOBRO] => 2 [OBSERVACIONES] => [FECHACOBROCUOTA] => 2023-02-07 11:12:50 )
-         
-        [detalleSocio] => Array ( [IDSOCIO] => 58 [DNISOCIO] => 987456321 [IDCATESOCIO] => 1 [IDESTADOSOCIO] => 1 [FECHAALTASOCIO] => 2022-12-17 11:53:29 [CATEGORIASOCIO] => Docente )
 
-        [detalleBibliotecario] => Array ( [DNIBIBLIOTECARIO] => 33673150 [IDBIBLIOTECARIO] => 2 [TIPODNIBIBLIOTECARIO] => 1 [NOMBREBIBLIOTECARIO] => Sofia [APELLIDOBIBLIOTECARIO] => de Guzman ) ) ; */
 
         function consultardetallesdeCobroIdDetalle($idDetalleCobro, $PConeccionBD)
 {

@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (!empty($CuotaSocio)) {
                         
                         //true => emitir advertencia;
-                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se creo la cuota ";
+                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se registro la cuota ";
 
 
                     } else {
@@ -92,18 +92,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             //mensaje de exito
                             $Exito = $Exito && true;
 
-                            $MensajeExito[] ="Se creo la cuota " .  $TipoSocio;
+                            $MensajeExito[] ="Se registro la cuota " .  $TipoSocio;
                         } else {
                         
 
                             //mensaje de fracaso
                             $Exito = $Exito && false;
-                            $MensajeError[] = "No se creo la cuota " . $TipoSocio;
+                            $MensajeError[] = "No se registro la cuota " . $TipoSocio;
                         }
                     }
                 }else
                 {
-                    $MensajeError[] = "No se creo la cuota " .$TipoSocio . "Socio No Existente";
+                    $MensajeError[] = "No se registro la cuota " .$TipoSocio . "Socio No Existente";
                 }
             }
             if (isset($_POST["Socio-Alumno"])) {
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (!empty($CuotaSocio)) {
                         
                         //true => emitir advertencia;
-                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se creo la cuota ";
+                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se registro la cuota ";
 
 
                     } else {
@@ -136,18 +136,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             //mensaje de exito
                             $Exito = $Exito && true;
 
-                            $MensajeExito[] ="Se creo la cuota " .  $TipoSocio;
+                            $MensajeExito[] ="Se registro la cuota " .  $TipoSocio;
                         } else {
                         
 
                             //mensaje de fracaso
                             $Exito = $Exito && false;
-                            $MensajeError[] = "No se creo la cuota " . $TipoSocio;
+                            $MensajeError[] = "No se registro la cuota " . $TipoSocio;
                         }
                     }
                 }else
                 {
-                    $MensajeError[] = "No se creo la cuota " .$TipoSocio . "Socio No Existente";
+                    $MensajeError[] = "No se registro la cuota " .$TipoSocio . "Socio No Existente";
                 }
             }
             if (isset($_POST["Socio-Tutor"])) {
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (!empty($CuotaSocio)) {
                         
                         //true => emitir advertencia;
-                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se creo la cuota ";
+                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se registro la cuota ";
 
 
                     } else {
@@ -181,18 +181,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             //mensaje de exito
                             $Exito = $Exito && true;
 
-                            $MensajeExito[] ="Se creo la cuota " .  $TipoSocio;
+                            $MensajeExito[] ="Se registro la cuota " .  $TipoSocio;
                         } else {
                         
 
                             //mensaje de fracaso
                             $Exito = $Exito && false;
-                            $MensajeError[] = "No se creo la cuota " . $TipoSocio;
+                            $MensajeError[] = "No se registro la cuota " . $TipoSocio;
                         }
                     }
                 }else
                 {
-                    $MensajeError[] = "No se creo la cuota " .$TipoSocio . "Socio No Existente";
+                    $MensajeError[] = "No se registro la cuota " .$TipoSocio . "Socio No Existente";
                 }
             }
             if (isset($_POST["Socio-Institucion"])) {
@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (!empty($CuotaSocio)) {
                         
                         //true => emitir advertencia;
-                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se creo la cuota ";
+                        $MensajeAdvertencia[] = "Cuota "  . $TipoSocio . " Ya existente, no se registro la cuota ";
 
 
                     } else {
@@ -226,18 +226,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             //mensaje de exito
                             $Exito = $Exito && true;
 
-                            $MensajeExito[] ="Se creo la cuota " .  $TipoSocio;
+                            $MensajeExito[] ="Se registro la cuota " .  $TipoSocio;
                         } else {
                         
 
                             //mensaje de fracaso
                             $Exito = $Exito && false;
-                            $MensajeError[] = "No se creo la cuota " . $TipoSocio;
+                            $MensajeError[] = "No se registro la cuota " . $TipoSocio;
                         }
                     }
                 }else
                 {
-                    $MensajeError[] = "No se creo la cuota " .$TipoSocio . "Socio No Existente";
+                    $MensajeError[] = "No se registro la cuota " .$TipoSocio . "Socio No Existente";
                 }
             }
 
