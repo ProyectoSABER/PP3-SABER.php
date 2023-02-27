@@ -1,3 +1,4 @@
+
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
   <div class="app-sidebar__user">
@@ -71,10 +72,21 @@
       <li><a class="treeview-item" href="CuotasNoAbonadas.php"><i class="app-menu__icon fa fa-edit"></i>Listado de Cuotas Sin Abonar</a></li>
       </ul>
  
-      <!-- /Estadisticas -->
-      
-      <li><a class="app-menu__item " href="estadisticas.php"><i class="fa fa-bar-chart "></i><span class="app-menu__label">Estadisticas</span></a></li>
-      
+    
+  
+      <!--Graficos-->
+      <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="fa-thin fa-chart-waterfall"></i><span class="app-menu__label" >Graficos Estadisticos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+       
+      <ul class="treeview-menu">
+          <li><a class="treeview-item" href="informe segun tipo de socio.php"><i class="app-menu__icon fa fa-edit"></i>informe segun tipo de socio</a></li>
+        </br>
+          <li><a class="treeview-item" href="informeporgenero.php"><i class="app-menu__icon fa fa-edit"></i>informe prestamos solicitados segun generos</a></li> 
+      </br>
+          <li><a class="treeview-item" href="informedereservas.php"><i class="app-menu__icon fa fa-edit"></i>informe de tipo de prestamos </a></li>   
+
+        </ul>
+        
+      </li>
       
       
       

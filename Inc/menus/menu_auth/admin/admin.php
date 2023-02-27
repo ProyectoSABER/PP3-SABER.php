@@ -1,7 +1,8 @@
 <?php require_once('./Inc/menus/navbar.inc.php'); ?>
   <!-- Sidebar menu-->
   <?php require_once('./Inc/menus/sidebar.inc.php'); ?>
-  <!-- fin Sidebar menu-->
+ 
+ <!-- fin Sidebar menu-->
 
 <div class="row">
       <div class="col-md-3">
@@ -39,48 +40,58 @@
       </div>
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
-<form name="registroUsuarioModal" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
+        
+<form class="needs-validation" novalidate name="registroUsuarioModal" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputNameModal" name="inputNameModal" placeholder="name@example.com" required>
   <label for="floatingInput">Nombre</label>
+  <div class="valid-feedback">
+        todo bien.
+      </div>
+  <div class="invalid-feedback">
+        complete los datos.
+      </div>
 </div>
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputApellidoModal" name="inputApellidoModal" placeholder="name@example.com">
+  <input type="text" class="form-control" id="inputApellidoModal" name="inputApellidoModal" placeholder="Escriba su apellido" required>
   <label for="floatingInput">Apellido</label>
 </div>
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" placeholder="name@example.com">
+  <input type="number" class="form-control" id="inputDocumentoModal" name="inputDocumentoModal" minlength="7" placeholder="ingrese su documento" onkeyup="validate();" required>
   <label for="floatingInput">Documento</label>
 </div>
 <div class="form-floating mb-3" >
-  <input type="email" class="form-control" id="inputEmailModal" name="inputEmailModal"  placeholder="name@example.com" value="mail@ejemplo.com">
+  <input type="email" class="form-control" id="inputEmailModal" name="inputEmailModal"  placeholder="name@example.com" required>
   <label for="floatingInputValue">Email</label>
 </div>
 <div class="form-floating">
-  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal" placeholder="Password">
+  <input type="password" class="form-control" id="inputPasswordModal" name="inputPasswordModal"  minlength="8" placeholder="Password"  onkeyup="validate();" value='' required>
   <label for="floatingPassword">Password</label>
 </div>
 <br>
 <div class="form-floating">
 <label for="tipousuario">Tipo de Usuario</label>
-  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Floating label select example">
+<br>
+  <select class="form-select" id="selectRolModal" name="selectRolModal" aria-label="Tipo de Usuario" required> 
     <!-- Buscar info y mostrar oopciones segun BD -->
-    <option selected>Seleccione una opción</option>
+    <option selected value=''>Seleccione una opción</option>
     <option value="1">1-Administrador</option>
     <option value="2">2-Bibliotecario</option>
     <option value="3">3-Docente</option>
     <option value="4">4-Socio</option>
     <option value="5">5-Visitante</option>
   </select>
- 
+  <div class="invalid-feedback">
+        recuerde seleccionar un elemento.
+      </div>
 </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         
-        <button type="submit" name="NuevoUsuario" class="btn btn-primary">Guardar</button>
+        <button type="submit" name="NuevoUsuario" id="NuevoUsuario" class="btn btn-primary" onmouseover="validate();">Guardar</button>
       </div>
     </div>
   </div>
@@ -99,7 +110,7 @@
       <div class="modal-body">
         <!-- DATOS DEL USUARIO -->
         
-<form action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
+<form class="needs-validation" action="Handler/usuario/HandlerRegistroUsuarioModal.php" method="POST"> 
 
 <input type="hidden" name="update_id" id="update_id">
 
@@ -114,7 +125,7 @@
 </div>
 
 <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="dniEditUser" name="dniEditUser" readonly >
+  <input type="number" class="form-control" id="dniEditUser" name="dniEditUser" minlength="7"  readonly >
   <label for="floatingInput">Documento</label>
 </div>
 
@@ -124,14 +135,14 @@
 </div>
 
 <div class="form-floating">
-  <input type="text" class="form-control" id="passwordEditUser" name="passwordEditUser" placeholder="Password">
+  <input type="text" class="form-control" id="passwordEditUser" name="passwordEditUser" minlength="8" placeholder="Password">
   <label for="floatingPassword">Password</label>
 </div>
 
 <br>
 <div class="form-floating">
 <label for="tipousuario">Tipo de Usuario</label>
-  <select class="form-select" id="rolEditUser" name="rolEditUser" aria-label="Floating label select example">
+  <select class="form-select" id="rolEditUser" name="rolEditUser" aria-label="Tipo de usuario">
     <!-- Buscar info y mostrar oopciones segun BD -->
     <option value="1">1-Administrador</option>
     <option value="2">2-Bibliotecario</option>
@@ -151,7 +162,31 @@
     </div>
   </div>
 </form>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
 </div>
+
 
 
 <!--AUTOCOMPLETADO DE FORMULARIO-->
@@ -272,8 +307,20 @@ $('#rol').val(datos[6]);
 <div class="clearfix"></div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+ function validate(){
+ documento = $('#inputDocumentoModal').val();
+ password = $('#inputPasswordModal').val();
+ if(documento.length < 7 || password.length < 7){
+     $('#NuevoUsuario').attr('disabled', 'disabled');
+  }
+ else
+  {  
+    $('#NuevoUsuario').removeAttr("disabled");   
+  }
+ } 
 function enviarModal(nombre,apellido,dni,mail,password,idTipoUser,NomTipoUser,idUser)
 {
   $('#update_id').val(idUser);
@@ -326,15 +373,96 @@ function habilitarUsuario(data) {
     Swal.fire('Cancelo los cambios', '', 'info')
   }
 })}
-/*
-  console.log(data);
-  let text = "Press a button!\nEither OK or Cancel.";
-  if (confirm(text) == true) {
-window.location='UsuarioModalLimitar.php?usuID='+data;
-   
-  }
 
-}*/
+function EditarUsuario(data) {
+  Swal.fire({
+  title: 'Esta seguro que desea modificar el usuario?',
+  showDenyButton: true,
+ 
+  confirmButtonText: 'Si, confirmar',
+  denyButtonText: `No, Cancelar`,
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+    window.location='UsuarioModalLimitar.php?usuID='+data;
+    Swal.fire('Usuario deshabilitado!', '', 'success')
+  } else if (result.isDenied) {
+    Swal.fire('Cancelo los cambios', '', 'info')
+  }
+})}
+
+function showMessageError(data){
+if(data == "ErrorUsuarioDuplicado"){
+  Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Usuario duplicado!',
+  footer: '<a href="http://localhost:8080/PP3-SABER.php/index.php">Ok</a>',
+  showConfirmButton: false
+    })
+  }
+if(data == "ErrorDatoFaltante"){
+
+Swal.fire({
+icon: 'error',
+title: 'Oops...',
+text: 'Falta informacion, por favor antes de enviar verifique la informacion cargada.',
+footer: '<a href="http://localhost:8080/PP3-SABER.php/index.php">Ok</a>',
+showConfirmButton: false
+  })
+
+}
+if(data == "ErrorRegistro"){
+
+Swal.fire({
+icon: 'error',
+title: 'Oops...',
+text: 'No se pudo registrar el nuevo usuario, inténtenlo nuevamente més tarde.',
+footer: '<a href="http://localhost:8080/PP3-SABER.php/index.php">Ok</a>',
+showConfirmButton: false
+  })
+
+}
+if(data == "EdicionOk"){
+
+Swal.fire({
+  icon: 'success',
+title: 'Bien...',
+text: 'Edicion exitosa.',
+footer: '<a href="http://localhost:8080/PP3-SABER.php/index.php">Ok</a>',
+showConfirmButton: false
+  })
+
+}
+
+
+
+
+
+if(data == "RegistroExitoso"){
+
+Swal.fire({
+  icon: 'success',
+title: 'Bien...',
+text: 'Registro exitoso.',
+footer: '<a href="http://localhost:8080/PP3-SABER.php/index.php">Ok</a>',
+showConfirmButton: false
+  })
+
+}
+
+
+}
 
 
 </script>
+
+<?php 
+if(isset( $_GET['respuesta'])){
+$formularioEnviado = $_GET['respuesta'];
+
+echo '<script>  
+showMessageError("'.$formularioEnviado.'");
+</script>  ';
+}
+?>
